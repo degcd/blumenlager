@@ -6,9 +6,10 @@ public class Typ {
 	private String familie;
 	
 	
-	public Typ()
+	public Typ(String gattung, String familie)
 	{
-		
+		this.gattung = gattung;
+		this.familie = familie;
 	}
 	
 	public void setGattung(String gattung)

@@ -2,9 +2,9 @@ package Fachlogik.Artikelverwaltung;
 
 public class Bindegruen extends Artikel{
 	
-	public Bindegruen()
+	public Bindegruen(String bezeichnung)
 	{
-		
+		super(bezeichnung);
 	}
 
 }

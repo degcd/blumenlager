@@ -1,17 +1,22 @@
 package Fachlogik.Artikelverwaltung;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
+import Datenhaltung.IArtikelDAO;
 import Fachlogik.Lagerverwaltung.Regal;
 
 public class Artikelverwaltung {
 
-	ArrayList<Artikel> artikelListe;
+	private ArrayList<Artikel> artikelListe;
+	private IArtikelDAO artdao;
 	
-	public Artikelverwaltung()
+	public Artikelverwaltung(IArtikelDAO artdao)
 	{
-		
+		artikelListe = new ArrayList<Artikel>();
+		this.artdao = artdao;
 	}
+
 	
 	public ArrayList<Artikel> getRegalListe()
 	{

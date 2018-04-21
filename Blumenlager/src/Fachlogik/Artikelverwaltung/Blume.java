@@ -5,10 +5,14 @@ public class Blume extends Artikel{
 	private String farbe;
 	private Typ typ;
 	
-	public Blume()
+	
+	public Blume(String bezeichnung, String farbe, Typ typ)
 	{
-		
+		super(bezeichnung);
+		this.farbe = farbe;
+		this.typ = typ;
 	}
+	
 	
 	public void setFarbe(String farbe)
 	{
