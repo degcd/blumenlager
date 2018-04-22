@@ -9,7 +9,8 @@ public class Main {
 		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO());
 		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO());
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung);
-		controller.start();
+		//controller.start();
+		controller.zeigeEinlagernView();
 	}
 
 	

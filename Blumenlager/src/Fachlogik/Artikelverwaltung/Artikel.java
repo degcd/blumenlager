@@ -18,7 +18,7 @@ public abstract class Artikel {
 		this.bezeichnung = bezeichnung;
 	}
 	
-	
+	//wird zur Identifikation genutzt; darf nicht geändert werden ?
 	public void setBezeichnung(String bezeichnung)
 	{
 		this.bezeichnung = bezeichnung;

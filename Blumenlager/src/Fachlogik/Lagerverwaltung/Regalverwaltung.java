@@ -18,6 +18,12 @@ public class Regalverwaltung {
 		this.regaldao = regaldao;
 	}
 	
+	public void addeRegal(Regal r)
+	{
+		if(r != null)
+			this.regalListe.add(r);
+	}
+	
 	public ArrayList<Regal> getRegalListe()
 	{
 		return this.regalListe;
