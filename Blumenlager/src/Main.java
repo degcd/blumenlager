@@ -10,6 +10,10 @@ public class Main {
 		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO());
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung);
 		controller.start();
+		//Test; Aufruf sp�ter �ber Hauptmenue
+		controller.zeigeEinlagernView();
+		controller.zeigeAuslagernView();
+
 	}
 
 	

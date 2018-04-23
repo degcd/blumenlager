@@ -5,7 +5,7 @@ public abstract class Artikel {
 	private static int naechsteNr = 10000;
 	private int artikelnummer;
 	private String bezeichnung;
-// enum mit verf�gbaren Monaten oder Jahreszeit??? --> Erweiterung
+// enum mit verfügbaren Monaten oder Jahreszeit??? --> Erweiterung
 	
     
 	public Artikel(){
@@ -18,7 +18,9 @@ public abstract class Artikel {
 		this.bezeichnung = bezeichnung;
 	}
 	
-	
+
+	//wird zur Identifikation genutzt; darf nicht geändert werden ? Methode löschen ?
+
 	public void setBezeichnung(String bezeichnung)
 	{
 		this.bezeichnung = bezeichnung;
