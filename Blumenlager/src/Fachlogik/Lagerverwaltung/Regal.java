@@ -1,5 +1,6 @@
 package Fachlogik.Lagerverwaltung;
 
+
 import java.util.ArrayList;
 
 import Fachlogik.Artikelverwaltung.Artikel;
@@ -15,7 +16,7 @@ public class Regal {
 	private Bindegruen musterBindegruen;
 	private ArrayList<Artikel> artikelliste;//Generics?
 	
-	// Id die sich hochzählt? feste Plätze wenn gelöscht und weiter dann ändert die sich auch ?
+	// Id die sich hochzï¿½hlt? feste Plï¿½tze wenn gelï¿½scht und weiter dann ï¿½ndert die sich auch ?
 	public Regal(int maxAnzahl, Bindegruen musterArtikel )
 	{
 		this.regalnummer = regalnummer ++;
@@ -56,6 +57,7 @@ public class Regal {
 		return false;
 	}
 	
+
 	public void setMaxAnzahlArtikel(int maxAnzahlArtikel)
 	{
 		this.maxAnzahlArtikel = maxAnzahlArtikel;

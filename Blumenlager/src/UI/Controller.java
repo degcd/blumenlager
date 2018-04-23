@@ -3,7 +3,6 @@ package UI;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -21,6 +20,7 @@ public class Controller {
 
 	public void start() {
 		
+    //Brauchen wir das überhaupt?
 		for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 			// Look & Feels: Metal, CDE/Motif, Windows, Windows Classic, Nimbus
 			if ("Nimbus".equals(info.getName())) {
@@ -36,7 +36,7 @@ public class Controller {
 		menue = new Hauptmenue(this);
 		//new HinweisView(ui, "Start der Buchverwaltung!");
 	}
-	
+  
 	public void zeigeEinlagernView()
 	{
 		EinlagernView einlagernView = new EinlagernView();
@@ -45,4 +45,5 @@ public class Controller {
 	{
 		AuslagernView auslagernView = new AuslagernView();
 	}
+
 }

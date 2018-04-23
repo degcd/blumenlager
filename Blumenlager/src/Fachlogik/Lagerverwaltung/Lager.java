@@ -17,8 +17,9 @@ public class Lager {
 			regalListe.add(r);
 	}
 	
-	//löschen Methode ? wenn ja, wie soll sie aussehen?
+	//lï¿½schen Methode machen? wenn ja, wie soll sie aussehen?
 	
 	
 }
+
 

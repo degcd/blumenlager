@@ -24,6 +24,7 @@ public class Regalverwaltung {
 			this.regalListe.add(r);
 	}
 	
+
 	public ArrayList<Regal> getRegalListe()
 	{
 		return this.regalListe;
