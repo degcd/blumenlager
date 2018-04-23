@@ -11,36 +11,46 @@ public class Regal {
 
 	private static int regalnummer = 1;
 	private int maxAnzahlArtikel;
-	private Artikel musterArtikel;
-	private ArrayList<Artikel> artikelliste;
+	private Blume musterBlume;
+	private Bindegruen musterBindegruen;
+	private ArrayList<Artikel> artikelliste;//Generics?
 	
 	// Id die sich hochzählt? feste Plätze wenn gelöscht und weiter dann ändert die sich auch ?
-	public Regal(int maxAnzahl, Artikel musterArtikel )
+	public Regal(int maxAnzahl, Bindegruen musterArtikel )
 	{
 		this.regalnummer = regalnummer ++;
 		this.maxAnzahlArtikel = maxAnzahl;
+		this.musterBindegruen = musterArtikel;
 	}
+	public Regal(int maxAnzahl, Blume musterArtikel )
+	{
+		regalnummer = regalnummer ++;
+		this.maxAnzahlArtikel = maxAnzahl;
+		this.musterBlume = musterArtikel;
+	}
+	//EXCEPTIONS?
 	public boolean addeArtikel(String bezeichnung, int anzahl)
 	{
-		if( bezeichnung != null)
+		if(artikelliste.size() < maxAnzahlArtikel)
 		{
-			if(!artikelliste.isEmpty()){
-				if(bezeichnung.equals(musterArtikel.getBezeichnung()))
+			if( bezeichnung != null)
+			{
+				if(musterBindegruen != null)
 				{
-					if(artikelliste.size() < maxAnzahlArtikel)
+					if(bezeichnung.equals(musterBindegruen.getBezeichnung()))
 					{
-						if(bezeichnung.equals("Bindegruen"))
-						{
-							artikelliste.add(new Bindegruen());
-							return true;
-						}
-						else
-						{
-							artikelliste.add(new Blume(musterArtikel.getBezeichnung(), "dummy", new Typ("dummy", "dummy")));
-							return true ;
-						}
+						artikelliste.add(new Bindegruen());
+						return true;
 					}
 				}
+				else
+				{
+					if(bezeichnung.equals(musterBlume.getBezeichnung()))
+					{
+						artikelliste.add(new Blume(musterBlume.getBezeichnung(), musterBlume.getFarbe(), musterBlume.getTyp()));
+						return true;
+					}
+				}	
 			}
 		}
 		return false;

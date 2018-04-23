@@ -1,23 +1,19 @@
 package UI;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class EinlagernView extends JFrame{
-	
-	
+public class AuslagernView extends JFrame{
+
 	//über Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
-	public EinlagernView(){
-		super("Einlagern");
+	public AuslagernView(){
+		super("Auslagern");
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
 		baueEinlagernView();
@@ -28,10 +24,10 @@ public class EinlagernView extends JFrame{
 		
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie einlagern?");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?");
 		
 		JPanel buttonPanel = new JPanel();
-		JButton einlagernButton = new JButton("Einlagern");
+		JButton einlagernButton = new JButton("Auslagern");
 		JButton hauptmenueButton = new JButton("Hauptmenü");
 		buttonPanel.add(einlagernButton);
 		buttonPanel.add(hauptmenueButton);
@@ -66,5 +62,5 @@ public class EinlagernView extends JFrame{
 		this.add(mainPanel);
 		this.setVisible(true);
 	}
-
+	
 }
