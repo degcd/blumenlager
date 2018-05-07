@@ -18,9 +18,45 @@ public class Artikelverwaltung {
 	}
 
 	
-	public ArrayList<Artikel> getRegalListe()
+	public ArrayList<Artikel> getArtikelListe()
 	{
 		return this.artikelListe;
 	}
 	
+	public void addeArtikel(Artikel a)
+	{
+		if(a != null){
+			artikelListe.add(a);
+		}
+			
+	}
+	
+	//remove Artikel nicht zwingend nötig da beim Auslagern nur die Blumen aus den Regalen genommen werden, 
+	//aber ansonsten weiter existieren
+	
+	public void laden()throws Exception{
+		artikelListe.clear();
+		try{
+			ArrayList<Artikel> tmpList = artdao.laden();
+			for(Artikel x : tmpList)
+			{
+				artikelListe.add(x);
+			}
+		}catch(Exception e){
+			throw new Exception("Fehler beim Laden der Artikelliste.");
+		}
+	}
+	
+	
+	public void speichern() throws Exception{
+		try{
+			ArrayList<Artikel> liste = new ArrayList<>();
+			for (Artikel a : artikelListe)
+				liste.add(a);
+			artdao.speichern(liste);
+		}catch(Exception e){
+			throw new Exception("Fehler beim Speichern der Artikelliste.");
+		}
+
+	}
 }

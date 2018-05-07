@@ -5,16 +5,16 @@ public abstract class Artikel {
 	private static int naechsteNr = 10000;
 	private int artikelnummer;
 	private String bezeichnung;
+	private String kategorie;
 // enum mit verfügbaren Monaten oder Jahreszeit??? --> Erweiterung
 	
     
-	public Artikel(){
-    	artikelnummer = naechsteNr++;
-    }
+	
 
-	public Artikel(String bezeichnung)
+	public Artikel(int artikelnr, String kategorie, String bezeichnung)
 	{
-		this();
+		this.kategorie = kategorie;
+		this.artikelnummer = artikelnr;
 		this.bezeichnung = bezeichnung;
 	}
 	
@@ -26,6 +26,10 @@ public abstract class Artikel {
 		this.bezeichnung = bezeichnung;
 	}
 	
+	public String getKategorie()
+	{
+		return kategorie;
+	}
 	public int getArtikelnummer()
 	{
 		return this.artikelnummer;

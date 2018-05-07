@@ -1,12 +1,12 @@
 package Datenhaltung;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import Fachlogik.Artikelverwaltung.Artikel;
 
 public interface IArtikelDAO {
-	List<Artikel> laden() throws IOException;
+	ArrayList<Artikel> laden() throws Exception;
 
-	void speichern(List<Artikel> liste) throws IOException;
+	void speichern(ArrayList<Artikel> liste) throws Exception;
 }
