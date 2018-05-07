@@ -1,40 +1,27 @@
-import Datenhaltung.ArtikelDAO;
+import java.util.ArrayList;
 
+import Datenhaltung.ArtikelDAO;
+import Datenhaltung.BlumenlagerDataConnector;
 import Datenhaltung.RegalDAO;
+import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
+import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 import UI.Controller;
-import java.sql.*;
 
 public class Main {
-	public static void main(String[] args) {	
-		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO());
-		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO());
+	public static void main(String[] args) {
+		
+		BlumenlagerDataConnector dc = new BlumenlagerDataConnector();
+		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
+		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection()));
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung);
 		controller.start();
-		//Test; Aufruf sp�ter �ber Hauptmenue
+		
+		
+		//TODO: Verbinde Views miteinander
 		controller.zeigeEinlagernView();
 		controller.zeigeAuslagernView();
-		
-		
-		//Test Datenbank
-		try{
-			//Get a connection to database
-			Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blumenlager", "blumenlager", "blumenlager");
-			//Create a statement
-			Statement mystat = myConn.createStatement();
-			//Execute Sql query
-			ResultSet myRs = mystat.executeQuery("select * from artikel");
-			//Process the result set
-			while(myRs.next())
-			{
-				System.out.println(myRs.getString("idartikel")+ " "
-						+ myRs.getString("bezeichnung"));
-			}
-		}
-		catch(Exception ex){
-			
-		}
 
 	}
 

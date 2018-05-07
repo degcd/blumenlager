@@ -1,8 +1,12 @@
 package UI;
 
+import java.util.ArrayList;
+
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -20,19 +24,22 @@ public class Controller {
 
 	public void start() {
 		
-    //Brauchen wir das überhaupt?
-		for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-			// Look & Feels: Metal, CDE/Motif, Windows, Windows Classic, Nimbus
-			if ("Nimbus".equals(info.getName())) {
-				try {
-					UIManager.setLookAndFeel(info.getClassName());
-				} catch (ClassNotFoundException | InstantiationException 
-						| IllegalAccessException
-						| UnsupportedLookAndFeelException e) {
-				}
-				break;
-			}
+		try{
+			artikelverwaltung.laden();
 		}
+		catch(Exception e)
+		{
+			System.out.println("Artikelverwaltung konnte nicht geladen werden.");
+		}
+		try{
+			regalverwaltung.laden();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Regalverwaltung konnte nicht geladen werden.");
+		}
+		
+    
 		menue = new Hauptmenue(this);
 		//new HinweisView(ui, "Start der Buchverwaltung!");
 	}
