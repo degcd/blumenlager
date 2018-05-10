@@ -62,20 +62,21 @@ public class ArtikelDAO implements IArtikelDAO{
 			{
 				Blume b = (Blume)a;
 				statement.executeUpdate("insert into artikel values("
-						+ Integer.toString(b.getArtikelnummer()) + ","
+						+ Integer.toString(b.getId()) + ","
 						+ "'"+ b.getBezeichnung()+"',"
 						+ "'" + b.getKategorie()+ "'," 
 						+ "'" + b.getFarbe() + "',"
 						+ "'" + b.getTyp().getGattung()+ "',"
-						+ "'" + b.getTyp().getFamilie() + "')");
+						+ "'" + b.getTyp().getFamilie() + "',"
+								+ "null)");
 			}
 			else if( a.getKategorie().equals("Bindegruen"))
 			{
 				Bindegruen b = (Bindegruen)a;
 				statement.executeUpdate("insert into artikel values("
-						+ Integer.toString(b.getArtikelnummer()) + ","
+						+ Integer.toString(b.getId()) + ","
 						+ "'"+ b.getBezeichnung()+"',"
-						+ "'" + b.getKategorie()+ "', null, null, null)");
+						+ "'" + b.getKategorie()+ "', null, null, null,null);");
 			}
 			
 		}

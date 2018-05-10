@@ -41,7 +41,7 @@ public class Controller {
 		
     
 		menue = new Hauptmenue(this);
-		//new HinweisView(ui, "Start der Buchverwaltung!");
+
 	}
   
 	public void zeigeEinlagernView()

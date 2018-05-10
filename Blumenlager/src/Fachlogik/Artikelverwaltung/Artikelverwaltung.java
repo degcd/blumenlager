@@ -31,6 +31,7 @@ public class Artikelverwaltung {
 			
 	}
 	
+	
 	//remove Artikel nicht zwingend nötig da beim Auslagern nur die Blumen aus den Regalen genommen werden, 
 	//aber ansonsten weiter existieren
 	

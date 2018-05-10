@@ -3,18 +3,16 @@ package Fachlogik.Artikelverwaltung;
 public abstract class Artikel {
 
 	private static int naechsteNr = 10000;
-	private int artikelnummer;
+	private int idArtikel;
 	private String bezeichnung;
 	private String kategorie;
-// enum mit verfügbaren Monaten oder Jahreszeit??? --> Erweiterung
-	
     
 	
 
 	public Artikel(int artikelnr, String kategorie, String bezeichnung)
 	{
 		this.kategorie = kategorie;
-		this.artikelnummer = artikelnr;
+		this.idArtikel = artikelnr;
 		this.bezeichnung = bezeichnung;
 	}
 	
@@ -30,9 +28,9 @@ public abstract class Artikel {
 	{
 		return kategorie;
 	}
-	public int getArtikelnummer()
+	public int getId()
 	{
-		return this.artikelnummer;
+		return this.idArtikel;
 	}
 	
 	public String getBezeichnung()

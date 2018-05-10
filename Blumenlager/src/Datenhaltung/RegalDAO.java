@@ -33,7 +33,7 @@ public class RegalDAO implements IRegalDAO{
 			//füge fertiges Regal zu der Regalliste hinzu
 			ArrayList<Artikel> artikel = new ArrayList<Artikel>();
 			Statement stat2 = conn.createStatement();
-			ResultSet rsRegalArtikel = stat2.executeQuery("select * from regal_artikel where idRegal =" + rsRegal.getString("idRegal"));
+			ResultSet rsRegalArtikel = stat2.executeQuery("select * from artikel where idRegal =" + rsRegal.getString("idRegal"));
 			
 			while(rsRegalArtikel.next())
 			{
@@ -66,7 +66,23 @@ public class RegalDAO implements IRegalDAO{
 
 	@Override
 	public void speichern(ArrayList<Regal> liste) throws Exception {
-		// TODO Auto-generated method stub
+		
+		Statement statement = conn.createStatement();
+		statement.executeUpdate("Delete from regal;");
+		for(Regal r: liste){
+			
+			statement.executeUpdate("insert into regal values("
+					+ Integer.toString(r.getId()) + ","
+					+ "'"+ r.getPlatzbezeichnung()+"',"
+					+ Integer.toString(r.getMaxAnzahlArtikel())+ ");");
+			
+			for(Artikel a : r.getArtikelListe()){
+				Statement stat2 = conn.createStatement();
+				stat2.executeUpdate("update artikel set idregal= "
+						+ Integer.toString(r.getId()) + " where idartikel="
+						+ Integer.toString(a.getId()));	
+			}
+		}
 		
 	}
 
