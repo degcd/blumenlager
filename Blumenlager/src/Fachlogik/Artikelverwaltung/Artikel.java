@@ -10,10 +10,9 @@ public abstract class Artikel {
 	
 	public Artikel(int artikelnr, String kategorie, String bezeichnung)
 	{
-		this.kategorie = kategorie;
 		this.idArtikel = artikelnr;
+		this.kategorie = kategorie;
 		this.bezeichnung = bezeichnung;
-		artikelliste.add(this);
 	}
 	
 
