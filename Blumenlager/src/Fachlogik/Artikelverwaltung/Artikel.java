@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 public abstract class Artikel {
 
+
   private String kategorie;
 	private int idArtikel;
 	private String bezeichnung;
+
+    
+
 	
 	public Artikel(int artikelnr, String kategorie, String bezeichnung)
 	{
