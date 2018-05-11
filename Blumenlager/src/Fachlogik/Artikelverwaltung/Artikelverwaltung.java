@@ -28,7 +28,14 @@ public class Artikelverwaltung {
 		if(a != null){
 			artikelListe.add(a);
 		}
-			
+	}
+	public Artikel getArtikel(int id)
+	{
+		for(Artikel a: artikelListe){
+			if(a.getId() == id)
+				return a;
+		}
+		return null;
 	}
 	
 	

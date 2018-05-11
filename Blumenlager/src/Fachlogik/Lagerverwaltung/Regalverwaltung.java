@@ -30,6 +30,15 @@ public class Regalverwaltung {
 		return this.regalListe;
 	}
 	
+	public Regal getRegal(int id)
+	{
+		for(Regal r: regalListe){
+			if(r.getId() == id)
+				return r;
+		}
+		return null;
+	}
+	
 	public void laden()throws Exception{
 		regalListe.clear();
 		try{

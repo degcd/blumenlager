@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-
 import Datenhaltung.ArtikelDAO;
 import Datenhaltung.BlumenlagerDataConnector;
+import Datenhaltung.LagerDAO;
 import Datenhaltung.RegalDAO;
-import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
-import Fachlogik.Artikelverwaltung.Bindegruen;
-import Fachlogik.Lagerverwaltung.Regal;
+import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 import UI.Controller;
 
@@ -15,9 +12,32 @@ public class Main {
 		
 		BlumenlagerDataConnector dc = new BlumenlagerDataConnector();
 		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
-		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection()));
-		Controller controller = new Controller(artikelverwaltung, regalverwaltung);
+		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung));
+		Lagerverwaltung lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
+		Controller controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
 		controller.start();
+		controller.zeigeEinlagernView();
+		
+		try{
+			artikelverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Artikelverwaltung: " + e.getMessage());
+		}
+		try{
+			regalverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Regalverwaltung: " + e.getMessage());
+		}
+		try{
+			lagerverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
+		}
+		
+		
 		
 
 
