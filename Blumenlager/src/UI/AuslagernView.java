@@ -31,6 +31,13 @@ public class AuslagernView extends JFrame{
 		
 		JPanel buttonPanel = new JPanel();
 		JButton auslagernButton = new JButton("Auslagern");
+		auslagernButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				//TODO
+				
+				close();
+			}
+		});
 		
 		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {

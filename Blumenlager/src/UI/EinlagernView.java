@@ -34,6 +34,13 @@ public class EinlagernView extends JFrame{
 		
 		JPanel buttonPanel = new JPanel();
 		JButton einlagernButton = new JButton("Einlagern");
+		einlagernButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				//TODO
+				
+				close();
+			}
+		});
 
 		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {

@@ -13,20 +13,22 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Fachlogik.Artikelverwaltung.Artikel;
+import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
+import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class ArtikelanzeigeView extends JFrame{
 
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
-	private java.util.List<Artikel> artikelliste;
+	private Regalverwaltung regalverwaltung;
 	private java.util.List<Regal> regalliste;
 	private Controller controller;
 	
-	public ArtikelanzeigeView(Controller controller, java.util.List<Artikel> artikelliste) {
+	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung) {
 		super("Artikelanzeige");
 		this.controller = controller;
-		this.artikelliste = artikelliste;
+		this.regalverwaltung = regalverwaltung;
 		setSize(500, 500);
 		setLocationRelativeTo(null);
 		baueArtikelanzeigeView();
@@ -54,8 +56,8 @@ public class ArtikelanzeigeView extends JFrame{
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
 //		artikelTabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		fuelleTabelle(artikelliste);
-		
+		fuelleTabelle();
+		tabellenPanel.add(artikelTabelle);
 		
 		panel.add("South",tabellenPanel);
 		
@@ -64,14 +66,23 @@ public class ArtikelanzeigeView extends JFrame{
 	}
 	
 	
-	private void fuelleTabelle(java.util.List<Artikel> artikelliste) {
+	private void fuelleTabelle() {
 		Object[] zeile = new Object[3];
-		for (Artikel a : artikelliste) {
-//			zeile[0] = a.getRegalnummer();
-			zeile[1] = a.getBezeichnung();
-//			zeile[2] = a.getPreis();
+		for(int i = 1; i <= 5; i++) {
+			zeile[0] = 2;
+			zeile[1] = 8;
+			zeile[2] = 5; 
 			tabellenModel.addRow(zeile);
 		}
+//		Object[] zeile = new Object[3];
+//		ArrayList<Artikel> artikelliste = new ArrayList<Artikel>();
+//		artikelliste = artikelverwaltung.getArtikelListe();
+//		for (Artikel a : artikelliste) {
+//			zeile[0] = a.getBezeichnung(); //Regalnummer
+//			zeile[1] = a.getBezeichnung();
+//			zeile[2] = 5; //Anzahl
+//			tabellenModel.addRow(zeile);
+//		}
 	}
 	
 	
