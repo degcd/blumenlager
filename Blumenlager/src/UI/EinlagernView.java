@@ -3,6 +3,8 @@ package UI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -32,7 +34,21 @@ public class EinlagernView extends JFrame{
 		
 		JPanel buttonPanel = new JPanel();
 		JButton einlagernButton = new JButton("Einlagern");
+		einlagernButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				//TODO
+				
+				close();
+			}
+		});
+
 		JButton hauptmenueButton = new JButton("Hauptmenü");
+		hauptmenueButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				close();
+			}
+		});
+		
 		buttonPanel.add(einlagernButton);
 		buttonPanel.add(hauptmenueButton);
 		
@@ -67,4 +83,7 @@ public class EinlagernView extends JFrame{
 		this.setVisible(true);
 	}
 
+	public void close() {
+		this.setVisible(false);
+	}
 }
