@@ -6,9 +6,9 @@ public class Blume extends Artikel{
 	private Typ typ;
 	
 	
-	public Blume(String bezeichnung, String farbe, Typ typ)
+	public Blume(int id, String bezeichnung, String farbe, Typ typ)
 	{
-		super(bezeichnung);
+		super(id, "Blume",bezeichnung);
 		this.farbe = farbe;
 		this.typ = typ;
 	}

@@ -2,16 +2,12 @@ package Fachlogik.Artikelverwaltung;
 
 public class Bindegruen extends Artikel{
 	
-	public Bindegruen(String bezeichnung)
+	public Bindegruen(int artikelnr,  String bezeichnung)
 	{
-		//den Konstruktor noch drin lassen ? --> AddeArtikel;Regal; wird Bindegruen immer gleich heißen?
-		super(bezeichnung);
+		super(artikelnr,"Bindegruen", bezeichnung);
 	}
 	
-	public Bindegruen()
-	{
-		super("Bindegruen");
-	}
+
 
 
 

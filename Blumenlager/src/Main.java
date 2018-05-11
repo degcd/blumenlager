@@ -1,41 +1,47 @@
-import Datenhaltung.ArtikelDAO;
+import java.util.ArrayList;
 
+import Datenhaltung.ArtikelDAO;
+import Datenhaltung.BlumenlagerDataConnector;
+import Datenhaltung.LagerDAO;
 import Datenhaltung.RegalDAO;
+import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
+
+import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 import UI.Controller;
 import java.sql.*;
 
 public class Main {
-	public static void main(String[] args) {	
-		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO());
-		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO());
-		Controller controller = new Controller(artikelverwaltung, regalverwaltung);
+	public static void main(String[] args) {
+		
+		BlumenlagerDataConnector dc = new BlumenlagerDataConnector();
+		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
+		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung));
+		Lagerverwaltung lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
+		Controller controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
 		controller.start();
-		//Test; Aufruf sp�ter �ber Hauptmenue
-//		controller.zeigeEinlagernView();
-//		controller.zeigeAuslagernView();
 		
-		
-		//Test Datenbank
 		try{
-			//Get a connection to database
-			Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blumenlager", "blumenlager", "blumenlager");
-			//Create a statement
-			Statement mystat = myConn.createStatement();
-			//Execute Sql query
-			ResultSet myRs = mystat.executeQuery("select * from artikel");
-			//Process the result set
-			while(myRs.next())
-			{
-				System.out.println(myRs.getString("idartikel")+ " "
-						+ myRs.getString("bezeichnung"));
-			}
+			artikelverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Artikelverwaltung: " + e.getMessage());
 		}
-		catch(Exception ex){
-			
+		try{
+			regalverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Regalverwaltung: " + e.getMessage());
 		}
-
+		try{
+			lagerverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
+		}
+		
+		
 	}
 
 	

@@ -1,11 +1,11 @@
 package Datenhaltung;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 import Fachlogik.Lagerverwaltung.Regal;
 
 public interface IRegalDAO {
-	List<Regal> laden() throws IOException;
+	ArrayList<Regal> laden() throws Exception;
 
-	void speichern(List<Regal> liste) throws IOException;
+	void speichern(ArrayList<Regal> liste) throws Exception;
 }

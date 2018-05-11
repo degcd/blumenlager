@@ -1,53 +1,58 @@
 package UI;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
+import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Controller {
 
 	private Artikelverwaltung artikelverwaltung;
 	private Regalverwaltung regalverwaltung;
-	private Hauptmenue menue;
+	private Lagerverwaltung lagerverwaltung;
 
 	
-	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung) {
+	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung, Lagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = artikelverwaltung;
 		this.regalverwaltung = regalverwaltung;
+		this.lagerverwaltung = lagerverwaltung;
 	}
 
 	public void start() {
 		
-    //Brauchen wir das Ã¼berhaupt?
-		for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-			// Look & Feels: Metal, CDE/Motif, Windows, Windows Classic, Nimbus
-			if ("Nimbus".equals(info.getName())) {
-				try {
-					UIManager.setLookAndFeel(info.getClassName());
-				} catch (ClassNotFoundException | InstantiationException 
-						| IllegalAccessException
-						| UnsupportedLookAndFeelException e) {
-				}
-				break;
-			}
+		try{
+			artikelverwaltung.laden();
 		}
-		menue = new Hauptmenue(this);
-		//new HinweisView(ui, "Start der Buchverwaltung!");
+		catch(Exception e)
+		{
+			System.out.println("Artikelverwaltung konnte nicht geladen werden: " + e.getMessage());
+		}
+
+		try{
+			regalverwaltung.laden();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Regalverwaltung konnte nicht geladen werden: " + e.getMessage());
+		}
+		try{
+			lagerverwaltung.laden();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Lagerverwaltung konnte nicht geladen werden: " + e.getMessage());
+		}
+		
+		new Hauptmenue(this);
+
 	}
   
 	public void zeigeEinlagernView()
 	{
-		EinlagernView einlagernView = new EinlagernView();
+		new EinlagernView();
 	}
 	public void zeigeAuslagernView()
 	{
-		AuslagernView auslagernView = new AuslagernView();
+		new AuslagernView();
 	}
 	
 	
@@ -57,7 +62,7 @@ public class Controller {
 //		return new HauptmenueListener();
 //	}
 //	
-//	/**** Listener fürs Haupmenü *********/
+//	/**** Listener fï¿½rs Haupmenï¿½ *********/
 //	class HauptmenueListener implements ActionListener {
 //
 //		@Override
@@ -74,7 +79,7 @@ public class Controller {
 ////					new HinweisView(menue, "Daten wurden gespeichert");
 ////					break;
 ////				case "bearbeiten":
-////					// V6.0 Zustandsänderung jetzt auch für MenuItems
+////					// V6.0 Zustandsï¿½nderung jetzt auch fï¿½r MenuItems
 ////					//ui.setStateBearbeiten();
 ////					// V6.0: Wegen integrierter Sicht. 
 ////					// BuchListeView besitzt eigene Toolbar
@@ -83,7 +88,7 @@ public class Controller {
 ////					//ui.removeTooBar();
 ////					//listeBearbeiten();
 ////					break;
-////				case "beenden": // V6.0 wegen Menüpunkt beenden
+////				case "beenden": // V6.0 wegen Menï¿½punkt beenden
 ////					ui.dispose();
 ////					System.exit(0);
 ////					break;

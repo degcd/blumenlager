@@ -4,21 +4,14 @@ import java.util.ArrayList;
 
 public abstract class Artikel {
 
-	private static int naechsteNr = 10000;
-	private int artikelnummer;
+  private String kategorie;
+	private int idArtikel;
 	private String bezeichnung;
-	private ArrayList<Artikel> artikelliste;
-// enum mit verfügbaren Monaten oder Jahreszeit??? --> Erweiterung
 	
-    
-	public Artikel(){
-    	artikelnummer = naechsteNr++;
-    	artikelliste.add(this);
-    }
-
-	public Artikel(String bezeichnung)
+	public Artikel(int artikelnr, String kategorie, String bezeichnung)
 	{
-		this();
+		this.kategorie = kategorie;
+		this.idArtikel = artikelnr;
 		this.bezeichnung = bezeichnung;
 		artikelliste.add(this);
 	}
@@ -31,9 +24,14 @@ public abstract class Artikel {
 //		this.bezeichnung = bezeichnung;
 //	}
 	
-	public int getArtikelnummer()
+	public String getKategorie()
 	{
-		return this.artikelnummer;
+		return kategorie;
+	}
+
+	public int getId()
+	{
+		return this.idArtikel;
 	}
 	
 	public String getBezeichnung()
