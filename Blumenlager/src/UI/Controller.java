@@ -26,6 +26,7 @@ public class Controller {
 		{
 			System.out.println("Artikelverwaltung konnte nicht geladen werden: " + e.getMessage());
 		}
+
 		try{
 			regalverwaltung.laden();
 		}
@@ -41,7 +42,6 @@ public class Controller {
 			System.out.println("Lagerverwaltung konnte nicht geladen werden: " + e.getMessage());
 		}
 		
-    
 		new Hauptmenue(this);
 
 	}

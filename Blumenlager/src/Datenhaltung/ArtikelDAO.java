@@ -77,6 +77,7 @@ public class ArtikelDAO implements IArtikelDAO{
 						+ Integer.toString(b.getId()) + ","
 						+ "'"+ b.getBezeichnung()+"',"
 						+ "'" + b.getKategorie()+ "', null, null, null,null);");
+
 			}
 			
 		}

@@ -6,6 +6,7 @@ public abstract class Artikel {
 	private int idArtikel;
 	private String bezeichnung;
 	private String kategorie;
+
     
 	
 
@@ -28,6 +29,7 @@ public abstract class Artikel {
 	{
 		return kategorie;
 	}
+
 	public int getId()
 	{
 		return this.idArtikel;

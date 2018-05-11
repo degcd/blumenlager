@@ -30,6 +30,7 @@ public class Regalverwaltung {
 		return this.regalListe;
 	}
 	
+
 	public Regal getRegal(int id)
 	{
 		for(Regal r: regalListe){
@@ -40,6 +41,7 @@ public class Regalverwaltung {
 	}
 	
 	public void laden()throws Exception{
+    
 		regalListe.clear();
 		try{
 			ArrayList<Regal> tmpList = regaldao.laden();

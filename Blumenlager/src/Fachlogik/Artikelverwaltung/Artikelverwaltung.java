@@ -39,7 +39,7 @@ public class Artikelverwaltung {
 	}
 	
 	
-	//remove Artikel nicht zwingend nötig da beim Auslagern nur die Blumen aus den Regalen genommen werden, 
+	//remove Artikel nicht zwingend nÃ¶tig da beim Auslagern nur die Blumen aus den Regalen genommen werden, 
 	//aber ansonsten weiter existieren
 	
 	public void laden()throws Exception{

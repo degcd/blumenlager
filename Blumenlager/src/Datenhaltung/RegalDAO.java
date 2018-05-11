@@ -22,8 +22,7 @@ public class RegalDAO implements IRegalDAO{
 		this.conn = c;
 		this.artikelverwaltung = a;
 	}
-	
-	
+
 	@Override
 	public ArrayList<Regal> laden() throws Exception {
 		
@@ -33,16 +32,18 @@ public class RegalDAO implements IRegalDAO{
 		//Gehe alle Regale durch 
 		while(rsRegal.next())
 		{
-			//Für jedes Regal: finde alle Artikel; erstelle Liste 
-			//füge fertiges Regal zu der Regalliste hinzu
+			//FÃ¼r jedes Regal: finde alle Artikel; erstelle Liste 
+			//fÃ¼ge fertiges Regal zu der Regalliste hinzu
 			ArrayList<Artikel> artikel = new ArrayList<Artikel>();
 			Statement stat2 = conn.createStatement();
 			ResultSet rsRegalArtikel = stat2.executeQuery("select * from artikel where idRegal =" + rsRegal.getString("idRegal"));
+
 			
 			while(rsRegalArtikel.next())
 			{
-				//Für jeden Artikel im Regal Details herausfinden, um Artikel zu erzeugen;
-				//schlussendlich zur Artikelliste, die dem Regal beigefügt wird, hinzufügen
+				//FÃ¼r jeden Artikel im Regal Details herausfinden, um Artikel zu erzeugen;
+				//schlussendlich zur Artikelliste, die dem Regal beigefÃ¼gt wird, hinzufÃ¼gen
+
 //				Statement stat3 = conn.createStatement();
 //				ResultSet rsArtikel = stat3.executeQuery("select * from Artikel where idArtikel = " + rsRegalArtikel.getString("idArtikel"));
 //				rsArtikel.next();
@@ -64,6 +65,7 @@ public class RegalDAO implements IRegalDAO{
 //					artikel.add(new Bindegruen(rsArtikel.getInt("idArtikel"),
 //							rsArtikel.getString("bezeichnung")));
 //				}
+
 			}
 			regalliste.add(new Regal(rsRegal.getInt("idRegal"),rsRegal.getInt("maxAnzahlArtikel"), rsRegal.getString("platzbezeichnung"), artikel));
 			
@@ -92,6 +94,7 @@ public class RegalDAO implements IRegalDAO{
 						+ Integer.toString(a.getId()));	
 			}
 		}
+
 		
 	}
 
