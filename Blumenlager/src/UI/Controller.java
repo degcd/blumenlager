@@ -54,5 +54,55 @@ public class Controller {
 	{
 		new AuslagernView();
 	}
+	
+	
+	
+	
+//	public HauptmenueListener createMainViewListener() {
+//		return new HauptmenueListener();
+//	}
+//	
+//	/**** Listener f�rs Haupmen� *********/
+//	class HauptmenueListener implements ActionListener {
+//
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			String befehl = e.getActionCommand();
+//			try {
+//				switch (befehl) {
+//				case "einlagern":
+//					zeigeEinlagernView();
+//					new HinweisView(menue, "Daten wurden geladen");
+//					//break;
+////				case "speichern":
+////					//speichern();
+////					new HinweisView(menue, "Daten wurden gespeichert");
+////					break;
+////				case "bearbeiten":
+////					// V6.0 Zustands�nderung jetzt auch f�r MenuItems
+////					//ui.setStateBearbeiten();
+////					// V6.0: Wegen integrierter Sicht. 
+////					// BuchListeView besitzt eigene Toolbar
+////					// Ist jetzt nicht mehr als internes Fenster
+////					// realisiert sondern als JPanel
+////					//ui.removeTooBar();
+////					//listeBearbeiten();
+////					break;
+////				case "beenden": // V6.0 wegen Men�punkt beenden
+////					ui.dispose();
+////					System.exit(0);
+////					break;
+//				}
+//			} //catch (IOException) {
+//				//new HinweisView(ui, e1.getMessage());
+//			//}
+//			finally {
+//				
+//			}
+//		}
+//
+//			}
+	}
 
-}
+
+

@@ -17,7 +17,7 @@ public class Artikelverwaltung {
 		this.artdao = artdao;
 	}
 
-	
+
 	public ArrayList<Artikel> getArtikelListe()
 	{
 		return this.artikelListe;
