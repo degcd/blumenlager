@@ -1,10 +1,12 @@
 package UI;
 
+import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Fachlogik.Artikelverwaltung.Artikel;
@@ -22,10 +24,13 @@ public class Hauptmenue extends JFrame{
 	public Hauptmenue(Controller controller) {
 		super("Blumenlager");
 		this.controller = controller;
-		setSize(500, 300);
+		setSize(500, 150);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new BorderLayout());
+		JPanel labelPanel = new JPanel();
+		JLabel label = new JLabel("Hauptmenü");
+		JPanel buttonPanel = new JPanel();
 		
 		JButton einlagern = new JButton("Einlagern");
 //		ClickMouseListener clickEinlagern = new ClickMouseListener();
@@ -36,7 +41,7 @@ public class Hauptmenue extends JFrame{
 			einlagernView.setVisible(true);
 		}
 		});
-		panel.add(einlagern);
+		buttonPanel.add(einlagern);
 
 		
 		JButton auslagern = new JButton("Auslagern");
@@ -48,7 +53,7 @@ public class Hauptmenue extends JFrame{
 				auslagernView.setVisible(true);
 			}
 		});
-		panel.add(auslagern);
+		buttonPanel.add(auslagern);
 		
 		
 		JButton anzeigen = new JButton("Artikel anzeigen");
@@ -61,8 +66,11 @@ public class Hauptmenue extends JFrame{
 			}
 		}
 		);
-		panel.add(anzeigen);		
+		buttonPanel.add(anzeigen);		
 		
+		labelPanel.add(label);
+		panel.add("North", labelPanel);
+		panel.add("Center", buttonPanel);
 		add(panel);
 		setVisible(true);
 	}

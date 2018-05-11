@@ -46,6 +46,9 @@ public class ArtikelanzeigeView extends JFrame{
 		
 		
 		panel.add("South",tabellenPanel);
+		
+		add(panel);
+		setVisible(true);
 	}
 	
 	
