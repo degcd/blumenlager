@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Fachlogik.Artikelverwaltung.Artikel;
+import Fachlogik.Artikelverwaltung.Artikelverwaltung;
+import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Hauptmenue extends JFrame{
 
@@ -19,7 +21,7 @@ public class Hauptmenue extends JFrame{
 	private static final long serialVersionUID = -4642355566112266090L;
 
 	private Controller controller;	
-	private java.util.List<Artikel> artikelliste;
+	private Regalverwaltung regalverwaltung;
 	
 	public Hauptmenue(Controller controller) {
 		super("Blumenlager");
@@ -60,7 +62,7 @@ public class Hauptmenue extends JFrame{
 //		ClickMouseListener clickArtikel = new ClickMouseListener();
 		anzeigen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				ArtikelanzeigeView anzeigeView = new ArtikelanzeigeView(controller, artikelliste);
+				ArtikelanzeigeView anzeigeView = new ArtikelanzeigeView(controller, regalverwaltung);
 //				anzeigeView.setLocationRelativeTo(Hauptmenue.this);
 				anzeigeView.setVisible(true);
 			}
