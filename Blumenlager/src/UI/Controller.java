@@ -1,5 +1,9 @@
 package UI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -45,5 +49,55 @@ public class Controller {
 	{
 		AuslagernView auslagernView = new AuslagernView();
 	}
+	
+	
+	
+	
+//	public HauptmenueListener createMainViewListener() {
+//		return new HauptmenueListener();
+//	}
+//	
+//	/**** Listener fürs Haupmenü *********/
+//	class HauptmenueListener implements ActionListener {
+//
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			String befehl = e.getActionCommand();
+//			try {
+//				switch (befehl) {
+//				case "einlagern":
+//					zeigeEinlagernView();
+//					new HinweisView(menue, "Daten wurden geladen");
+//					//break;
+////				case "speichern":
+////					//speichern();
+////					new HinweisView(menue, "Daten wurden gespeichert");
+////					break;
+////				case "bearbeiten":
+////					// V6.0 Zustandsänderung jetzt auch für MenuItems
+////					//ui.setStateBearbeiten();
+////					// V6.0: Wegen integrierter Sicht. 
+////					// BuchListeView besitzt eigene Toolbar
+////					// Ist jetzt nicht mehr als internes Fenster
+////					// realisiert sondern als JPanel
+////					//ui.removeTooBar();
+////					//listeBearbeiten();
+////					break;
+////				case "beenden": // V6.0 wegen Menüpunkt beenden
+////					ui.dispose();
+////					System.exit(0);
+////					break;
+//				}
+//			} //catch (IOException) {
+//				//new HinweisView(ui, e1.getMessage());
+//			//}
+//			finally {
+//				
+//			}
+//		}
+//
+//			}
+	}
 
-}
+
+

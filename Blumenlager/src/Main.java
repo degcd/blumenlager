@@ -13,8 +13,8 @@ public class Main {
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung);
 		controller.start();
 		//Test; Aufruf sp�ter �ber Hauptmenue
-		controller.zeigeEinlagernView();
-		controller.zeigeAuslagernView();
+//		controller.zeigeEinlagernView();
+//		controller.zeigeAuslagernView();
 		
 		
 		//Test Datenbank

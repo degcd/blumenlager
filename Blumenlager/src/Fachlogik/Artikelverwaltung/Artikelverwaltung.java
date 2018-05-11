@@ -18,7 +18,14 @@ public class Artikelverwaltung {
 	}
 
 	
-	public ArrayList<Artikel> getRegalListe()
+	public void addArtikel(Artikel artikel)
+	{
+		if (artikel != null)
+			this.artikelListe.add(artikel);
+	}
+	
+	
+	public ArrayList<Artikel> getArtikelListe()
 	{
 		return this.artikelListe;
 	}
