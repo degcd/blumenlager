@@ -28,10 +28,18 @@ public class Artikelverwaltung {
 		if(a != null){
 			artikelListe.add(a);
 		}
-			
+	}
+	public Artikel getArtikel(int id)
+	{
+		for(Artikel a: artikelListe){
+			if(a.getId() == id)
+				return a;
+		}
+		return null;
 	}
 	
-	//remove Artikel nicht zwingend nötig da beim Auslagern nur die Blumen aus den Regalen genommen werden, 
+	
+	//remove Artikel nicht zwingend nÃ¶tig da beim Auslagern nur die Blumen aus den Regalen genommen werden, 
 	//aber ansonsten weiter existieren
 	
 	public void laden()throws Exception{

@@ -1,25 +1,20 @@
 package UI;
 
-import java.util.ArrayList;
-
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
+import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Controller {
 
 	private Artikelverwaltung artikelverwaltung;
 	private Regalverwaltung regalverwaltung;
-	private Hauptmenue menue;
+	private Lagerverwaltung lagerverwaltung;
 
 	
-	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung) {
+	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung, Lagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = artikelverwaltung;
 		this.regalverwaltung = regalverwaltung;
+		this.lagerverwaltung = lagerverwaltung;
 	}
 
 	public void start() {
@@ -29,28 +24,35 @@ public class Controller {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Artikelverwaltung konnte nicht geladen werden.");
+			System.out.println("Artikelverwaltung konnte nicht geladen werden: " + e.getMessage());
 		}
+
 		try{
 			regalverwaltung.laden();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Regalverwaltung konnte nicht geladen werden.");
+			System.out.println("Regalverwaltung konnte nicht geladen werden: " + e.getMessage());
+		}
+		try{
+			lagerverwaltung.laden();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Lagerverwaltung konnte nicht geladen werden: " + e.getMessage());
 		}
 		
-    
-		menue = new Hauptmenue(this);
-		//new HinweisView(ui, "Start der Buchverwaltung!");
+		new Hauptmenue(this);
+
 	}
   
 	public void zeigeEinlagernView()
 	{
-		EinlagernView einlagernView = new EinlagernView();
+		new EinlagernView();
 	}
 	public void zeigeAuslagernView()
 	{
-		AuslagernView auslagernView = new AuslagernView();
+		new AuslagernView();
 	}
 
 }

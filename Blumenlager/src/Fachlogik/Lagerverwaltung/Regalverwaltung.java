@@ -30,8 +30,18 @@ public class Regalverwaltung {
 		return this.regalListe;
 	}
 	
+
+	public Regal getRegal(int id)
+	{
+		for(Regal r: regalListe){
+			if(r.getId() == id)
+				return r;
+		}
+		return null;
+	}
+	
 	public void laden()throws Exception{
-		//TODO : die Methode hier ist nicht vollständig und nur von Artikelverw. kopiert & abgeändert
+    
 		regalListe.clear();
 		try{
 			ArrayList<Regal> tmpList = regaldao.laden();
@@ -40,20 +50,19 @@ public class Regalverwaltung {
 				regalListe.add(x);
 			}
 		}catch(Exception e){
-			throw new Exception("Fehler beim Laden der Regalliste.");
+			throw new Exception("Fehler beim Laden der Regalliste: "+ e.getMessage());
 		}
 	}
 	
 	
 	public void speichern() throws Exception{
-		//TODO
 		try{
 			ArrayList<Regal> liste = new ArrayList<>();
 			for (Regal r : regalListe)
 				liste.add(r);
 			regaldao.speichern(liste);
 		}catch(Exception e){
-			throw new Exception("Fehler beim Speichern der Regalliste.");
+			throw new Exception("Fehler beim Speichern der Regalliste: " + e.getMessage());
 		}
 
 	}
