@@ -2,6 +2,8 @@ package UI;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +13,7 @@ import javax.swing.JTextField;
 
 public class AuslagernView extends JFrame{
 
+	
 	//über Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public AuslagernView(){
 		super("Auslagern");
@@ -27,9 +30,16 @@ public class AuslagernView extends JFrame{
 		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?");
 		
 		JPanel buttonPanel = new JPanel();
-		JButton einlagernButton = new JButton("Auslagern");
+		JButton auslagernButton = new JButton("Auslagern");
+		
 		JButton hauptmenueButton = new JButton("Hauptmenü");
-		buttonPanel.add(einlagernButton);
+		hauptmenueButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				close();
+			}
+		});
+		
+		buttonPanel.add(auslagernButton);
 		buttonPanel.add(hauptmenueButton);
 		
 		
@@ -63,4 +73,7 @@ public class AuslagernView extends JFrame{
 		this.setVisible(true);
 	}
 	
+	public void close() {
+		this.setVisible(false);
+	}
 }

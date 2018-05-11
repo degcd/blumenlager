@@ -1,6 +1,9 @@
 package UI;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,12 +13,14 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Fachlogik.Artikelverwaltung.Artikel;
+import Fachlogik.Lagerverwaltung.Regal;
 
 public class ArtikelanzeigeView extends JFrame{
 
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
 	private java.util.List<Artikel> artikelliste;
+	private java.util.List<Regal> regalliste;
 	private Controller controller;
 	
 	public ArtikelanzeigeView(Controller controller, java.util.List<Artikel> artikelliste) {
@@ -32,7 +37,14 @@ public class ArtikelanzeigeView extends JFrame{
 		JPanel panel = new JPanel(new BorderLayout());
 				
 		JPanel buttonPanel = new JPanel();
+		
 		JButton hauptmenueButton = new JButton("Hauptmenü");
+		hauptmenueButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				close();
+			}
+		});
+		
 		buttonPanel.add(hauptmenueButton);
 		panel.add("North",buttonPanel);
 		
@@ -60,5 +72,10 @@ public class ArtikelanzeigeView extends JFrame{
 //			zeile[2] = a.getPreis();
 			tabellenModel.addRow(zeile);
 		}
+	}
+	
+	
+	public void close() {
+		this.setVisible(false);
 	}
 }
