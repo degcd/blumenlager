@@ -92,7 +92,7 @@ public class Regalverwaltung {
 					}
 					else
 					{
-						throw new Exception("Regal ist keinem Artikel zugeordnet.");
+						throw new Exception("Regal ist keinem Artikel zugeordnet.(" + regalbezeichnung + ")");
 					}
 				}
 				else
@@ -101,13 +101,13 @@ public class Regalverwaltung {
 				}
 			}
 			else{
-				throw new Exception("Regal nicht gefunden. Platz ist nicht belegt.");
+				throw new Exception("Regal nicht gefunden. "+ regalbezeichnung +"ist nicht belegt.");
 			}
 			
 		}
 		else if(anzahlArtikel < 0)
 		{
-			throw new Exception("Werte müssen größer 0 sein.");
+			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
 	
@@ -119,49 +119,26 @@ public class Regalverwaltung {
 			if(r != null)
 			{
 				ArrayList<Artikel> artikelliste = r.getArtikelListe();
-				if(artikelliste.size()+anzahlArtikel <= r.getMaxAnzahlArtikel())
+				if(artikelliste.size()-anzahlArtikel >= 1)
 				{
-					if(artikelliste.size() > 0)
+					for(int i = 0; i < anzahlArtikel; i++)
 					{
-						if(artikelliste.get(0).getKategorie().equals("Blume"))
-						{
-							Blume musterBlume = (Blume) artikelliste.get(0);
-							for(int i = 0; i < anzahlArtikel ; i++)
-							{
-								Blume neu = new Blume(artikelverwaltung.getNextArtikelId(), musterBlume.getBezeichnung(), musterBlume.getFarbe(), musterBlume.getTyp());
-								artikelverwaltung.addeArtikel(neu);
-								r.addeArtikel(neu);
-							}
-						}
-						else if(artikelliste.get(0).getKategorie().equals("Bindegruen"))
-						{
-							Bindegruen musterBindegruen = (Bindegruen) artikelliste.get(0);
-							for(int i = 0; i < anzahlArtikel ; i++)
-							{
-								Bindegruen neu = new Bindegruen(artikelverwaltung.getNextArtikelId(), musterBindegruen.getBezeichnung());
-								artikelverwaltung.addeArtikel(neu);
-								r.addeArtikel(neu);
-							}	
-						}
-					}
-					else
-					{
-						throw new Exception("Regal ist keinem Artikel zugeordnet.");
+						r.removeArtikel();
+						//Artikel existieren trotzdem in Artikelliste weiter nur nicht in Regal
 					}
 				}
 				else
 				{
-					throw new Exception("So viele Artikel können nicht in " + regalbezeichnung + " eingelagert werden.");
+					throw new Exception("So viele Artikel können nicht aus " + regalbezeichnung + " ausgelagert werden.");
 				}
 			}
 			else{
-				throw new Exception("Regal nicht gefunden. Platz ist nicht belegt.");
+				throw new Exception("Regal nicht gefunden. "+ regalbezeichnung +"ist nicht belegt.");
 			}
-			
 		}
 		else if(anzahlArtikel < 0)
 		{
-			throw new Exception("Werte müssen größer 0 sein.");
+			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
 	

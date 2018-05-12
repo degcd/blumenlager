@@ -9,15 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Fachlogik.Artikelverwaltung.Artikel;
-import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Hauptmenue extends JFrame{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -4642355566112266090L;
 
 	private Controller controller;	

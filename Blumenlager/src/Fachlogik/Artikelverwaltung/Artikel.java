@@ -1,7 +1,5 @@
 package Fachlogik.Artikelverwaltung;
 
-import java.util.ArrayList;
-
 public abstract class Artikel {
 
 

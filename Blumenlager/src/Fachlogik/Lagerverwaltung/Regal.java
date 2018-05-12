@@ -4,9 +4,6 @@ package Fachlogik.Lagerverwaltung;
 import java.util.ArrayList;
 
 import Fachlogik.Artikelverwaltung.Artikel;
-import Fachlogik.Artikelverwaltung.Bindegruen;
-import Fachlogik.Artikelverwaltung.Blume;
-import Fachlogik.Artikelverwaltung.Typ;
 
 public class Regal {
 
@@ -29,38 +26,10 @@ public class Regal {
 			
 	}
 	public void removeArtikel(){
-		artikelliste.remove(0);
+		if(artikelliste.size() > 0)
+			artikelliste.remove(0);
 	}
 	
-//	public boolean addeArtikel(String bezeichnung, int anzahl)
-//	{
-//		if(artikelliste == null){
-//			artikelliste = new ArrayList<Artikel>();
-//		}
-//		if(artikelliste.size() < maxAnzahlArtikel)
-//		{
-//			if( bezeichnung != null)
-//			{
-//				if(musterBindegruen != null)
-//				{
-//					if(bezeichnung.equals(musterBindegruen.getBezeichnung()))
-//					{
-//						artikelliste.add(new Bindegruen(2,musterBindegruen.getBezeichnung()));//!!!  nicht richtig wartet auf richtige Umsetzung !
-//						return true;
-//					}
-//				}
-//				else
-//				{
-//					if(bezeichnung.equals(musterBlume.getBezeichnung()))
-//					{
-//						artikelliste.add(new Blume(3, musterBlume.getBezeichnung(), musterBlume.getFarbe(), musterBlume.getTyp()));//!! id-> auch nicht richtig
-//						return true;
-//					}
-//				}	
-//			}
-//		}
-//		return false;
-//	}
 	
 	public ArrayList<Artikel> getArtikelListe(){
 		return this.artikelliste;

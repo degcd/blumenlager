@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 public class EinlagernView extends JFrame{
 	
+	private static final long serialVersionUID = 6676077927159427855L;
 	private ArrayList<JTextField> textfelder;
 	private ArrayList<JLabel> regalnummern;
 	private Controller controller;

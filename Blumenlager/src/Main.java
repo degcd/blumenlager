@@ -1,16 +1,11 @@
-import java.util.ArrayList;
-
 import Datenhaltung.ArtikelDAO;
 import Datenhaltung.BlumenlagerDataConnector;
 import Datenhaltung.LagerDAO;
 import Datenhaltung.RegalDAO;
-import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
-
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 import UI.Controller;
-import java.sql.*;
 
 public class Main {
 	public static void main(String[] args) {
