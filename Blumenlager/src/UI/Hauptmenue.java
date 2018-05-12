@@ -13,7 +13,6 @@ import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Hauptmenue extends JFrame{
 
-
 	private static final long serialVersionUID = -4642355566112266090L;
 
 	private Controller controller;	
@@ -27,10 +26,11 @@ public class Hauptmenue extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("Hauptmenü");
+		JLabel label = new JLabel("HauptmenÃ¼");
 		JPanel buttonPanel = new JPanel();
 		
 		JButton einlagern = new JButton("Einlagern");
+
 		einlagern.addMouseListener(new MouseAdapter(){
 		public void mouseClicked(MouseEvent evt) {
 			controller.zeigeEinlagernView();
@@ -40,6 +40,7 @@ public class Hauptmenue extends JFrame{
 
 		
 		JButton auslagern = new JButton("Auslagern");
+    
 		auslagern.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				controller.zeigeAuslagernView();

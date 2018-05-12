@@ -1,5 +1,7 @@
 package Fachlogik.Artikelverwaltung;
 
+import java.util.ArrayList;
+
 public abstract class Artikel {
 
 
@@ -7,7 +9,6 @@ public abstract class Artikel {
 	private int idArtikel;
 	private String bezeichnung;
 
-    	
 	public Artikel(int artikelnr, String kategorie, String bezeichnung)
 	{
 		this.idArtikel = artikelnr;

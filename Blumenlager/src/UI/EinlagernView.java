@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +20,7 @@ public class EinlagernView extends JFrame{
 	private ArrayList<JLabel> regalnummern;
 	private Controller controller;
 	
-	//über Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
+	//Ã¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public EinlagernView(Controller c){
 		super("Einlagern");
 		this.controller = c;
@@ -34,7 +35,7 @@ public class EinlagernView extends JFrame{
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie einlagern?");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln mÃ¶chten Sie einlagern?");
 		
 		JPanel buttonPanel = new JPanel();
 		JButton einlagernButton = new JButton("Einlagern");
@@ -48,7 +49,7 @@ public class EinlagernView extends JFrame{
 			}
 		});
 
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();
@@ -132,5 +133,5 @@ public class EinlagernView extends JFrame{
 
 		}
 	}
-	
+
 }

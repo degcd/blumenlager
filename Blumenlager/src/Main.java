@@ -21,6 +21,25 @@ public class Main {
 
 	
 		
+		try{
+			artikelverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Artikelverwaltung: " + e.getMessage());
+		}
+		try{
+			regalverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Regalverwaltung: " + e.getMessage());
+		}
+		try{
+			lagerverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
+		}
+		
 		
 	}
 
