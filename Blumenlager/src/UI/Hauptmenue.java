@@ -9,15 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Fachlogik.Artikelverwaltung.Artikel;
-import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Hauptmenue extends JFrame{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4642355566112266090L;
 
 	private Controller controller;	
@@ -31,28 +26,24 @@ public class Hauptmenue extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("Hauptmenü");
+		JLabel label = new JLabel("HauptmenÃ¼");
 		JPanel buttonPanel = new JPanel();
 		
 		JButton einlagern = new JButton("Einlagern");
-//		ClickMouseListener clickEinlagern = new ClickMouseListener();
+
 		einlagern.addMouseListener(new MouseAdapter(){
 		public void mouseClicked(MouseEvent evt) {
-			EinlagernView einlagernView = new EinlagernView();
-//			einlagernView.setLocationRelativeTo(Hauptmenue.this);
-			einlagernView.setVisible(true);
+			controller.zeigeEinlagernView();
 		}
 		});
 		buttonPanel.add(einlagern);
 
 		
 		JButton auslagern = new JButton("Auslagern");
-//		ClickMouseListener clickAuslagern = new ClickMouseListener();
+    
 		auslagern.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				AuslagernView auslagernView = new AuslagernView();
-//				auslagernView.setLocationRelativeTo(Hauptmenue.this);
-				auslagernView.setVisible(true);
+				controller.zeigeAuslagernView();
 			}
 		});
 		buttonPanel.add(auslagern);

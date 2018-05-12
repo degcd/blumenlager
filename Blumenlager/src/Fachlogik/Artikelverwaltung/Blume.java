@@ -5,7 +5,7 @@ public class Blume extends Artikel{
 	private String farbe;
 	private Typ typ;
 	
-	
+	//für Datenwiederherstellung
 	public Blume(int id, String bezeichnung, String farbe, Typ typ)
 	{
 		super(id, "Blume",bezeichnung);

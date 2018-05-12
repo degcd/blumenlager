@@ -9,11 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
+
 import javax.swing.table.DefaultTableModel;
 
-import Fachlogik.Artikelverwaltung.Artikel;
-import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -22,7 +20,9 @@ public class ArtikelanzeigeView extends JFrame{
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
 	private Regalverwaltung regalverwaltung;
-	private java.util.List<Regal> regalliste;
+
+	private ArrayList<Regal> regalliste;
+
 	private Controller controller;
 	
 	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung) {
@@ -40,7 +40,7 @@ public class ArtikelanzeigeView extends JFrame{
 				
 		JPanel buttonPanel = new JPanel();
 		
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();

@@ -1,10 +1,8 @@
 package Fachlogik.Artikelverwaltung;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import Datenhaltung.IArtikelDAO;
-import Fachlogik.Lagerverwaltung.Regal;
 
 public class Artikelverwaltung {
 
@@ -25,10 +23,10 @@ public class Artikelverwaltung {
 	
 	public void addeArtikel(Artikel a)
 	{
-		if(a != null){
+		if(a != null)
 			artikelListe.add(a);
-		}
 	}
+	
 	public Artikel getArtikel(int id)
 	{
 		for(Artikel a: artikelListe){
@@ -36,6 +34,16 @@ public class Artikelverwaltung {
 				return a;
 		}
 		return null;
+	}
+	public int getNextArtikelId()
+	{
+		int max = 0;
+		for(Artikel a:artikelListe)
+		{
+			if(a.getId() > max)
+				max = a.getId();
+		}
+		return max + 1;
 	}
 	
 	
