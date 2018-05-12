@@ -1,5 +1,8 @@
 package UI;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
@@ -10,6 +13,7 @@ public class Controller {
 	private Regalverwaltung regalverwaltung;
 	private Lagerverwaltung lagerverwaltung;
 
+	private Hauptmenue hauptmenue;
 	
 	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung, Lagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = artikelverwaltung;
@@ -19,6 +23,41 @@ public class Controller {
 
 	public void start() {
 		
+		laden();
+		
+		this.hauptmenue = new Hauptmenue(this);
+		hauptmenue.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e)
+			{
+				speichern();
+			}
+		});
+
+	}
+  
+	//Anzeige Views
+	public void zeigeEinlagernView()
+	{
+		new EinlagernView(this);
+	}
+	public void zeigeAuslagernView()
+	{
+		new AuslagernView(this);
+	}
+	
+	
+	//Einlagern und Auslagern
+	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception{
+		regalverwaltung.einlagern(regalbezeichnung, anzahlArtikel);
+	}
+	public void auslagern(String regalbezeichnung, int anzahlArtikel) throws Exception{
+		regalverwaltung.auslagern(regalbezeichnung, anzahlArtikel);
+	}
+	
+	
+	//Speichern und laden
+	public void laden()
+	{
 		try{
 			artikelverwaltung.laden();
 		}
@@ -41,18 +80,28 @@ public class Controller {
 		{
 			System.out.println("Lagerverwaltung konnte nicht geladen werden: " + e.getMessage());
 		}
-		
-		new Hauptmenue(this);
-
 	}
-  
-	public void zeigeEinlagernView()
+	
+	public void speichern()
 	{
-		new EinlagernView();
-	}
-	public void zeigeAuslagernView()
-	{
-		new AuslagernView();
+		try{
+			artikelverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Artikelverwaltung: " + e.getMessage());
+		}
+		try{
+			regalverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Regalverwaltung: " + e.getMessage());
+		}
+		try{
+			lagerverwaltung.speichern();
+		} catch(Exception e)
+		{
+			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
+		}
 	}
 	
 }

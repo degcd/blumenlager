@@ -17,49 +17,14 @@ public class Main {
 		
 		BlumenlagerDataConnector dc = new BlumenlagerDataConnector();
 		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
-		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung));
+		Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung), artikelverwaltung);
 		Lagerverwaltung lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
 		controller.start();
-		controller.zeigeEinlagernView();
+		//controller.zeigeEinlagernView();
 		
-		try{
-			artikelverwaltung.speichern();
-		} catch(Exception e)
-		{
-			System.out.println("Fehler beim Speichern der Artikelverwaltung: " + e.getMessage());
-		}
-		try{
-			regalverwaltung.speichern();
-		} catch(Exception e)
-		{
-			System.out.println("Fehler beim Speichern der Regalverwaltung: " + e.getMessage());
-		}
-		try{
-			lagerverwaltung.speichern();
-		} catch(Exception e)
-		{
-			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
-		}
-		
-		try{
-			artikelverwaltung.speichern();
-		} catch(Exception e)
-		{
-			System.out.println("Fehler beim Speichern der Artikelverwaltung: " + e.getMessage());
-		}
-		try{
-			regalverwaltung.speichern();
-		} catch(Exception e)
-		{
-			System.out.println("Fehler beim Speichern der Regalverwaltung: " + e.getMessage());
-		}
-		try{
-			lagerverwaltung.speichern();
-		} catch(Exception e)
-		{
-			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
-		}
+
+	
 		
 		
 	}

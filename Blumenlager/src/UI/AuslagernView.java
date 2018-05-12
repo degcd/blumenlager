@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,10 +14,15 @@ import javax.swing.JTextField;
 
 public class AuslagernView extends JFrame{
 
+	private ArrayList<JTextField> textfelder;
+	private ArrayList<JLabel> regalnummern;
+	private Controller controller;
+	
 	
 	//über Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
-	public AuslagernView(){
+	public AuslagernView(Controller c){
 		super("Auslagern");
+		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
 		baueEinlagernView();
@@ -24,18 +30,21 @@ public class AuslagernView extends JFrame{
 	
 	private void baueEinlagernView()
 	{
-		
+		textfelder = new ArrayList<JTextField>();
+		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?(mind. 1 Artikel muss noch im Regal bleiben)");
 		
 		JPanel buttonPanel = new JPanel();
 		JButton auslagernButton = new JButton("Auslagern");
 		auslagernButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				//TODO
-				
-				close();
+				auslagern();
+				for(JTextField j : textfelder)
+				{
+					j.setText("0");
+				}
 			}
 		});
 		
@@ -82,5 +91,19 @@ public class AuslagernView extends JFrame{
 	
 	public void close() {
 		this.setVisible(false);
+	}
+	
+	public void auslagern(){
+		for(int i = 0; i < 6; i++)
+		{
+			try{
+				int anzahlArtikel = Integer.parseInt(textfelder.get(i).getText());
+				String regalbezeichnung = regalnummern.get(i).getText();
+				controller.einlagern(regalbezeichnung, anzahlArtikel);
+			}catch(Exception e){
+				System.out.println("Probleme beim Einlagern: " + e.getMessage());
+			}
+
+		}
 	}
 }

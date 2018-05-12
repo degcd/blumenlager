@@ -35,24 +35,18 @@ public class Hauptmenue extends JFrame{
 		JPanel buttonPanel = new JPanel();
 		
 		JButton einlagern = new JButton("Einlagern");
-//		ClickMouseListener clickEinlagern = new ClickMouseListener();
 		einlagern.addMouseListener(new MouseAdapter(){
 		public void mouseClicked(MouseEvent evt) {
-			EinlagernView einlagernView = new EinlagernView();
-//			einlagernView.setLocationRelativeTo(Hauptmenue.this);
-			einlagernView.setVisible(true);
+			controller.zeigeEinlagernView();
 		}
 		});
 		buttonPanel.add(einlagern);
 
 		
 		JButton auslagern = new JButton("Auslagern");
-//		ClickMouseListener clickAuslagern = new ClickMouseListener();
 		auslagern.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				AuslagernView auslagernView = new AuslagernView();
-//				auslagernView.setLocationRelativeTo(Hauptmenue.this);
-				auslagernView.setVisible(true);
+				controller.zeigeAuslagernView();
 			}
 		});
 		buttonPanel.add(auslagern);
