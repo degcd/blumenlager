@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -12,6 +13,7 @@ public class Controller {
 	private Artikelverwaltung artikelverwaltung;
 	private Regalverwaltung regalverwaltung;
 	private Lagerverwaltung lagerverwaltung;
+	private Window window;
 
 	private Hauptmenue hauptmenue;
 	
@@ -48,6 +50,14 @@ public class Controller {
 	public void zeigeArtikelanzeigeView()
 	{
 		new ArtikelanzeigeView(this, regalverwaltung, artikelverwaltung);
+	}
+	
+	public void zeigeEinlagernHinweis() {
+		new HinweisView(window, "Erfolgreich eingelagert!");
+	}
+	
+	public void zeigeAuslagernHinweis() {
+		new HinweisView(window, "Erfolgreich ausgelagert!");
 	}
 	
 	

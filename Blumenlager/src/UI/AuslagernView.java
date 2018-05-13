@@ -47,6 +47,8 @@ public class AuslagernView extends JFrame{
 				{
 					j.setText("0");
 				}
+				controller.zeigeAuslagernHinweis();
+				close();
 			}
 		});
 		
