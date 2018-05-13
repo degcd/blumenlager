@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Hauptmenue extends JFrame{
@@ -17,6 +18,7 @@ public class Hauptmenue extends JFrame{
 
 	private Controller controller;	
 	private Regalverwaltung regalverwaltung;
+	private java.util.List<Regal> regalliste;
 	
 	public Hauptmenue(Controller controller) {
 		super("Blumenlager");
@@ -26,7 +28,7 @@ public class Hauptmenue extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("HauptmenÃ¼");
+		JLabel label = new JLabel("Hauptmenü");
 		JPanel buttonPanel = new JPanel();
 		
 		JButton einlagern = new JButton("Einlagern");
@@ -53,9 +55,7 @@ public class Hauptmenue extends JFrame{
 //		ClickMouseListener clickArtikel = new ClickMouseListener();
 		anzeigen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				ArtikelanzeigeView anzeigeView = new ArtikelanzeigeView(controller, regalverwaltung);
-//				anzeigeView.setLocationRelativeTo(Hauptmenue.this);
-				anzeigeView.setVisible(true);
+				controller.zeigeArtikelanzeigeView();
 			}
 		}
 		);

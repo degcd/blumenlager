@@ -45,6 +45,11 @@ public class Controller {
 		new AuslagernView(this);
 	}
 	
+	public void zeigeArtikelanzeigeView()
+	{
+		new ArtikelanzeigeView(this, regalverwaltung, artikelverwaltung);
+	}
+	
 	
 	//Einlagern und Auslagern
 	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception{
