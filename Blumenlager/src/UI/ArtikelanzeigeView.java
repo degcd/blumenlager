@@ -67,22 +67,23 @@ public class ArtikelanzeigeView extends JFrame{
 	
 	
 	private void fuelleTabelle() {
-		Object[] zeile = new Object[3];
-		for(int i = 1; i <= 5; i++) {
-			zeile[0] = 2;
-			zeile[1] = 8;
-			zeile[2] = 5; 
-			tabellenModel.addRow(zeile);
-		}
 //		Object[] zeile = new Object[3];
-//		ArrayList<Artikel> artikelliste = new ArrayList<Artikel>();
-//		artikelliste = artikelverwaltung.getArtikelListe();
-//		for (Artikel a : artikelliste) {
-//			zeile[0] = a.getBezeichnung(); //Regalnummer
-//			zeile[1] = a.getBezeichnung();
-//			zeile[2] = 5; //Anzahl
+//		for(int i = 1; i <= 5; i++) {
+//			zeile[0] = 2;
+//			zeile[1] = 8;
+//			zeile[2] = 5; 
 //			tabellenModel.addRow(zeile);
 //		}
+		Object[] zeile = new Object[3];
+//		ArrayList<Regal> regalliste = new ArrayList<Regal>();
+//		regalliste = regalverwaltung.getRegalListe();
+		ArrayList<Regal> regalliste = regalverwaltung.getRegalListe();
+		for (Regal r : regalliste) {
+			zeile[0] = r.getPlatzbezeichnung(); //Regalnummer
+			zeile[1] = 2; //Artikelbezeichnung
+			zeile[2] = 5; //Anzahl
+			tabellenModel.addRow(zeile);
+		}
 	}
 	
 	
