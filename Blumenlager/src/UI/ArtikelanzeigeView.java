@@ -32,7 +32,7 @@ public class ArtikelanzeigeView extends JFrame{
 		this.controller = controller;
 		this.regalverwaltung = regalverwaltung;
 		this.artikelverwaltung = artikelverwaltung;
-		setSize(500, 500);
+		setSize(500, 400);
 		setLocationRelativeTo(null);
 		baueArtikelanzeigeView();
 		setVisible(true);
@@ -55,10 +55,10 @@ public class ArtikelanzeigeView extends JFrame{
 		
 		//Tabelle
 		JPanel tabellenPanel = new JPanel();		
-		String[] spaltenNamen = {"Regalnummer", "Artikelnummer", "Artikel", "Anzahl"};
+		String[] spaltenNamen = {"Regalnummer", "Artikel", "Anzahl"};
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
-		artikelTabelle.setPreferredSize(new Dimension(450, 400));		
+		artikelTabelle.setPreferredSize(new Dimension(420, 300));		
 		//artikelTabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		fuelleTabelle();
 		tabellenPanel.add(artikelTabelle);		
@@ -71,26 +71,24 @@ public class ArtikelanzeigeView extends JFrame{
 	
 	
 	private void fuelleTabelle() {
-		Object[] zeile = new Object[4];
+		Object[] zeile = new Object[3];
 		//Tabellenkopf
 		zeile[0] = "Regalnummer";
-		zeile[1] = "Artikelnummer";
-		zeile[2] = "Artikel";
-		zeile[3] = "Anzahl";
+		zeile[1] = "Artikel";
+		zeile[2] = "Anzahl";
 		tabellenModel.addRow(zeile);
 	
 		//Tabelleninhalt
 		ArrayList<Regal> regalliste = new ArrayList<Regal>();
 		regalliste = regalListeKlonen(regalverwaltung.getRegalListe());		
 		for (Regal r : regalliste) {
-			int anzahl = r.getArtikelListe().size();
-			for (int i = 0; i < anzahl; i++) {
+//			int anzahl = r.getArtikelListe().size();
+//			for (int i = 0; i < anzahl; i++) {
 				zeile[0] = r.getId();
-				zeile[1] = r.getArtikelListe().get(i).getId();
-				zeile[2] = r.getArtikelListe().get(i).getBezeichnung();
-				zeile[3] = r.getArtikelListe().size();
+				zeile[1] = r.getArtikelListe().get(0).getBezeichnung();
+				zeile[2] = r.getArtikelListe().size();
 				tabellenModel.addRow(zeile);
-			}
+//			}
 		}
 	}
 		
