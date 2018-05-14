@@ -47,7 +47,7 @@ public class Controller {
 	
 	public void zeigeArtikelanzeigeView()
 	{
-		new ArtikelanzeigeView(this, regalverwaltung, artikelverwaltung);
+		new ArtikelanzeigeView(this, regalverwaltung);
 	}
 	
 	public void zeigeEinlagernHinweis() {

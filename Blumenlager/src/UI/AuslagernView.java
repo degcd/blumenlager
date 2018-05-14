@@ -27,10 +27,10 @@ public class AuslagernView extends JFrame{
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
-		baueEinlagernView();
+		baueAuslagernView();
 	}
 	
-	private void baueEinlagernView()
+	private void baueAuslagernView()
 	{
 		textfelder = new ArrayList<JTextField>();
 		regalnummern = new ArrayList<JLabel>();

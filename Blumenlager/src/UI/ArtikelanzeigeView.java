@@ -23,15 +23,13 @@ public class ArtikelanzeigeView extends JFrame{
 
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
-	private Regalverwaltung regalverwaltung;
-	private Artikelverwaltung artikelverwaltung;	
+	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
 	
-	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung, Artikelverwaltung artikelverwaltung) {
+	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung) {
 		super("Artikelanzeige");
 		this.controller = controller;
 		this.regalverwaltung = regalverwaltung;
-		this.artikelverwaltung = artikelverwaltung;
 		setSize(500, 400);
 		setLocationRelativeTo(null);
 		baueArtikelanzeigeView();
@@ -101,14 +99,6 @@ public class ArtikelanzeigeView extends JFrame{
 	    ArrayList<Regal> klon = new ArrayList<Regal>(original.size());
 	    for (Regal r : original)
 	        klon.add(r);
-	    return klon;
-	}
-	
-	public static ArrayList<Artikel> artikelListeKlonen(ArrayList<Artikel> original)
-	{
-	    ArrayList<Artikel> klon = new ArrayList<Artikel>(original.size());
-	    for (Artikel a : original)
-	        klon.add(a);
 	    return klon;
 	}
 }

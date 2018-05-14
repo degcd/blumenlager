@@ -17,8 +17,6 @@ public class Hauptmenue extends JFrame{
 	private static final long serialVersionUID = -4642355566112266090L;
 
 	private Controller controller;	
-	private Regalverwaltung regalverwaltung;
-	private java.util.List<Regal> regalliste;
 	
 	public Hauptmenue(Controller controller) {
 		super("Blumenlager");
