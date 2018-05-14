@@ -84,7 +84,7 @@ public class ArtikelanzeigeView extends JFrame{
 		for (Regal r : regalliste) {
 //			int anzahl = r.getArtikelListe().size();
 //			for (int i = 0; i < anzahl; i++) {
-				zeile[0] = r.getId();
+				zeile[0] = r.getPlatzbezeichnung();
 				zeile[1] = r.getArtikelListe().get(0).getBezeichnung();
 				zeile[2] = r.getArtikelListe().size();
 				tabellenModel.addRow(zeile);

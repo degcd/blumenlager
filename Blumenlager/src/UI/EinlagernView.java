@@ -45,9 +45,9 @@ public class EinlagernView extends JFrame{
 				for(JTextField j : textfelder)
 				{
 					j.setText("0");
-					controller.zeigeEinlagernHinweis();
-					close();
 				}
+				controller.zeigeEinlagernHinweis();
+				close();
 			}
 		});
 
