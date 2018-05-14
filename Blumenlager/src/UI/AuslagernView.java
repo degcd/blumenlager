@@ -47,8 +47,6 @@ public class AuslagernView extends JFrame{
 				{
 					j.setText("0");
 				}
-				controller.zeigeAuslagernHinweis();
-				close();
 			}
 		});
 		
@@ -124,6 +122,7 @@ public class AuslagernView extends JFrame{
 	}
 	
 	public void auslagern(){
+		boolean fehler = false;
 		for(int i = 0; i < 6; i++)
 		{
 			try{
@@ -132,8 +131,17 @@ public class AuslagernView extends JFrame{
 				controller.auslagern(regalbezeichnung, anzahlArtikel);
 			}catch(Exception e){
 				System.out.println("Probleme beim Auslagern: " + e.getMessage());
+				fehler = true;
 			}
-
+		}
+		if (fehler == false) 
+		{
+			controller.zeigeAuslagernHinweis();
+			close();
+		}
+		else
+		{
+			controller.zeigeFehlerAuslagern();
 		}
 	}
 
