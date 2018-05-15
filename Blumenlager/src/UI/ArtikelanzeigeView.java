@@ -14,8 +14,6 @@ import javax.swing.JTable;
 
 import javax.swing.table.DefaultTableModel;
 
-import Fachlogik.Artikelverwaltung.Artikel;
-import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -23,6 +21,7 @@ public class ArtikelanzeigeView extends JFrame{
 
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
+
 	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
 	
@@ -41,7 +40,8 @@ public class ArtikelanzeigeView extends JFrame{
 			
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
+
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();
@@ -80,13 +80,10 @@ public class ArtikelanzeigeView extends JFrame{
 		ArrayList<Regal> regalliste = new ArrayList<Regal>();
 		regalliste = regalListeKlonen(regalverwaltung.getRegalListe());		
 		for (Regal r : regalliste) {
-//			int anzahl = r.getArtikelListe().size();
-//			for (int i = 0; i < anzahl; i++) {
 				zeile[0] = r.getPlatzbezeichnung();
 				zeile[1] = r.getArtikelListe().get(0).getBezeichnung();
 				zeile[2] = r.getArtikelListe().size();
 				tabellenModel.addRow(zeile);
-//			}
 		}
 	}
 		

@@ -65,7 +65,7 @@ public class Controller {
 	public void zeigeFehlerAuslagern() {
 		new HinweisView(null, "Fehler beim Auslagern!");
 	}
-	
+
 	
 	//Einlagern und Auslagern
 	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception{

@@ -35,7 +35,7 @@ public class EinlagernView extends JFrame{
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie einlagern?");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln mÃ¶chten Sie einlagern?");
 		
 		JPanel buttonPanel = new JPanel();
 		JButton einlagernButton = new JButton("Einlagern");
@@ -49,7 +49,7 @@ public class EinlagernView extends JFrame{
 			}
 		});
 
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();
@@ -121,7 +121,9 @@ public class EinlagernView extends JFrame{
 	}
 	
 	public void einlagern(){
+
 		boolean fehler = false;
+
 		for(int i = 0; i < 6; i++)
 		{
 			try{
@@ -141,6 +143,7 @@ public class EinlagernView extends JFrame{
 		else
 		{
 			controller.zeigeFehlerEinlagern();
+			}
 		}
 	}
 

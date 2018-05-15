@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Fachlogik.Lagerverwaltung.Regal;
+
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Hauptmenue extends JFrame{
@@ -26,7 +27,7 @@ public class Hauptmenue extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("Hauptmenü");
+		JLabel label = new JLabel("HauptmenÃ¼");
 		JPanel buttonPanel = new JPanel();
 		
 		JButton einlagern = new JButton("Einlagern");
@@ -50,7 +51,6 @@ public class Hauptmenue extends JFrame{
 		
 		
 		JButton anzeigen = new JButton("Artikel anzeigen");
-//		ClickMouseListener clickArtikel = new ClickMouseListener();
 		anzeigen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				controller.zeigeArtikelanzeigeView();
