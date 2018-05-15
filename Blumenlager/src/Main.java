@@ -16,9 +16,6 @@ public class Main {
 		Lagerverwaltung lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
 		controller.start();
-		//controller.zeigeEinlagernView();
-		
-
 	
 		
 		try{

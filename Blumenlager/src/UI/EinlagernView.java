@@ -121,6 +121,9 @@ public class EinlagernView extends JFrame{
 	}
 	
 	public void einlagern(){
+
+		boolean fehler = false;
+
 		for(int i = 0; i < 6; i++)
 		{
 			try{
@@ -129,8 +132,18 @@ public class EinlagernView extends JFrame{
 				controller.einlagern(regalbezeichnung, anzahlArtikel);
 			}catch(Exception e){
 				System.out.println("Probleme beim Einlagern: " + e.getMessage());
+				fehler = true;
 			}
-
+		}
+		if (fehler == false) 
+		{
+			controller.zeigeEinlagernHinweis();
+			close();
+		}
+		else
+		{
+			controller.zeigeFehlerEinlagern();
+			}
 		}
 	}
 

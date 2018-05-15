@@ -23,7 +23,7 @@ public class Lagerverwaltung {
 	}
 	
 
-	public ArrayList<Lager> getRegalListe()
+	public ArrayList<Lager> getLagerListe()
 	{
 		return this.lagerListe;
 	}

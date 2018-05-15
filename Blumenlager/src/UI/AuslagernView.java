@@ -27,16 +27,17 @@ public class AuslagernView extends JFrame{
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
-		baueEinlagernView();
+		baueAuslagernView();
 	}
 	
-	private void baueEinlagernView()
+	private void baueAuslagernView()
 	{
 		textfelder = new ArrayList<JTextField>();
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
 		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?(mind. 1 Artikel muss noch im Regal bleiben)");
+
 		
 		JPanel buttonPanel = new JPanel();
 		JButton auslagernButton = new JButton("Auslagern");
@@ -122,6 +123,8 @@ public class AuslagernView extends JFrame{
 	}
 	
 	public void auslagern(){
+		boolean fehler = false;
+
 		for(int i = 0; i < 6; i++)
 		{
 			try{
@@ -130,7 +133,18 @@ public class AuslagernView extends JFrame{
 				controller.auslagern(regalbezeichnung, anzahlArtikel);
 			}catch(Exception e){
 				System.out.println("Probleme beim Auslagern: " + e.getMessage());
+				fehler = true;
 			}
+		}
+		if (fehler == false) 
+		{
+			controller.zeigeAuslagernHinweis();
+			close();
+		}
+		else
+		{
+			controller.zeigeFehlerAuslagern();
+		}
 
 		}
 	}

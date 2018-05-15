@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import javax.swing.table.DefaultTableModel;
@@ -19,17 +21,15 @@ public class ArtikelanzeigeView extends JFrame{
 
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
-	private Regalverwaltung regalverwaltung;
 
-	private ArrayList<Regal> regalliste;
-
+	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
 	
 	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung) {
 		super("Artikelanzeige");
 		this.controller = controller;
 		this.regalverwaltung = regalverwaltung;
-		setSize(500, 500);
+		setSize(500, 400);
 		setLocationRelativeTo(null);
 		baueArtikelanzeigeView();
 		setVisible(true);
@@ -37,56 +37,65 @@ public class ArtikelanzeigeView extends JFrame{
 	
 	private void baueArtikelanzeigeView() {
 		JPanel panel = new JPanel(new BorderLayout());
-				
-		JPanel buttonPanel = new JPanel();
-		
+			
+		//Button
+		JPanel buttonPanel = new JPanel();	
 		JButton hauptmenueButton = new JButton("Hauptmenü");
+
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();
 			}
-		});
-		
+		});		
 		buttonPanel.add(hauptmenueButton);
-		panel.add("North",buttonPanel);
+		panel.add("South",buttonPanel);
 		
-		JPanel tabellenPanel = new JPanel();
 		
+		//Tabelle
+		JPanel tabellenPanel = new JPanel();		
 		String[] spaltenNamen = {"Regalnummer", "Artikel", "Anzahl"};
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
-//		artikelTabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		artikelTabelle.setPreferredSize(new Dimension(420, 300));		
+		//artikelTabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		fuelleTabelle();
-		tabellenPanel.add(artikelTabelle);
-		
-		panel.add("South",tabellenPanel);
+		tabellenPanel.add(artikelTabelle);		
+		panel.add("North",tabellenPanel);
 		
 		add(panel);
 		setVisible(true);
 	}
 	
 	
+	
 	private void fuelleTabelle() {
 		Object[] zeile = new Object[3];
-		for(int i = 1; i <= 5; i++) {
-			zeile[0] = 2;
-			zeile[1] = 8;
-			zeile[2] = 5; 
-			tabellenModel.addRow(zeile);
+		//Tabellenkopf
+		zeile[0] = "Regalnummer";
+		zeile[1] = "Artikel";
+		zeile[2] = "Anzahl";
+		tabellenModel.addRow(zeile);
+	
+		//Tabelleninhalt
+		ArrayList<Regal> regalliste = new ArrayList<Regal>();
+		regalliste = regalListeKlonen(regalverwaltung.getRegalListe());		
+		for (Regal r : regalliste) {
+				zeile[0] = r.getPlatzbezeichnung();
+				zeile[1] = r.getArtikelListe().get(0).getBezeichnung();
+				zeile[2] = r.getArtikelListe().size();
+				tabellenModel.addRow(zeile);
 		}
-//		Object[] zeile = new Object[3];
-//		ArrayList<Artikel> artikelliste = new ArrayList<Artikel>();
-//		artikelliste = artikelverwaltung.getArtikelListe();
-//		for (Artikel a : artikelliste) {
-//			zeile[0] = a.getBezeichnung(); //Regalnummer
-//			zeile[1] = a.getBezeichnung();
-//			zeile[2] = 5; //Anzahl
-//			tabellenModel.addRow(zeile);
-//		}
 	}
-	
-	
+		
 	public void close() {
 		this.setVisible(false);
+	}
+	
+	public static ArrayList<Regal> regalListeKlonen(ArrayList<Regal> original)
+	{
+	    ArrayList<Regal> klon = new ArrayList<Regal>(original.size());
+	    for (Regal r : original)
+	        klon.add(r);
+	    return klon;
 	}
 }

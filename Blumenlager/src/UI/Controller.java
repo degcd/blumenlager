@@ -45,6 +45,27 @@ public class Controller {
 		new AuslagernView(this);
 	}
 	
+	public void zeigeArtikelanzeigeView()
+	{
+		new ArtikelanzeigeView(this, regalverwaltung);
+	}
+	
+	public void zeigeEinlagernHinweis() {
+		new HinweisView(null, "Erfolgreich eingelagert!");
+	}
+	
+	public void zeigeAuslagernHinweis() {
+		new HinweisView(null, "Erfolgreich ausgelagert!");
+	}
+	
+	public void zeigeFehlerEinlagern() {
+		new HinweisView(null, "Fehler beim Einlagern!");
+	}
+	
+	public void zeigeFehlerAuslagern() {
+		new HinweisView(null, "Fehler beim Auslagern!");
+	}
+
 	
 	//Einlagern und Auslagern
 	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception{
