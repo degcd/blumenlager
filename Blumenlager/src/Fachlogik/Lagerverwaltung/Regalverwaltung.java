@@ -7,8 +7,11 @@ import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Artikelverwaltung.Bindegruen;
 import Fachlogik.Artikelverwaltung.Blume;
+import UI.ArtikelanzeigeView;
+import UI.Beobachter;
+import UI.Subjekt;
 
-public class Regalverwaltung {
+public class Regalverwaltung{
 
 	private ArrayList<Regal> regalListe;
 	private IRegalDAO regaldao;
