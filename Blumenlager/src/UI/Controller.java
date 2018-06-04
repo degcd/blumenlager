@@ -14,6 +14,8 @@ public class Controller {
 	private Lagerverwaltung lagerverwaltung;
 
 	private Hauptmenue hauptmenue;
+	private ArtikelanzeigeView aav;
+	private Subjekt subjekt;
 	
 	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung, Lagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = artikelverwaltung;
@@ -47,7 +49,7 @@ public class Controller {
 	
 	public void zeigeArtikelanzeigeView()
 	{
-		new ArtikelanzeigeView(this, regalverwaltung);
+		aav = new ArtikelanzeigeView(this, regalverwaltung);
 	}
 	
 	public void zeigeEinlagernHinweis() {
@@ -64,6 +66,10 @@ public class Controller {
 	
 	public void zeigeFehlerAuslagern() {
 		new HinweisView(null, "Fehler beim Auslagern!");
+	}
+	
+	public ArtikelanzeigeView getAktuelleArtikelanzeigeView() {
+		return aav;
 	}
 
 	

@@ -17,13 +17,14 @@ import javax.swing.table.DefaultTableModel;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class ArtikelanzeigeView extends JFrame{
+public class ArtikelanzeigeView extends JFrame implements Beobachter{
 
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
 
 	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
+	private Subjekt subjekt;
 	
 	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung) {
 		super("Artikelanzeige");
@@ -40,7 +41,7 @@ public class ArtikelanzeigeView extends JFrame{
 			
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
+		JButton hauptmenueButton = new JButton("Hauptmenü");
 
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -97,5 +98,13 @@ public class ArtikelanzeigeView extends JFrame{
 	    for (Regal r : original)
 	        klon.add(r);
 	    return klon;
+	}
+
+	@Override
+	public void update() {
+		while (tabellenModel.getRowCount() > 0) {
+		       tabellenModel.removeRow(0);
+		}
+		fuelleTabelle();
 	}
 }
