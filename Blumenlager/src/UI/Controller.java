@@ -15,7 +15,7 @@ public class Controller {
 
 	private Hauptmenue hauptmenue;
 	private ArtikelanzeigeView aav;
-	private Subjekt subjekt;
+	private FotoAnzeigeView fav;
 	
 	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung, Lagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = artikelverwaltung;
@@ -38,18 +38,19 @@ public class Controller {
 	}
   
 	//Anzeige Views
-	public void zeigeEinlagernView()
-	{
+	public void zeigeEinlagernView() {
 		new EinlagernView(this);
 	}
-	public void zeigeAuslagernView()
-	{
+	public void zeigeAuslagernView() {
 		new AuslagernView(this);
 	}
 	
-	public void zeigeArtikelanzeigeView()
-	{
+	public void zeigeArtikelanzeigeView() {
 		aav = new ArtikelanzeigeView(this, regalverwaltung);
+	}
+	
+	public void zeigeFotoAnzeigeView() {
+		fav = new FotoAnzeigeView(this, regalverwaltung);
 	}
 	
 	public void zeigeEinlagernHinweis() {
@@ -70,6 +71,10 @@ public class Controller {
 	
 	public ArtikelanzeigeView getAktuelleArtikelanzeigeView() {
 		return aav;
+	}
+	
+	public FotoAnzeigeView getFotoAnzeigeView() {
+		return fav;
 	}
 
 	

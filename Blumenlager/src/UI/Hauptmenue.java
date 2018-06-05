@@ -22,12 +22,12 @@ public class Hauptmenue extends JFrame{
 	public Hauptmenue(Controller controller) {
 		super("Blumenlager");
 		this.controller = controller;
-		setSize(500, 150);
+		setSize(600, 150);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("HauptmenÃ¼");
+		JLabel label = new JLabel("Hauptmenü");
 		JPanel buttonPanel = new JPanel();
 		
 		JButton einlagern = new JButton("Einlagern");
@@ -57,7 +57,17 @@ public class Hauptmenue extends JFrame{
 			}
 		}
 		);
-		buttonPanel.add(anzeigen);		
+		buttonPanel.add(anzeigen);	
+		
+		
+		JButton lagerAnzeigen = new JButton("Lager anzeigen");
+		lagerAnzeigen.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				controller.zeigeFotoAnzeigeView();
+			}
+		}
+		);
+		buttonPanel.add(lagerAnzeigen);
 		
 		labelPanel.add(label);
 		panel.add("North", labelPanel);
