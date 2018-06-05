@@ -13,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Fachlogik.Lagerverwaltung.Regalverwaltung;
-
 public class AuslagernView extends JFrame implements Subjekt{
 
 	private static final long serialVersionUID = -4578963789180819752L;
@@ -31,6 +29,7 @@ public class AuslagernView extends JFrame implements Subjekt{
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
 		registriere(controller.getAktuelleArtikelanzeigeView());
+		registriere(controller.getFotoAnzeigeView());
 		baueAuslagernView();
 	}
 	
