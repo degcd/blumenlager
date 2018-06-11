@@ -24,7 +24,6 @@ public class ArtikelanzeigeView extends JFrame implements Beobachter{
 
 	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
-	private Subjekt subjekt;
 	
 	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung) {
 		super("Artikelanzeige");
@@ -58,7 +57,6 @@ public class ArtikelanzeigeView extends JFrame implements Beobachter{
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
 		artikelTabelle.setPreferredSize(new Dimension(420, 300));		
-		//artikelTabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		fuelleTabelle();
 		tabellenPanel.add(artikelTabelle);		
 		panel.add("North",tabellenPanel);

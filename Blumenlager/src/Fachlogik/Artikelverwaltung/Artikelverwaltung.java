@@ -8,14 +8,14 @@ public class Artikelverwaltung {
 
 	private ArrayList<Artikel> artikelListe;
 	private IArtikelDAO artdao;
+	private static Artikelverwaltung dieseArtVerw;
 	
 	public Artikelverwaltung(IArtikelDAO artdao)
 	{
 		artikelListe = new ArrayList<Artikel>();
 		this.artdao = artdao;
 	}
-
-
+	
 	public ArrayList<Artikel> getArtikelListe()
 	{
 		return this.artikelListe;

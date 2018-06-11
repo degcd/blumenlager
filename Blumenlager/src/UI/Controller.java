@@ -2,6 +2,7 @@ package UI;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
@@ -13,7 +14,6 @@ public class Controller {
 	private Regalverwaltung regalverwaltung;
 	private Lagerverwaltung lagerverwaltung;
 
-	private Hauptmenue hauptmenue;
 	private ArtikelanzeigeView aav;
 	private FotoAnzeigeView fav;
 	
@@ -25,10 +25,10 @@ public class Controller {
 
 	public void start() {
 		
-		laden();
-		
-		this.hauptmenue = new Hauptmenue(this);
-		hauptmenue.addWindowListener(new WindowAdapter(){
+		laden();	
+		Hauptmenue.getInstance();
+		Hauptmenue.getInstance().createHauptmenue(this);
+		Hauptmenue.getInstance().addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e)
 			{
 				speichern();
@@ -134,6 +134,11 @@ public class Controller {
 		{
 			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
 		}
+	}
+	
+	
+	public Controller getController() {
+		return this;
 	}
 	
 }
