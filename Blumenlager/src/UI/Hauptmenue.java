@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class Hauptmenue extends JFrame{
 
 	private static final long serialVersionUID = -4642355566112266090L;	
 	
-	public Controller controller;
+	private Controller controller;
 	
 	private static Hauptmenue hm = new Hauptmenue();
 

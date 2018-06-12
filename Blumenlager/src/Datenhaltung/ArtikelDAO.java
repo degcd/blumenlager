@@ -29,9 +29,6 @@ public class ArtikelDAO implements IArtikelDAO{
 		ResultSet result = statement.executeQuery("select * from artikel");
 		while(result.next())
 		{
-			//Dieser Ausgabe-Teil bleibt solange drin bis ArtikelAnzeigenView erstellt ist
-			System.out.println(result.getString("idartikel")+ " "
-					+ result.getString("bezeichnung") + result.getString("kategorie"));
 			String kategorie = result.getString("kategorie");
 			
 			if(kategorie.equals("Blume"))
@@ -53,7 +50,6 @@ public class ArtikelDAO implements IArtikelDAO{
 
 	@Override
 	public void speichern(ArrayList<Artikel> liste) throws Exception {
-		// TODO Auto-generated method stub
 		Statement statement = conn.createStatement();
 		statement.executeUpdate("DELETE from artikel");
 		for(Artikel a : liste)

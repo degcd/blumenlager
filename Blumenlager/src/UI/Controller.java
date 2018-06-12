@@ -73,7 +73,7 @@ public class Controller {
 		return aav;
 	}
 	
-	public FotoAnzeigeView getFotoAnzeigeView() {
+	public FotoAnzeigeView getAktuelleFotoAnzeigeView() {
 		return fav;
 	}
 
