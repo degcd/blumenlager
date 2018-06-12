@@ -78,16 +78,16 @@ public class FotoAnzeigeView extends JFrame implements Beobachter{
 			//Artikel
 			JLabel label2 = new JLabel(r.getArtikelListe().get(0).getBezeichnung(), SwingConstants.CENTER);
 			neu.add(label2);
-			neu.add(Box.createVerticalStrut(20));
+//			neu.add(Box.createVerticalStrut(20));
 			String id = "ID: " + Integer.toString(r.getArtikelListe().get(0).getId());
 			JLabel label3 = new JLabel(id);
 			neu.add(label3);
-			neu.add(Box.createVerticalStrut(20));
+//			neu.add(Box.createVerticalStrut(20));
 			String anzahl = "Anzahl: " + Integer.toString(r.getArtikelListe().size());
 			JLabel label5 = new JLabel(anzahl);
 			neu.add(label5);
 			label5.setHorizontalAlignment(JLabel.CENTER);
-			neu.add(Box.createVerticalStrut(20));
+//			neu.add(Box.createVerticalStrut(20));
 			String verfuegbar = "verfuegbare Plätze: " + Integer.toString(berechneVerfuegbarePlaetze(r), SwingConstants.CENTER);
 			JLabel label4 = new JLabel(verfuegbar);
 			neu.add(label4);
@@ -126,8 +126,7 @@ public class FotoAnzeigeView extends JFrame implements Beobachter{
 	
 	@Override
 	public void update() {
-		
-		
+
 //		panel.remove(fotopanel);
 //		validate();
 //		fuelleInhalt();		

@@ -30,8 +30,8 @@ public class AuslagernView extends JFrame implements Subjekt{
 		setLocationRelativeTo(null);
 
 		registriere(controller.getAktuelleArtikelanzeigeView());
-		registriere(controller.getFotoAnzeigeView());
-    
+		registriere(controller.getAktuelleFotoAnzeigeView());
+
 		baueAuslagernView();
 	}
 	
