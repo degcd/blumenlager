@@ -124,7 +124,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 				}
 				else
 				{
-					throw new Exception("So viele Artikel können nicht in " + regalbezeichnung + " eingelagert werden.");
+					throw new Exception("So viele Artikel kÃ¶nnen nicht in " + regalbezeichnung + " eingelagert werden.");
 				}
 			}
 			else{
@@ -134,7 +134,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 		}
 		else if(anzahlArtikel < 0)
 		{
-			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
+			throw new Exception("Werte dÃ¼rfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
 	
@@ -156,7 +156,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 				}
 				else
 				{
-					throw new Exception("So viele Artikel können nicht aus " + regalbezeichnung + " ausgelagert werden.");
+					throw new Exception("So viele Artikel kÃ¶nnen nicht aus " + regalbezeichnung + " ausgelagert werden.");
 				}
 			}
 			else{
@@ -165,7 +165,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 		}
 		else if(anzahlArtikel < 0)
 		{
-			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
+			throw new Exception("Werte dÃ¼rfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
 	

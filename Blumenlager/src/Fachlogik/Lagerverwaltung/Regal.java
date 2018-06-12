@@ -51,5 +51,4 @@ public class Regal {
 	{
 		return this.maxAnzahlArtikel;
 	}
-	
 }

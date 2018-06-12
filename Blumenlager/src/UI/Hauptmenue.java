@@ -3,7 +3,9 @@ package UI;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,26 +17,34 @@ import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
 public class Hauptmenue extends JFrame{
 
-	private static final long serialVersionUID = -4642355566112266090L;
-
-	private Controller controller;	
+	private static final long serialVersionUID = -4642355566112266090L;	
 	
-	public Hauptmenue(Controller controller) {
-		super("Blumenlager");
-		this.controller = controller;
-		setSize(500, 150);
+	public Controller controller;
+	
+	private static Hauptmenue hm = new Hauptmenue();
+	
+	private Hauptmenue() {
+
+	}
+	
+	public void createHauptmenue(Controller controller) {
+		hm.setTitle("Blumenlager");
+		setSize(600, 150);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("Hauptmenü");
+		JLabel label = new JLabel("HauptmenÃ¼");
 		JPanel buttonPanel = new JPanel();
-		
-		JButton einlagern = new JButton("Einlagern");
+//		ImageIcon image = new ImageIcon("/Hintergrund.jpg");
+//		JLabel hintergrund = new JLabel(image);
+//		hintergrund.setSize(600, 150);
+//		add(hintergrund);
+;		JButton einlagern = new JButton("Einlagern");
 
 		einlagern.addMouseListener(new MouseAdapter(){
 		public void mouseClicked(MouseEvent evt) {
-			controller.zeigeEinlagernView();
+			controller.getController().zeigeEinlagernView();
 		}
 		});
 		buttonPanel.add(einlagern);
@@ -44,7 +54,7 @@ public class Hauptmenue extends JFrame{
     
 		auslagern.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				controller.zeigeAuslagernView();
+				controller.getController().zeigeAuslagernView();
 			}
 		});
 		buttonPanel.add(auslagern);
@@ -53,16 +63,34 @@ public class Hauptmenue extends JFrame{
 		JButton anzeigen = new JButton("Artikel anzeigen");
 		anzeigen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				controller.zeigeArtikelanzeigeView();
+				controller.getController().zeigeArtikelanzeigeView();
 			}
 		}
 		);
-		buttonPanel.add(anzeigen);		
+		buttonPanel.add(anzeigen);	
+		
+		
+		JButton lagerAnzeigen = new JButton("Lager anzeigen");
+		lagerAnzeigen.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				controller.getController().zeigeFotoAnzeigeView();
+			}
+		}
+		);
+		buttonPanel.add(lagerAnzeigen);
 		
 		labelPanel.add(label);
 		panel.add("North", labelPanel);
 		panel.add("Center", buttonPanel);
 		add(panel);
 		setVisible(true);
+	}
+	
+		
+	public static Hauptmenue getInstance() {
+		if (hm == null) {
+			hm = new Hauptmenue();
+		}
+		return hm;
 	}
 }

@@ -13,19 +13,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class EinlagernView extends JFrame{
+public class EinlagernView extends JFrame implements Subjekt{
 	
 	private static final long serialVersionUID = 6676077927159427855L;
 	private ArrayList<JTextField> textfelder;
 	private ArrayList<JLabel> regalnummern;
 	private Controller controller;
+	private ArrayList<Beobachter> beobachterliste = new ArrayList<Beobachter>();
 	
-	//über Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
+	//Ã¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public EinlagernView(Controller c){
 		super("Einlagern");
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
+		registriere(controller.getAktuelleArtikelanzeigeView());
+		registriere(controller.getFotoAnzeigeView());
 		baueEinlagernView();
 	}
 	
@@ -35,13 +38,14 @@ public class EinlagernView extends JFrame{
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln m�chten Sie einlagern?");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie einlagern?");
 		
 		JPanel buttonPanel = new JPanel();
 		JButton einlagernButton = new JButton("Einlagern");
 		einlagernButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				einlagern();
+				benachrichtige();
 				for(JTextField j : textfelder)
 				{
 					j.setText("0");
@@ -49,7 +53,7 @@ public class EinlagernView extends JFrame{
 			}
 		});
 
-		JButton hauptmenueButton = new JButton("Hauptmen�");
+		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();
@@ -145,6 +149,25 @@ public class EinlagernView extends JFrame{
 			controller.zeigeFehlerEinlagern();
 			}
 		}
+
+	
+	@Override
+	public void registriere(Beobachter b) {
+		beobachterliste.add(b);		
+	}
+
+	@Override
+	public void deregistriere(Beobachter b) {
+		beobachterliste.remove(b);		
+	}
+
+	@Override
+	public void benachrichtige() {
+		for (Beobachter b : beobachterliste) {
+			b.update();
+		}		
+	}
+	
 	}
 
 

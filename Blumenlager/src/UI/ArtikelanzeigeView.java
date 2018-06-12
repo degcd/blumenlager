@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +18,7 @@ import DTO.RegalDTO;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class ArtikelanzeigeView extends JFrame{
+public class ArtikelanzeigeView extends JFrame implements Beobachter{
 
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
@@ -41,7 +42,7 @@ public class ArtikelanzeigeView extends JFrame{
 			
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
 
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -58,7 +59,7 @@ public class ArtikelanzeigeView extends JFrame{
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
 		artikelTabelle.setPreferredSize(new Dimension(420, 300));		
-		//artikelTabelle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
 		fuelleTabelle();
 		tabellenPanel.add(artikelTabelle);		
 		panel.add("North",tabellenPanel);
@@ -99,4 +100,14 @@ public class ArtikelanzeigeView extends JFrame{
 	        klon.add(r);
 	    return klon;
 	}
+
+
+	@Override
+	public void update() {
+		while (tabellenModel.getRowCount() > 0) {
+		       tabellenModel.removeRow(0);
+		}
+		fuelleTabelle();
+	}
+
 }

@@ -2,6 +2,7 @@ package UI;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 import DTO.RegalDTO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
@@ -17,7 +18,8 @@ public class Controller {
 	private Regalverwaltung regalverwaltung;
 	private Lagerverwaltung lagerverwaltung;
 
-	private Hauptmenue hauptmenue;
+	private ArtikelanzeigeView aav;
+	private FotoAnzeigeView fav;
 	
 	public Controller(IArtikelverwaltung artikelverwaltung, IRegalverwaltung regalverwaltung, ILagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
@@ -27,10 +29,10 @@ public class Controller {
 
 	public void start() {
 		
-		laden();
-		
-		this.hauptmenue = new Hauptmenue(this);
-		hauptmenue.addWindowListener(new WindowAdapter(){
+		laden();	
+		Hauptmenue.getInstance();
+		Hauptmenue.getInstance().createHauptmenue(this);
+		Hauptmenue.getInstance().addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e)
 			{
 				speichern();
@@ -40,18 +42,19 @@ public class Controller {
 	}
   
 	//Anzeige Views
-	public void zeigeEinlagernView()
-	{
+	public void zeigeEinlagernView() {
 		new EinlagernView(this);
 	}
-	public void zeigeAuslagernView()
-	{
+	public void zeigeAuslagernView() {
 		new AuslagernView(this);
 	}
 	
-	public void zeigeArtikelanzeigeView()
-	{
-		new ArtikelanzeigeView(this, new RegalDTO(regalverwaltung.getDAO(), regalverwaltung.getRegalListe(), regalverwaltung.getArtikelverwaltung()));
+	public void zeigeArtikelanzeigeView() {
+		aav = new ArtikelanzeigeView(this, new RegalDTO(regalverwaltung.getDAO(), regalverwaltung.getRegalListe(), regalverwaltung.getArtikelverwaltung()));
+	}
+	
+	public void zeigeFotoAnzeigeView() {
+		fav = new FotoAnzeigeView(this, regalverwaltung);
 	}
 	
 	public void zeigeEinlagernHinweis() {
@@ -69,6 +72,15 @@ public class Controller {
 	public void zeigeFehlerAuslagern() {
 		new HinweisView(null, "Fehler beim Auslagern!");
 	}
+
+	public ArtikelanzeigeView getAktuelleArtikelanzeigeView() {
+		return aav;
+	}
+	
+	public FotoAnzeigeView getFotoAnzeigeView() {
+		return fav;
+	}
+
 
 	
 	//Einlagern und Auslagern
@@ -127,6 +139,11 @@ public class Controller {
 		{
 			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
 		}
+	}
+	
+	
+	public Controller getController() {
+		return this;
 	}
 	
 }

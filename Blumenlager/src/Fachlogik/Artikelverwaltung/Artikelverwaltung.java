@@ -16,8 +16,7 @@ public class Artikelverwaltung implements IArtikelverwaltung{
 		artikelListe = new ArrayList<Artikel>();
 		this.artdao = (ArtikelDAO) artdao;
 	}
-
-
+	
 	public ArrayList<Artikel> getArtikelListe()
 	{
 		return this.artikelListe;
