@@ -21,7 +21,7 @@ public class EinlagernView extends JFrame implements Subjekt{
 	private Controller controller;
 	private ArrayList<Beobachter> beobachterliste = new ArrayList<Beobachter>();
 	
-	//über Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
+	//Ã¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public EinlagernView(Controller c){
 		super("Einlagern");
 		this.controller = c;
@@ -38,7 +38,7 @@ public class EinlagernView extends JFrame implements Subjekt{
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln m�chten Sie einlagern?");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie einlagern?");
 		
 		JPanel buttonPanel = new JPanel();
 		JButton einlagernButton = new JButton("Einlagern");
@@ -53,7 +53,7 @@ public class EinlagernView extends JFrame implements Subjekt{
 			}
 		});
 
-		JButton hauptmenueButton = new JButton("Hauptmen�");
+		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();

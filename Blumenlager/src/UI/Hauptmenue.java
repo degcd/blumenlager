@@ -23,7 +23,6 @@ public class Hauptmenue extends JFrame{
 	private Controller controller;
 	
 	private static Hauptmenue hm = new Hauptmenue();
-
 	
 	private Hauptmenue() {
 
@@ -36,7 +35,7 @@ public class Hauptmenue extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("Hauptmenü");
+		JLabel label = new JLabel("HauptmenÃ¼");
 		JPanel buttonPanel = new JPanel();
 //		ImageIcon image = new ImageIcon("/Hintergrund.jpg");
 //		JLabel hintergrund = new JLabel(image);

@@ -5,11 +5,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import DTO.IDTO;
+import DTO.LagerDTO;
 import Fachlogik.Lagerverwaltung.Lager;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class LagerDAO implements ILagerDAO{
+public class LagerDAO implements IDAO{
 
 	private Connection conn;
 	private Regalverwaltung regalverwaltung;
@@ -22,7 +24,7 @@ public class LagerDAO implements ILagerDAO{
 	
 	
 	@Override
-	public ArrayList<Lager> laden() throws Exception {
+	public LagerDTO laden() throws Exception {
 		
 		ArrayList<Lager> lagerliste = new ArrayList<Lager>();
 		Statement statement = conn.createStatement();
@@ -45,14 +47,18 @@ public class LagerDAO implements ILagerDAO{
 			lagerliste.add(new Lager(rsLager.getInt("idLager"),rsLager.getInt("maxAnzahlRegale"), regale));
 			
 		}
-		return lagerliste;
+
+		return new LagerDTO(this, lagerliste);
 	}
 
-	@Override
-	public void speichern(ArrayList<Lager> liste) throws Exception {
+
+	public void speichern(IDTO dto) throws Exception {
 		
 		Statement statement = conn.createStatement();
 		statement.executeUpdate("Delete from lager;");
+		
+		LagerDTO lagerdto = (LagerDTO) dto;
+		ArrayList<Lager> liste = lagerdto.getListe();
 		for(Lager l: liste){
 			
 			statement.executeUpdate("insert into lager values("
@@ -68,6 +74,7 @@ public class LagerDAO implements ILagerDAO{
 		}
 		
 	}
+
 	
 	
 }

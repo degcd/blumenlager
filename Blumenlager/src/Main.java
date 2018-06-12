@@ -19,4 +19,5 @@ public class Main {
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);		
 		controller.start();
 	}	
+
 }

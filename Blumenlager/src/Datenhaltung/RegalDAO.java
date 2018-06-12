@@ -5,14 +5,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import DTO.IDTO;
+import DTO.RegalDTO;
 import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
-import Fachlogik.Artikelverwaltung.Bindegruen;
-import Fachlogik.Artikelverwaltung.Blume;
-import Fachlogik.Artikelverwaltung.Typ;
 import Fachlogik.Lagerverwaltung.Regal;
 
-public class RegalDAO implements IRegalDAO{
+public class RegalDAO implements IDAO{
 
 	private Connection conn;
 	private Artikelverwaltung artikelverwaltung;
@@ -24,7 +23,7 @@ public class RegalDAO implements IRegalDAO{
 	}
 
 	@Override
-	public ArrayList<Regal> laden() throws Exception {
+	public RegalDTO laden() throws Exception {
 		
 		ArrayList<Regal> regalliste = new ArrayList<Regal>();
 		Statement statement = conn.createStatement();
@@ -71,15 +70,17 @@ public class RegalDAO implements IRegalDAO{
 			
 		}
 		
-		
-		return regalliste;
+		return new RegalDTO(this, regalliste, artikelverwaltung);
 	}
 
-	@Override
-	public void speichern(ArrayList<Regal> liste) throws Exception {
+	
+	public void speichern(IDTO dto) throws Exception {
 		
 		Statement statement = conn.createStatement();
 		statement.executeUpdate("Delete from regal;");
+		
+		RegalDTO regaldto = (RegalDTO) dto;
+		ArrayList<Regal> liste = regaldto.getListe();
 		for(Regal r: liste){
 			
 			statement.executeUpdate("insert into regal values("

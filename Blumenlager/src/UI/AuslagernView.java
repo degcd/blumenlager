@@ -22,14 +22,16 @@ public class AuslagernView extends JFrame implements Subjekt{
 	private ArrayList<Beobachter> beobachterliste = new ArrayList<Beobachter>();
 
 	
-	//über Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
+	//Ã¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public AuslagernView(Controller c){
 		super("Auslagern");
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
+
 		registriere(controller.getAktuelleArtikelanzeigeView());
 		registriere(controller.getAktuelleFotoAnzeigeView());
+
 		baueAuslagernView();
 	}
 	
@@ -39,7 +41,7 @@ public class AuslagernView extends JFrame implements Subjekt{
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln m�chten Sie auslagern?(mind. 1 Artikel muss noch im Regal bleiben)");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?(mind. 1 Artikel muss noch im Regal bleiben)");
 
 		
 		JPanel buttonPanel = new JPanel();
@@ -55,7 +57,7 @@ public class AuslagernView extends JFrame implements Subjekt{
 			}
 		});
 		
-		JButton hauptmenueButton = new JButton("Hauptmen�");
+		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();
@@ -156,6 +158,7 @@ public class AuslagernView extends JFrame implements Subjekt{
 	public void registriere(Beobachter b) {
 		beobachterliste.add(b);		
 	}
+
 
 	@Override
 	public void deregistriere(Beobachter b) {

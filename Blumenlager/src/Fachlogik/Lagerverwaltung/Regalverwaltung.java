@@ -2,26 +2,37 @@ package Fachlogik.Lagerverwaltung;
 
 import java.util.ArrayList;
 
-import Datenhaltung.IRegalDAO;
+import DTO.RegalDTO;
+import Datenhaltung.IDAO;
+import Datenhaltung.RegalDAO;
 import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Artikelverwaltung.Bindegruen;
 import Fachlogik.Artikelverwaltung.Blume;
+import Fachlogik.Artikelverwaltung.IArtikelverwaltung;
+import Fachlogik.Artikelverwaltung.Typ;
 
-public class Regalverwaltung{
+public class Regalverwaltung implements IRegalverwaltung{
 
 	private ArrayList<Regal> regalListe;
-	private IRegalDAO regaldao;
+	private RegalDAO regaldao;
 	private Artikelverwaltung artikelverwaltung;
 	
-	//artikelverwaltung wird benötigt für nächste id; für andere Lösungsvorschläge  offen
-	//wird auch für normale artikelliste benötigt
-	public Regalverwaltung(IRegalDAO regaldao, Artikelverwaltung artikelverwaltung)
+	
+
+	public Regalverwaltung(IDAO regaldao, IArtikelverwaltung artikelverwaltung)
 	{
 		regalListe = new ArrayList<Regal>();
-		this.regaldao = regaldao;
-		this.artikelverwaltung = artikelverwaltung;
+		this.regaldao = (RegalDAO) regaldao;
+		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
 	}
+	public Regalverwaltung(IDAO regaldao, ArrayList<Regal> liste, IArtikelverwaltung artikelverwaltung)
+	{
+		regalListe = liste;
+		this.regaldao = (RegalDAO) regaldao;
+		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
+	}
+
 	
 	public void addeRegal(Regal r)
 	{
@@ -57,6 +68,14 @@ public class Regalverwaltung{
 		return null;
 	}
 	
+	public Artikel createArtikel(String kategorie, int id, String bezeichnung, String farbe, Typ typ ){
+		if(kategorie.equals("Blume"))
+			return new Blume(id, bezeichnung, farbe, typ);
+		else if(kategorie.equals("Bindegruen"))
+			return new Bindegruen(id, bezeichnung);
+		return null;
+	}
+	
 	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception
 	{
 		if(anzahlArtikel > 0)
@@ -69,24 +88,32 @@ public class Regalverwaltung{
 				{
 					if(artikelliste.size() > 0)
 					{
-						if(artikelliste.get(0).getKategorie().equals("Blume"))
+						String kategorie = artikelliste.get(0).getKategorie();
+						if(kategorie.equals("Blume"))
 						{
 							Blume musterBlume = (Blume) artikelliste.get(0);
 							for(int i = 0; i < anzahlArtikel ; i++)
 							{
-								Blume neu = new Blume(artikelverwaltung.getNextArtikelId(), musterBlume.getBezeichnung(), musterBlume.getFarbe(), musterBlume.getTyp());
-								artikelverwaltung.addeArtikel(neu);
-								r.addeArtikel(neu);
+								Blume neu = (Blume) createArtikel(kategorie, artikelverwaltung.getNextArtikelId(), musterBlume.getBezeichnung(), musterBlume.getFarbe(), musterBlume.getTyp());
+								//Blume neu = new Blume(artikelverwaltung.getNextArtikelId(), musterBlume.getBezeichnung(), musterBlume.getFarbe(), musterBlume.getTyp());
+								if(neu != null){
+									artikelverwaltung.addeArtikel(neu);
+									r.addeArtikel(neu);
+								}
+
 							}
 						}
-						else if(artikelliste.get(0).getKategorie().equals("Bindegruen"))
+						else if(kategorie.equals("Bindegruen"))
 						{
 							Bindegruen musterBindegruen = (Bindegruen) artikelliste.get(0);
 							for(int i = 0; i < anzahlArtikel ; i++)
 							{
-								Bindegruen neu = new Bindegruen(artikelverwaltung.getNextArtikelId(), musterBindegruen.getBezeichnung());
-								artikelverwaltung.addeArtikel(neu);
-								r.addeArtikel(neu);
+								Bindegruen neu = (Bindegruen) createArtikel(kategorie, artikelverwaltung.getNextArtikelId(), musterBindegruen.getBezeichnung(), "", null);
+//								Bindegruen neu = new Bindegruen(artikelverwaltung.getNextArtikelId(), musterBindegruen.getBezeichnung());
+								if(neu != null){
+									artikelverwaltung.addeArtikel(neu);
+									r.addeArtikel(neu);
+								}
 							}	
 						}
 					}
@@ -97,7 +124,7 @@ public class Regalverwaltung{
 				}
 				else
 				{
-					throw new Exception("So viele Artikel können nicht in " + regalbezeichnung + " eingelagert werden.");
+					throw new Exception("So viele Artikel kÃ¶nnen nicht in " + regalbezeichnung + " eingelagert werden.");
 				}
 			}
 			else{
@@ -107,7 +134,7 @@ public class Regalverwaltung{
 		}
 		else if(anzahlArtikel < 0)
 		{
-			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
+			throw new Exception("Werte dÃ¼rfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
 	
@@ -129,7 +156,7 @@ public class Regalverwaltung{
 				}
 				else
 				{
-					throw new Exception("So viele Artikel können nicht aus " + regalbezeichnung + " ausgelagert werden.");
+					throw new Exception("So viele Artikel kÃ¶nnen nicht aus " + regalbezeichnung + " ausgelagert werden.");
 				}
 			}
 			else{
@@ -138,7 +165,7 @@ public class Regalverwaltung{
 		}
 		else if(anzahlArtikel < 0)
 		{
-			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
+			throw new Exception("Werte dÃ¼rfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
 	
@@ -147,7 +174,8 @@ public class Regalverwaltung{
     
 		regalListe.clear();
 		try{
-			ArrayList<Regal> tmpList = regaldao.laden();
+			RegalDTO dto = regaldao.laden();
+			ArrayList<Regal> tmpList = dto.getListe();
 			for(Regal x : tmpList)
 			{
 				regalListe.add(x);
@@ -160,10 +188,7 @@ public class Regalverwaltung{
 	
 	public void speichern() throws Exception{
 		try{
-			ArrayList<Regal> liste = new ArrayList<>();
-			for (Regal r : regalListe)
-				liste.add(r);
-			regaldao.speichern(liste);
+			regaldao.speichern(new RegalDTO(regaldao, regalListe, artikelverwaltung));
 		}catch(Exception e){
 			throw new Exception("Fehler beim Speichern der Regalliste: " + e.getMessage());
 		}
@@ -171,4 +196,12 @@ public class Regalverwaltung{
 	}
 
 
+	@Override
+	public IDAO getDAO() {
+		return this.regaldao;
+	}
+	public IArtikelverwaltung getArtikelverwaltung(){
+		return this.artikelverwaltung;
+	}
+	
 }
