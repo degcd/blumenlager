@@ -4,7 +4,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
+import DTO.RegalDTO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
+import Fachlogik.Artikelverwaltung.IArtikelverwaltung;
+import Fachlogik.Lagerverwaltung.ILagerverwaltung;
+import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -17,10 +21,10 @@ public class Controller {
 	private ArtikelanzeigeView aav;
 	private FotoAnzeigeView fav;
 	
-	public Controller(Artikelverwaltung artikelverwaltung, Regalverwaltung regalverwaltung, Lagerverwaltung lagerverwaltung) {
-		this.artikelverwaltung = artikelverwaltung;
-		this.regalverwaltung = regalverwaltung;
-		this.lagerverwaltung = lagerverwaltung;
+	public Controller(IArtikelverwaltung artikelverwaltung, IRegalverwaltung regalverwaltung, ILagerverwaltung lagerverwaltung) {
+		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
+		this.regalverwaltung = (Regalverwaltung) regalverwaltung;
+		this.lagerverwaltung = (Lagerverwaltung) lagerverwaltung;
 	}
 
 	public void start() {
@@ -46,7 +50,7 @@ public class Controller {
 	}
 	
 	public void zeigeArtikelanzeigeView() {
-		aav = new ArtikelanzeigeView(this, regalverwaltung);
+		aav = new ArtikelanzeigeView(this, new RegalDTO(regalverwaltung.getDAO(), regalverwaltung.getRegalListe(), regalverwaltung.getArtikelverwaltung()));
 	}
 	
 	public void zeigeFotoAnzeigeView() {
@@ -68,7 +72,7 @@ public class Controller {
 	public void zeigeFehlerAuslagern() {
 		new HinweisView(null, "Fehler beim Auslagern!");
 	}
-	
+
 	public ArtikelanzeigeView getAktuelleArtikelanzeigeView() {
 		return aav;
 	}
@@ -76,6 +80,7 @@ public class Controller {
 	public FotoAnzeigeView getFotoAnzeigeView() {
 		return fav;
 	}
+
 
 	
 	//Einlagern und Auslagern

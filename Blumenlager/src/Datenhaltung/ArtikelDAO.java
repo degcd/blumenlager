@@ -1,18 +1,18 @@
 package Datenhaltung;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
+import DTO.ArtikelDTO;
+import DTO.IDTO;
 import Fachlogik.Artikelverwaltung.Artikel;
 import Fachlogik.Artikelverwaltung.Bindegruen;
 import Fachlogik.Artikelverwaltung.Blume;
 import Fachlogik.Artikelverwaltung.Typ;
 
-public class ArtikelDAO implements IArtikelDAO{
+public class ArtikelDAO implements IDAO{
 
 	private Connection conn;
 	
@@ -20,9 +20,8 @@ public class ArtikelDAO implements IArtikelDAO{
 	{
 		this.conn = c;
 	}
-	
-	@Override
-	public ArrayList<Artikel> laden() throws Exception {
+
+	public ArtikelDTO laden() throws Exception {
 		
 		ArrayList<Artikel> list = new ArrayList<Artikel>();
 		Statement statement = conn.createStatement();
@@ -48,14 +47,17 @@ public class ArtikelDAO implements IArtikelDAO{
 			}
 		}
 		
-		return list;
+		return new ArtikelDTO(this, list);
 	}
 
-	@Override
-	public void speichern(ArrayList<Artikel> liste) throws Exception {
-		// TODO Auto-generated method stub
+
+	public void speichern(IDTO dto) throws Exception {
+
 		Statement statement = conn.createStatement();
 		statement.executeUpdate("DELETE from artikel");
+		
+		ArtikelDTO artikeldto = (ArtikelDTO) dto;
+		ArrayList<Artikel> liste = artikeldto.getListe();
 		for(Artikel a : liste)
 		{
 			if(a.getKategorie().equals("Blume"))
@@ -82,9 +84,9 @@ public class ArtikelDAO implements IArtikelDAO{
 			
 		}
 		
-
-		
 		
 	}
+
+
 
 }

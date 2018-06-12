@@ -2,18 +2,20 @@ package Fachlogik.Lagerverwaltung;
 
 import java.util.ArrayList;
 
-import Datenhaltung.ILagerDAO;
+import DTO.LagerDTO;
+import Datenhaltung.IDAO;
+import Datenhaltung.LagerDAO;
 
-public class Lagerverwaltung {
+public class Lagerverwaltung implements ILagerverwaltung{
 
 	private ArrayList<Lager> lagerListe;
-	private ILagerDAO lagerdao;
+	private LagerDAO lagerdao;
 	
 	
-	public Lagerverwaltung(ILagerDAO lagerdao)
+	public Lagerverwaltung(IDAO lagerdao)
 	{
 		lagerListe = new ArrayList<Lager>();
-		this.lagerdao = lagerdao;
+		this.lagerdao = (LagerDAO) lagerdao;
 	}
 	
 	public void addeLager(Lager l)
@@ -40,7 +42,8 @@ public class Lagerverwaltung {
 	public void laden()throws Exception{
 		lagerListe.clear();
 		try{
-			ArrayList<Lager> tmpList = lagerdao.laden();
+			LagerDTO dto = lagerdao.laden();
+			ArrayList<Lager> tmpList = dto.getListe();
 			for(Lager x : tmpList)
 			{
 				lagerListe.add(x);
@@ -53,16 +56,17 @@ public class Lagerverwaltung {
 	
 	public void speichern() throws Exception{
 		try{
-			ArrayList<Lager> liste = new ArrayList<>();
-			for (Lager l : lagerListe)
-				liste.add(l);
-			lagerdao.speichern(liste);
+			lagerdao.speichern(new LagerDTO(lagerdao, lagerListe));
 		}catch(Exception e){
 			throw new Exception("Fehler beim Speichern der Lagerliste: " + e.getMessage());
 		}
 
 	}
 
+	@Override
+	public IDAO getDAO() {
+		return this.lagerdao;
+	}
 	
 	
 }

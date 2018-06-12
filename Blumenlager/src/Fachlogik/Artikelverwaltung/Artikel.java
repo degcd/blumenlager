@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Artikel {
 
 
-  private String kategorie;
+    private String kategorie;
 	private int idArtikel;
 	private String bezeichnung;
 
