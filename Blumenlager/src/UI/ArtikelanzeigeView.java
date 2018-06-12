@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 import javax.swing.table.DefaultTableModel;
 
+import DTO.IDTO;
+import DTO.RegalDTO;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -25,10 +25,11 @@ public class ArtikelanzeigeView extends JFrame{
 	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
 	
-	public ArtikelanzeigeView(Controller controller, Regalverwaltung regalverwaltung) {
+	public ArtikelanzeigeView(Controller controller, IDTO regaldto) {
 		super("Artikelanzeige");
 		this.controller = controller;
-		this.regalverwaltung = regalverwaltung;
+		RegalDTO dto= (RegalDTO) regaldto;
+		this.regalverwaltung = new Regalverwaltung(dto.getDAO(), dto.getListe(), dto.getArtikelverwaltung());
 		setSize(500, 400);
 		setLocationRelativeTo(null);
 		baueArtikelanzeigeView();
@@ -40,7 +41,7 @@ public class ArtikelanzeigeView extends JFrame{
 			
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
+		JButton hauptmenueButton = new JButton("Hauptmenü");
 
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {

@@ -2,17 +2,19 @@ package Fachlogik.Artikelverwaltung;
 
 import java.util.ArrayList;
 
-import Datenhaltung.IArtikelDAO;
+import DTO.ArtikelDTO;
+import Datenhaltung.ArtikelDAO;
+import Datenhaltung.IDAO;
 
-public class Artikelverwaltung {
+public class Artikelverwaltung implements IArtikelverwaltung{
 
 	private ArrayList<Artikel> artikelListe;
-	private IArtikelDAO artdao;
+	private ArtikelDAO artdao;
 	
-	public Artikelverwaltung(IArtikelDAO artdao)
+	public Artikelverwaltung(IDAO artdao)
 	{
 		artikelListe = new ArrayList<Artikel>();
-		this.artdao = artdao;
+		this.artdao = (ArtikelDAO) artdao;
 	}
 
 
@@ -47,13 +49,12 @@ public class Artikelverwaltung {
 	}
 	
 	
-	//remove Artikel nicht zwingend nötig da beim Auslagern nur die Blumen aus den Regalen genommen werden, 
-	//aber ansonsten weiter existieren
 	
-	public void laden()throws Exception{
+	public void laden() throws Exception{
 		artikelListe.clear();
 		try{
-			ArrayList<Artikel> tmpList = artdao.laden();
+			ArtikelDTO dto  = artdao.laden();
+			ArrayList<Artikel> tmpList = dto.getListe();
 			for(Artikel x : tmpList)
 			{
 				artikelListe.add(x);
@@ -66,13 +67,16 @@ public class Artikelverwaltung {
 	
 	public void speichern() throws Exception{
 		try{
-			ArrayList<Artikel> liste = new ArrayList<>();
-			for (Artikel a : artikelListe)
-				liste.add(a);
-			artdao.speichern(liste);
+			artdao.speichern(new ArtikelDTO(artdao, artikelListe));
 		}catch(Exception e){
 			throw new Exception("Fehler beim Speichern der Artikelliste.");
 		}
 
+	}
+
+
+	@Override
+	public IDAO getDAO() {
+		return this.artdao;
 	}
 }
