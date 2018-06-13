@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import javax.swing.table.DefaultTableModel;
@@ -19,8 +18,12 @@ import DTO.RegalDTO;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class ArtikelanzeigeView extends JFrame implements Beobachter{
+public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4445243356675954599L;
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
 
