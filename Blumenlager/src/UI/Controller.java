@@ -2,7 +2,6 @@ package UI;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 
 import DTO.RegalDTO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
@@ -144,8 +143,7 @@ public class Controller {
 	
 	public Controller getController() {
 		return this;
-	}
-	
+	}	
 }
 
 

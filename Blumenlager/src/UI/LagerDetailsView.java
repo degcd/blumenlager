@@ -18,8 +18,12 @@ import DTO.RegalDTO;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class LagerDetailsView extends JFrame implements Beobachter{
+public class LagerDetailsView extends JFrame implements IBeobachter{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1629380597610753797L;
 	private Controller controller;
 	private Regalverwaltung regalverwaltung;
 	JPanel panel;
