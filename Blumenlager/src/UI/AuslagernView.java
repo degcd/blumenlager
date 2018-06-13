@@ -28,10 +28,12 @@ public class AuslagernView extends JFrame implements Subjekt{
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
-
-		registriere(controller.getAktuelleArtikelanzeigeView());
-		registriere(controller.getAktuelleFotoAnzeigeView());
-
+		if (controller.getAktuelleArtikelanzeigeView() != null) {
+			registriere(controller.getAktuelleArtikelanzeigeView());
+		}
+		if (controller.getAktuelleLagerDetailsView() != null) {
+			registriere(controller.getAktuelleLagerDetailsView());
+		}
 		baueAuslagernView();
 	}
 	
@@ -60,6 +62,9 @@ public class AuslagernView extends JFrame implements Subjekt{
 		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
+				
+				deregistriere(controller.getAktuelleArtikelanzeigeView());
+				deregistriere(controller.getAktuelleLagerDetailsView());
 				close();
 			}
 		});

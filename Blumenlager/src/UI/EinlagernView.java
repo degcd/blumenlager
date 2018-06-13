@@ -5,13 +5,16 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 
 public class EinlagernView extends JFrame implements Subjekt{
 	
@@ -27,8 +30,12 @@ public class EinlagernView extends JFrame implements Subjekt{
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
-		registriere(controller.getAktuelleArtikelanzeigeView());
-		registriere(controller.getAktuelleFotoAnzeigeView());
+		if (controller.getAktuelleArtikelanzeigeView() != null) {
+			registriere(controller.getAktuelleArtikelanzeigeView());
+		}
+		if (controller.getAktuelleLagerDetailsView() != null) {
+			registriere(controller.getAktuelleLagerDetailsView());
+		}
 		baueEinlagernView();
 	}
 	
@@ -56,6 +63,8 @@ public class EinlagernView extends JFrame implements Subjekt{
 		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
+				deregistriere(controller.getAktuelleArtikelanzeigeView());
+				deregistriere(controller.getAktuelleLagerDetailsView());
 				close();
 			}
 		});
@@ -164,6 +173,7 @@ public class EinlagernView extends JFrame implements Subjekt{
 	@Override
 	public void benachrichtige() {
 		for (Beobachter b : beobachterliste) {
+			System.out.println(b.toString());
 			b.update();
 		}		
 	}
