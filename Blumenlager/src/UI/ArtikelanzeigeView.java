@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-
 import javax.swing.table.DefaultTableModel;
 
 import DTO.IDTO;
@@ -46,7 +45,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 			
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
 
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -63,6 +62,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
 		artikelTabelle.setPreferredSize(new Dimension(420, 300));		
+
 		fuelleTabelle();
 		tabellenPanel.add(artikelTabelle);		
 		panel.add("North",tabellenPanel);
@@ -104,6 +104,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 	    return klon;
 	}
 
+
 	@Override
 	public void update() {
 		while (tabellenModel.getRowCount() > 0) {
@@ -111,4 +112,5 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 		}
 		fuelleTabelle();
 	}
+
 }

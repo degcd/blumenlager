@@ -28,6 +28,7 @@ public class AuslagernView extends JFrame implements ISubjekt{
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
+
 		if (controller.getAktuelleArtikelanzeigeView() != null) {
 			registriere(controller.getAktuelleArtikelanzeigeView());
 		}
