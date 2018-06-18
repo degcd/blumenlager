@@ -1,6 +1,7 @@
 package UI;
 
-public interface Beobachter {
+public interface IBeobachter {
 
 	public void update();
+
 }

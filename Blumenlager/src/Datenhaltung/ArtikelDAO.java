@@ -28,9 +28,6 @@ public class ArtikelDAO implements IDAO{
 		ResultSet result = statement.executeQuery("select * from artikel");
 		while(result.next())
 		{
-			//Dieser Ausgabe-Teil bleibt solange drin bis ArtikelAnzeigenView erstellt ist
-			System.out.println(result.getString("idartikel")+ " "
-					+ result.getString("bezeichnung") + result.getString("kategorie"));
 			String kategorie = result.getString("kategorie");
 			
 			if(kategorie.equals("Blume"))

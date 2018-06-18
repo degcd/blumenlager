@@ -2,7 +2,6 @@ package UI;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 
 import DTO.RegalDTO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
@@ -19,7 +18,7 @@ public class Controller {
 	private Lagerverwaltung lagerverwaltung;
 
 	private ArtikelanzeigeView aav;
-	private FotoAnzeigeView fav;
+	private LagerDetailsView ldv;
 	
 	public Controller(IArtikelverwaltung artikelverwaltung, IRegalverwaltung regalverwaltung, ILagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
@@ -53,8 +52,8 @@ public class Controller {
 		aav = new ArtikelanzeigeView(this, new RegalDTO(regalverwaltung.getDAO(), regalverwaltung.getRegalListe(), regalverwaltung.getArtikelverwaltung()));
 	}
 	
-	public void zeigeFotoAnzeigeView() {
-		fav = new FotoAnzeigeView(this, regalverwaltung);
+	public void zeigeLagerDetailsView() {
+		ldv = new LagerDetailsView(this, new RegalDTO(regalverwaltung.getDAO(), regalverwaltung.getRegalListe(), regalverwaltung.getArtikelverwaltung()));
 	}
 	
 	public void zeigeEinlagernHinweis() {
@@ -77,8 +76,8 @@ public class Controller {
 		return aav;
 	}
 	
-	public FotoAnzeigeView getFotoAnzeigeView() {
-		return fav;
+	public LagerDetailsView getAktuelleLagerDetailsView() {
+		return ldv;
 	}
 
 
@@ -144,8 +143,7 @@ public class Controller {
 	
 	public Controller getController() {
 		return this;
-	}
-	
+	}	
 }
 
 

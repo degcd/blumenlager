@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,8 +17,12 @@ import DTO.RegalDTO;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class ArtikelanzeigeView extends JFrame implements Beobachter{
+public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4445243356675954599L;
 	private DefaultTableModel tabellenModel;
 	private JTable artikelTabelle;
 
@@ -31,7 +34,7 @@ public class ArtikelanzeigeView extends JFrame implements Beobachter{
 		this.controller = controller;
 		RegalDTO dto= (RegalDTO) regaldto;
 		this.regalverwaltung = new Regalverwaltung(dto.getDAO(), dto.getListe(), dto.getArtikelverwaltung());
-		setSize(500, 400);
+		setSize(500, 200);
 		setLocationRelativeTo(null);
 		baueArtikelanzeigeView();
 		setVisible(true);
@@ -55,7 +58,7 @@ public class ArtikelanzeigeView extends JFrame implements Beobachter{
 		
 		//Tabelle
 		JPanel tabellenPanel = new JPanel();		
-		String[] spaltenNamen = {"Regalnummer", "Artikel", "Anzahl"};
+		String[] spaltenNamen = {"Regal", "Artikel", "Anzahl"};
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
 		artikelTabelle.setPreferredSize(new Dimension(420, 300));		
@@ -73,7 +76,7 @@ public class ArtikelanzeigeView extends JFrame implements Beobachter{
 	private void fuelleTabelle() {
 		Object[] zeile = new Object[3];
 		//Tabellenkopf
-		zeile[0] = "Regalnummer";
+		zeile[0] = "Regal";
 		zeile[1] = "Artikel";
 		zeile[2] = "Anzahl";
 		tabellenModel.addRow(zeile);

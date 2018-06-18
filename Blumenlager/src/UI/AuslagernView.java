@@ -13,13 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AuslagernView extends JFrame implements Subjekt{
+public class AuslagernView extends JFrame implements ISubjekt{
 
 	private static final long serialVersionUID = -4578963789180819752L;
 	private ArrayList<JTextField> textfelder;
 	private ArrayList<JLabel> regalnummern;
 	private Controller controller;
-	private ArrayList<Beobachter> beobachterliste = new ArrayList<Beobachter>();
+	private ArrayList<IBeobachter> beobachterliste = new ArrayList<IBeobachter>();
 
 	
 	//Ã¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
@@ -29,9 +29,12 @@ public class AuslagernView extends JFrame implements Subjekt{
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
 
-		registriere(controller.getAktuelleArtikelanzeigeView());
-		registriere(controller.getFotoAnzeigeView());
-    
+		if (controller.getAktuelleArtikelanzeigeView() != null) {
+			registriere(controller.getAktuelleArtikelanzeigeView());
+		}
+		if (controller.getAktuelleLagerDetailsView() != null) {
+			registriere(controller.getAktuelleLagerDetailsView());
+		}
 		baueAuslagernView();
 	}
 	
@@ -60,6 +63,9 @@ public class AuslagernView extends JFrame implements Subjekt{
 		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
+				
+				deregistriere(controller.getAktuelleArtikelanzeigeView());
+				deregistriere(controller.getAktuelleLagerDetailsView());
 				close();
 			}
 		});
@@ -155,23 +161,22 @@ public class AuslagernView extends JFrame implements Subjekt{
 		}
 	
 	@Override
-	public void registriere(Beobachter b) {
+	public void registriere(IBeobachter b) {
 		beobachterliste.add(b);		
 	}
 
 
 	@Override
-	public void deregistriere(Beobachter b) {
+	public void deregistriere(IBeobachter b) {
 		beobachterliste.remove(b);		
 	}
 
 	@Override
 	public void benachrichtige() {
-		for (Beobachter b : beobachterliste) {
+		for (IBeobachter b : beobachterliste) {
 			b.update();
 		}		
-	}
-	
+	}	
 	}
 
 
