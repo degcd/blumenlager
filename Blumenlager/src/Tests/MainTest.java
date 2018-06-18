@@ -19,11 +19,13 @@ import UI.Controller;
 
 public class MainTest {
 
-	private BlumenlagerDataConnector dc = new BlumenlagerDataConnector();
-	private Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
-	private Regalverwaltung regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung), artikelverwaltung);
-	private Lagerverwaltung lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
-	private Controller controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
+	private BlumenlagerDataConnector dc;
+	private Artikelverwaltung artikelverwaltung;
+	private Regalverwaltung regalverwaltung;
+	private Lagerverwaltung lagerverwaltung;
+	private Controller controller;
+
+
 	
 	 @BeforeClass
 	   public static void create() {
@@ -34,15 +36,29 @@ public class MainTest {
 	   @Before
 	   public void vor() {
 	      // Diese Methode wird vor jedem Testfall ausgeführt
-	      System.out.println("vor Test");
+		  dc = new BlumenlagerDataConnector();
+		  artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
+		  regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung), artikelverwaltung);
+		  lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
+		  controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
+		  System.out.println("vor Test");
 	   }
-//	    
-//	   @Test
-//	   public void derTest1() {
-//	      // Testfall 1: Prüfung ob Umfangsberechnung stimmt
-//	      System.out.println("Test1");
-//    
-//	   }
+	    
+	   @Test
+	   public void derTest1() throws Exception {
+	      // Testfall 1: Prüfung ob Umfangsberechnung stimmt
+		  System.out.println("Test1");
+		  controller.start();
+		   int vorher = regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size();
+		   System.out.println(vorher);
+		   int einlagern= 5;
+		   controller.einlagern("Regalnummer1", einlagern);
+		   int ergebnis = vorher + einlagern;
+		   System.out.println(ergebnis);
+		   assertEquals(ergebnis, regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size());
+	      System.out.println("Test1");
+    
+	   }
 //	    
 //	   @Test
 //	   public void derTest2() throws Exception {
