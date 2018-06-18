@@ -5,6 +5,7 @@ import Datenhaltung.RegalDAO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
+import Tests.MainTest;
 import UI.ArtikelanzeigeView;
 import UI.AuslagernView;
 import UI.Controller;
@@ -18,8 +19,6 @@ public class Main {
 		Lagerverwaltung lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
 		Controller controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);		
 		controller.start();
-
 	}	
-
 
 }

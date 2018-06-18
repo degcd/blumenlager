@@ -24,7 +24,7 @@ public class Hauptmenue extends JFrame{
 	public void createHauptmenue(Controller controller) {
 		this.controller = controller;
 		hm.setTitle("Blumenlager");
-		setSize(600, 150);
+		setSize(700, 150);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());

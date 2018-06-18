@@ -27,28 +27,18 @@ public class MainTest {
        private Lagerverwaltung lagerverwaltung;
        private Controller controller;
        
-       @BeforeClass
-          public static void create() {
-             // Test-Objekt erschaffen mit den Testwerten (Länge: 10 und Breite: 20)
-             System.out.println("Start!");
-
-          }
            
           @Before
           public void vor() {
-             // Diese Methode wird vor jedem Testfall ausgeführt
               dc = new BlumenlagerDataConnector();
               artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
               regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung), artikelverwaltung);
               lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
               controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
-             System.out.println("vor Test");
           }
            
           @Test
           public void derTest1() {
-             // Testfall 1: Prüfung ob Umfangsberechnung stimmt
-             System.out.println("Test1");
              controller.start();   
              int regalnummer = 1;
              int eingabewert = 5;
@@ -59,7 +49,7 @@ public class MainTest {
              controller.getAktuelleEinlagernView().einlagern();
              
              int anzNachher = regalverwaltung.getRegal("Regalnummer "+ Integer.toString(regalnummer)).getArtikelListe().size();
-             Assert.assertSame("Ist Einlagerung erfolgreich in Fachlogik übertragen worden?",(anzVorher+eingabewert), anzNachher);
+             Assert.assertSame("Ist Einlagerung erfolgreich in Fachlogik Ã¼bertragen worden?",(anzVorher+eingabewert), anzNachher);
              
              Hauptmenue hauptmenue = controller.getAktuellesHauptmenue();
              hauptmenue.speichern();
@@ -75,8 +65,9 @@ public class MainTest {
           		}
              }catch(Exception ex){}
              
-             Assert.assertSame("Ist Einlagerung erfolgreich in Datenbank übertragen worden?", (anzVorher+eingabewert), anzArtikelDatenbank);
+             Assert.assertSame("Ist Einlagerung erfolgreich in Datenbank Ã¼bertragen worden?", (anzVorher+eingabewert), anzArtikelDatenbank);
 
           }
            
 }
+
