@@ -40,31 +40,7 @@ public class RegalDAO implements IDAO{
 			
 			while(rsRegalArtikel.next())
 			{
-				//Für jeden Artikel im Regal Details herausfinden, um Artikel zu erzeugen;
-				//schlussendlich zur Artikelliste, die dem Regal beigefügt wird, hinzufügen
-
-//				Statement stat3 = conn.createStatement();
-//				ResultSet rsArtikel = stat3.executeQuery("select * from Artikel where idArtikel = " + rsRegalArtikel.getString("idArtikel"));
-//				rsArtikel.next();
-				
-				//vorhandenen Artikel aus Artikelliste holen
-				
 				artikel.add(artikelverwaltung.getArtikel(rsRegalArtikel.getInt("idArtikel")));
-				
-//				String kategorie = rsArtikel.getString("kategorie");
-//				if(kategorie.equals("Blume"))
-//				{
-//					artikel.add(new Blume(rsArtikel.getInt("idArtikel"),
-//							rsArtikel.getString("bezeichnung"),
-//							rsArtikel.getString("farbe"),
-//							new Typ(rsArtikel.getString("gattung"),rsArtikel.getString("familie"))));
-//				}
-//				else if(kategorie.equals("Bindegruen"))
-//				{
-//					artikel.add(new Bindegruen(rsArtikel.getInt("idArtikel"),
-//							rsArtikel.getString("bezeichnung")));
-//				}
-
 			}
 			regalliste.add(new Regal(rsRegal.getInt("idRegal"),rsRegal.getInt("maxAnzahlArtikel"), rsRegal.getString("platzbezeichnung"), artikel));
 			

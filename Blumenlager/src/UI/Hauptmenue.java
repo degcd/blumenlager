@@ -14,13 +14,15 @@ public class Hauptmenue extends JFrame{
 
 	private static final long serialVersionUID = -4642355566112266090L;	
 	
-	private static Hauptmenue hm = new Hauptmenue();
+	private static Hauptmenue hm;
+	private Controller controller ;
 	
 	private Hauptmenue() {
 
 	}
 	
 	public void createHauptmenue(Controller controller) {
+		this.controller = controller;
 		hm.setTitle("Blumenlager");
 		setSize(600, 150);
 		setLocationRelativeTo(null);
@@ -68,6 +70,15 @@ public class Hauptmenue extends JFrame{
 		);
 		buttonPanel.add(lagerAnzeigen);
 		
+		JButton speichern = new JButton("Speichern");
+		anzeigen.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				speichern();
+			}
+		}
+		);
+		buttonPanel.add(speichern);	
+		
 		labelPanel.add(label);
 		panel.add("North", labelPanel);
 		panel.add("Center", buttonPanel);
@@ -82,4 +93,9 @@ public class Hauptmenue extends JFrame{
 		}
 		return hm;
 	}
+	
+	public void speichern(){
+		controller.getController().speichern();
+	}
+	
 }
