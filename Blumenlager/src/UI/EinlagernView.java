@@ -133,6 +133,11 @@ public class EinlagernView extends JFrame implements ISubjekt{
 		this.setVisible(false);
 	}
 	
+	public void setWertInTextfeld(int regalnummer, int wert)
+	{
+		textfelder.get(regalnummer -1).setText(Integer.toString(wert));
+	}
+	
 	public void einlagern(){
 
 		boolean fehler = false;

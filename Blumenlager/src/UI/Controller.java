@@ -19,6 +19,8 @@ public class Controller {
 
 	private ArtikelanzeigeView aav;
 	private LagerDetailsView ldv;
+	private EinlagernView einlagernView;
+
 	
 	public Controller(IArtikelverwaltung artikelverwaltung, IRegalverwaltung regalverwaltung, ILagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
@@ -29,9 +31,9 @@ public class Controller {
 	public void start() {
 		
 		laden();	
-		Hauptmenue.getInstance();
-		Hauptmenue.getInstance().createHauptmenue(this);
-		Hauptmenue.getInstance().addWindowListener(new WindowAdapter(){
+		Hauptmenue hauptmenue = Hauptmenue.getInstance();
+		hauptmenue.createHauptmenue(this);
+		hauptmenue.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e)
 			{
 				speichern();
@@ -42,7 +44,7 @@ public class Controller {
   
 	//Anzeige Views
 	public void zeigeEinlagernView() {
-		new EinlagernView(this);
+		einlagernView = new EinlagernView(this);
 	}
 	public void zeigeAuslagernView() {
 		new AuslagernView(this);
@@ -79,7 +81,13 @@ public class Controller {
 	public LagerDetailsView getAktuelleLagerDetailsView() {
 		return ldv;
 	}
+	public EinlagernView getAktuelleEinlagernView() {
+		return einlagernView;
+	}
+	public Hauptmenue getAktuellesHauptmenue(){
+		return Hauptmenue.getInstance();
 
+	}
 
 	
 	//Einlagern und Auslagern

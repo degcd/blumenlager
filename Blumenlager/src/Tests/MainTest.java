@@ -1,8 +1,8 @@
 package Tests;
-import static org.junit.Assert.assertEquals;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,69 +15,59 @@ import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 import UI.Controller;
+import UI.Hauptmenue;
+import org.junit.Assert;
 
 
 public class MainTest {
 
-	private BlumenlagerDataConnector dc;
-	private Artikelverwaltung artikelverwaltung;
-	private Regalverwaltung regalverwaltung;
-	private Lagerverwaltung lagerverwaltung;
-	private Controller controller;
+       private BlumenlagerDataConnector dc = new BlumenlagerDataConnector();
+       private Artikelverwaltung artikelverwaltung;
+       private Regalverwaltung regalverwaltung;
+       private Lagerverwaltung lagerverwaltung;
+       private Controller controller;
+       
+           
+          @Before
+          public void vor() {
+              dc = new BlumenlagerDataConnector();
+              artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
+              regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung), artikelverwaltung);
+              lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
+              controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
+          }
+           
+          @Test
+          public void derTest1() {
+             controller.start();   
+             int regalnummer = 1;
+             int eingabewert = 5;
+             int anzVorher = regalverwaltung.getRegal("Regalnummer "+ Integer.toString(regalnummer)).getArtikelListe().size();
 
+             controller.zeigeEinlagernView();
+             controller.getAktuelleEinlagernView().setWertInTextfeld(1, eingabewert);
+             controller.getAktuelleEinlagernView().einlagern();
+             
+             int anzNachher = regalverwaltung.getRegal("Regalnummer "+ Integer.toString(regalnummer)).getArtikelListe().size();
+             Assert.assertSame("Ist Einlagerung erfolgreich in Fachlogik Ã¼bertragen worden?",(anzVorher+eingabewert), anzNachher);
+             
+             Hauptmenue hauptmenue = controller.getAktuellesHauptmenue();
+             hauptmenue.speichern();
+             
+             Connection conn = dc.getConnection();
+         	 int anzArtikelDatenbank = 0;
+             try{
+          		Statement statement = conn.createStatement();
+          		ResultSet rsArtikel = statement.executeQuery("SELECT * FROM blumenlager.artikel a natural join regal r where r.platzbezeichnung = 'Regalnummer "+ Integer.toString(regalnummer) + "';");
+          		while(rsArtikel.next())
+          		{
+          			anzArtikelDatenbank++;
+          		}
+             }catch(Exception ex){}
+             
+             Assert.assertSame("Ist Einlagerung erfolgreich in Datenbank Ã¼bertragen worden?", (anzVorher+eingabewert), anzArtikelDatenbank);
 
-	
-	 @BeforeClass
-	   public static void create() {
-	      // Test-Objekt erschaffen mit den Testwerten (Länge: 10 und Breite: 20)
-	      System.out.println("Start!");
-	   }
-	    
-	   @Before
-	   public void vor() {
-	      // Diese Methode wird vor jedem Testfall ausgeführt
-		  dc = new BlumenlagerDataConnector();
-		  artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));
-		  regalverwaltung = new Regalverwaltung(new RegalDAO(dc.getConnection(), artikelverwaltung), artikelverwaltung);
-		  lagerverwaltung = new Lagerverwaltung(new LagerDAO(dc.getConnection(), regalverwaltung));
-		  controller = new Controller(artikelverwaltung, regalverwaltung, lagerverwaltung);
-		  System.out.println("vor Test");
-	   }
-	    
-	   @Test
-	   public void derTest1() throws Exception {
-	      // Testfall 1: Prüfung ob Umfangsberechnung stimmt
-		  System.out.println("Test1");
-		  controller.start();
-		   int vorher = regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size();
-		   System.out.println(vorher);
-		   int einlagern= 5;
-		   controller.einlagern("Regalnummer1", einlagern);
-		   int ergebnis = vorher + einlagern;
-		   System.out.println(ergebnis);
-		   assertEquals(ergebnis, regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size());
-	      System.out.println("Test1");
-    
-	   }
-//	    
-//	   @Test
-//	   public void derTest2() throws Exception {
-//	      // Testfall 2: Prüfung ob Flächeninhaltsberechnung stimmt
-//	      System.out.println("Test2");
-//	      int vorher = regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size();
-//	      controller.start();  
-//	      assertEquals((vorher), regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size());
-//	   }
-//	    
-//	   @After
-//	   public void nach() {
-//	      // Diese Methode wird nach jedem Testfall ausgeführt z.B. um einen bestimmten Zustand zu erreichen
-//	      System.out.println("nach Test");
-//	   }
-	    
-	   @AfterClass
-	   public static void delete() {
-	      // Diese Methode wird am Ende der Test-Klasse ausgeführt z.B. zum aufräumen oder löschen von Rückständen
-	      System.out.println("Test Ende!");
-	   }
+          }
+           
 }
+
