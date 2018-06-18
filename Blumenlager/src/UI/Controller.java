@@ -120,6 +120,7 @@ public class Controller {
 	
 	public void speichern()
 	{
+		System.out.println("gespeichert");
 		try{
 			artikelverwaltung.speichern();
 		} catch(Exception e)
