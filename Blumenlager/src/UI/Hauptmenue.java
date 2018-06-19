@@ -71,7 +71,7 @@ public class Hauptmenue extends JFrame{
 		buttonPanel.add(lagerAnzeigen);
 		
 		JButton speichern = new JButton("Speichern");
-		anzeigen.addMouseListener(new MouseAdapter() {
+		speichern.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				speichern();
 			}
