@@ -46,28 +46,31 @@ public class MainTest {
 	    
 	   @Test
 	   public void derTest1() throws Exception {
-	      // Testfall 1: Prüfung ob Umfangsberechnung stimmt
 		  System.out.println("Test1");
 		  controller.start();
-		   int vorher = regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size();
+		   int vorher = regalverwaltung.getRegal("Regalnummer 1").getArtikelListe().size();
 		   System.out.println(vorher);
 		   int einlagern= 5;
-		   controller.einlagern("Regalnummer1", einlagern);
+		   controller.einlagern("Regalnummer 1", einlagern);
 		   int ergebnis = vorher + einlagern;
 		   System.out.println(ergebnis);
-		   assertEquals(ergebnis, regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size());
+		   assertEquals(ergebnis, regalverwaltung.getRegal("Regalnummer 1").getArtikelListe().size());
 	      System.out.println("Test1");
     
 	   }
-//	    
-//	   @Test
-//	   public void derTest2() throws Exception {
-//	      // Testfall 2: Prüfung ob Flächeninhaltsberechnung stimmt
-//	      System.out.println("Test2");
-//	      int vorher = regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size();
-//	      controller.start();  
-//	      assertEquals((vorher), regalverwaltung.getRegal("Regalnummer1").getArtikelListe().size());
-//	   }
+	    
+	   @Test
+	   public void derTest2() throws Exception {
+	      System.out.println("Test2");
+	      controller.start();  
+	      int regalnummer = 1;
+	      int eingabewert = 5;
+	      int vorher = regalverwaltung.getRegal("Regalnummer " + Integer.toString(1)).getArtikelListe().size();
+	      
+	      //controller.getAktuelleEinlagernView().set
+	      
+
+	   }
 //	    
 //	   @After
 //	   public void nach() {

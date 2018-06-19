@@ -19,6 +19,7 @@ public class Controller {
 
 	private ArtikelanzeigeView aav;
 	private LagerDetailsView ldv;
+	private EinlagernView einlagernView;
 	
 	public Controller(IArtikelverwaltung artikelverwaltung, IRegalverwaltung regalverwaltung, ILagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
@@ -78,6 +79,10 @@ public class Controller {
 	
 	public LagerDetailsView getAktuelleLagerDetailsView() {
 		return ldv;
+	}
+	
+	public EinlagernView getAktuelleEinlagernView() {
+		return einlagernView;
 	}
 
 
