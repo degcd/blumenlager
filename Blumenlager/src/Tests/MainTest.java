@@ -37,6 +37,7 @@ public class MainTest {
           }
            
           @Test
+          //Testet den kompletten Ablauf des Einlagerns: auf der GUI aus wird etwas eingegeben, dann in die Fachlogik weitergegeben und schließlich in der Datenbank gespeichert
           public void derTest1() {
              controller.start();   
              int regalnummer = 1;
