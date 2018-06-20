@@ -29,7 +29,7 @@ public class Hauptmenue extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("HauptmenÃ¼");
+		JLabel label = new JLabel("Hauptmenü");
 		JPanel buttonPanel = new JPanel();
 ;		JButton einlagern = new JButton("Einlagern");
 

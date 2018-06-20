@@ -51,11 +51,11 @@ public class Controller {
 	}
 	
 	public void zeigeArtikelanzeigeView() {
-		aav = new ArtikelanzeigeView(this, new RegalDTO(regalverwaltung.getDAO(), regalverwaltung.getRegalListe(), regalverwaltung.getArtikelverwaltung()));
+		aav = new ArtikelanzeigeView(this, regalverwaltung);
 	}
 	
 	public void zeigeLagerDetailsView() {
-		ldv = new LagerDetailsView(this, new RegalDTO(regalverwaltung.getDAO(), regalverwaltung.getRegalListe(), regalverwaltung.getArtikelverwaltung()));
+		ldv = new LagerDetailsView(this, regalverwaltung);
 	}
 	
 	public void zeigeEinlagernHinweis() {
@@ -129,7 +129,6 @@ public class Controller {
 	
 	public void speichern()
 	{
-		System.out.println("gespeichert");
 		try{
 			artikelverwaltung.speichern();
 		} catch(Exception e)
