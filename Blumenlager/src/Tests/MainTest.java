@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import Datenhaltung.ArtikelDAO;
@@ -38,6 +37,7 @@ public class MainTest {
           }
            
           @Test
+          //Testet den kompletten Ablauf des Einlagerns: auf der GUI aus wird etwas eingegeben, dann in die Fachlogik weitergegeben und schlie�lich in der Datenbank gespeichert
           public void derTest1() {
              controller.start();   
              int regalnummer = 1;
@@ -70,4 +70,3 @@ public class MainTest {
           }
            
 }
-

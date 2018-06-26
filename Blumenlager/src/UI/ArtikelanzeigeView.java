@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import DTO.IDTO;
 import DTO.RegalDTO;
+import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -29,11 +30,10 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
 	
-	public ArtikelanzeigeView(Controller controller, IDTO regaldto) {
+	public ArtikelanzeigeView(Controller controller, IRegalverwaltung regalverwaltung) {
 		super("Artikelanzeige");
 		this.controller = controller;
-		RegalDTO dto= (RegalDTO) regaldto;
-		this.regalverwaltung = new Regalverwaltung(dto.getDAO(), dto.getListe(), dto.getArtikelverwaltung());
+		this.regalverwaltung = (Regalverwaltung)regalverwaltung;
 		setSize(500, 200);
 		setLocationRelativeTo(null);
 		baueArtikelanzeigeView();
@@ -45,7 +45,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 			
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
+		JButton hauptmenueButton = new JButton("Hauptmenü");
 
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {

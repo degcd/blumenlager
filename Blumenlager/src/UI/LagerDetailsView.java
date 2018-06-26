@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import DTO.IDTO;
 import DTO.RegalDTO;
+import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
@@ -29,11 +30,10 @@ public class LagerDetailsView extends JFrame implements IBeobachter{
 	JPanel panel;
 	JPanel gridpanel;
 	
-	public LagerDetailsView(Controller controller, IDTO regaldto) {
+	public LagerDetailsView(Controller controller, IRegalverwaltung regalverwaltung) {
 		super("Lagerbestand");
 		this.controller = controller;
-		RegalDTO dto= (RegalDTO) regaldto;
-		this.regalverwaltung = new Regalverwaltung(dto.getDAO(), dto.getListe(), dto.getArtikelverwaltung());
+		this.regalverwaltung = (Regalverwaltung)regalverwaltung;
 		setSize(700, 500);
 		setLocationRelativeTo(null);
 		

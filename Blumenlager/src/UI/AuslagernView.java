@@ -44,7 +44,7 @@ public class AuslagernView extends JFrame implements ISubjekt{
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln mÃ¶chten Sie auslagern?(mind. 1 Artikel muss noch im Regal bleiben)");
+		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?(mind. 1 Artikel muss noch im Regal bleiben)");
 
 		
 		JPanel buttonPanel = new JPanel();
@@ -60,7 +60,7 @@ public class AuslagernView extends JFrame implements ISubjekt{
 			}
 		});
 		
-		JButton hauptmenueButton = new JButton("HauptmenÃ¼");
+		JButton hauptmenueButton = new JButton("Hauptmenü");
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				
