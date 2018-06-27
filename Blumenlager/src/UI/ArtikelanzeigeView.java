@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class ArtikelanzeigeView extends JFrame implements IBeobachter{
+public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBeobachter{
 
 	/**
 	 * 
@@ -29,15 +30,23 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 
 	private Regalverwaltung regalverwaltung;	
 	private Controller controller;
+	ResourceBundle bundle;
+	JButton hauptmenueButton;
 	
 	public ArtikelanzeigeView(Controller controller, IRegalverwaltung regalverwaltung) {
-		super("Artikelanzeige");
+		super();
 		this.controller = controller;
 		this.regalverwaltung = (Regalverwaltung)regalverwaltung;
 		setSize(500, 200);
 		setLocationRelativeTo(null);
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		this.setTitle(bundle.getString("artAnzView"));
 		baueArtikelanzeigeView();
 		setVisible(true);
+		LanguageController.getLanguageController().registriere(this);
 	}
 	
 	private void baueArtikelanzeigeView() {
@@ -45,7 +54,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 			
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		hauptmenueButton = new JButton(bundle.getString("HM"));
 
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -76,9 +85,9 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 	private void fuelleTabelle() {
 		Object[] zeile = new Object[3];
 		//Tabellenkopf
-		zeile[0] = "Regal";
-		zeile[1] = "Artikel";
-		zeile[2] = "Anzahl";
+		zeile[0] = bundle.getString("regal");
+		zeile[1] = bundle.getString("art");
+		zeile[2] = bundle.getString("anz");
 		tabellenModel.addRow(zeile);
 	
 		//Tabelleninhalt
@@ -91,7 +100,13 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 				tabellenModel.addRow(zeile);
 		}
 	}
-		
+	
+	@Override 
+	public void dispose() {
+		super.dispose();
+		LanguageController.getLanguageController().deregistriere(this);
+	}
+	
 	public void close() {
 		this.setVisible(false);
 	}
@@ -107,6 +122,22 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter{
 
 	@Override
 	public void update() {
+		while (tabellenModel.getRowCount() > 0) {
+		       tabellenModel.removeRow(0);
+		}
+		fuelleTabelle();
+	}
+
+	@Override
+	public void spracheAendern() {
+		if (LanguageController.getLanguageController().getFlag() == 0) { //auf deutsch ändern
+			bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		}
+		if (LanguageController.getLanguageController().getFlag() == 1) { //auf englisch ändern
+			bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		}
+		this.setTitle(bundle.getString("artAnzView"));
+		hauptmenueButton.setText(bundle.getString("HM"));
 		while (tabellenModel.getRowCount() > 0) {
 		       tabellenModel.removeRow(0);
 		}

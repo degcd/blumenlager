@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,7 +20,7 @@ import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class LagerDetailsView extends JFrame implements IBeobachter{
+public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeobachter{
 
 	/**
 	 * 
@@ -27,21 +28,28 @@ public class LagerDetailsView extends JFrame implements IBeobachter{
 	private static final long serialVersionUID = -1629380597610753797L;
 	private Controller controller;
 	private Regalverwaltung regalverwaltung;
+	ResourceBundle bundle;
 	JPanel panel;
 	JPanel gridpanel;
+	JButton hauptmenueButton;
 	
 	public LagerDetailsView(Controller controller, IRegalverwaltung regalverwaltung) {
-		super("Lagerbestand");
+		super();
 		this.controller = controller;
 		this.regalverwaltung = (Regalverwaltung)regalverwaltung;
 		setSize(700, 500);
 		setLocationRelativeTo(null);
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		this.setTitle(bundle.getString("lagerView"));
 		
 		panel = new JPanel(new BorderLayout());
 		
 		//Button
 		JPanel buttonPanel = new JPanel();	
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		hauptmenueButton = new JButton(bundle.getString("HM"));
 
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -53,6 +61,7 @@ public class LagerDetailsView extends JFrame implements IBeobachter{
 		
 		gridpanel = new JPanel(new GridLayout(2,3, 150, 130));
 		erstelleGrid();
+		LanguageController.getLanguageController().registriere(this);
 	}
 
 	
@@ -88,6 +97,11 @@ public class LagerDetailsView extends JFrame implements IBeobachter{
 		setVisible(true);
 	}
 
+	@Override 
+	public void dispose() {
+		super.dispose();
+		LanguageController.getLanguageController().deregistriere(this);
+	}
 	
 	public void close() {
 		this.setVisible(false);
@@ -108,6 +122,21 @@ public class LagerDetailsView extends JFrame implements IBeobachter{
 	@Override
 	public void update() {		
 		gridpanel.removeAll();
+		erstelleGrid();
+	}
+
+
+	@Override
+	public void spracheAendern() {
+		gridpanel.removeAll();
+		if (LanguageController.getLanguageController().getFlag() == 0) { //auf deutsch ändern
+			bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		}
+		if (LanguageController.getLanguageController().getFlag() == 1) { //auf englisch ändern
+			bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		}
+		this.setTitle(bundle.getString("lagerView"));
+		hauptmenueButton.setText(bundle.getString("HM"));
 		erstelleGrid();
 	}
 	

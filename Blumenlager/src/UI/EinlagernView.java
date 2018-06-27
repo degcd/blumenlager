@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Observer;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,13 +24,21 @@ public class EinlagernView extends JFrame implements ISubjekt{
 	private ArrayList<JLabel> regalnummern;
 	private Controller controller;
 	private ArrayList<IBeobachter> beobachterliste = new ArrayList<IBeobachter>();
+	ResourceBundle bundle;
+	JButton einlagernButton;
+	JButton hauptmenueButton;
 	
 	//ÃƒÂ¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public EinlagernView(Controller c){
-		super("Einlagern");
+		super();
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		this.setTitle(bundle.getString("Ein"));
 		if (controller.getAktuelleArtikelanzeigeView() != null) {
 			registriere(controller.getAktuelleArtikelanzeigeView());
 		}
@@ -48,7 +57,7 @@ public class EinlagernView extends JFrame implements ISubjekt{
 		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie einlagern?");
 		
 		JPanel buttonPanel = new JPanel();
-		JButton einlagernButton = new JButton("Einlagern");
+		einlagernButton = new JButton(bundle.getString("Ein"));
 		einlagernButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				einlagern();
@@ -60,7 +69,7 @@ public class EinlagernView extends JFrame implements ISubjekt{
 			}
 		});
 
-		JButton hauptmenueButton = new JButton("Hauptmenü");
+		hauptmenueButton = new JButton(bundle.getString("HM"));
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				deregistriere(controller.getAktuelleArtikelanzeigeView());

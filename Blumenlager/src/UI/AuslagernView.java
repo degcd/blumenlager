@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,7 +20,9 @@ public class AuslagernView extends JFrame implements ISubjekt{
 	private ArrayList<JLabel> regalnummern;
 	private Controller controller;
 	private ArrayList<IBeobachter> beobachterliste = new ArrayList<IBeobachter>();
-
+	ResourceBundle bundle;
+	JButton auslagernButton;
+	JButton hauptmenueButton;
 	
 	//Ã¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public AuslagernView(Controller c){
@@ -28,7 +30,11 @@ public class AuslagernView extends JFrame implements ISubjekt{
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
-
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		this.setTitle(bundle.getString("Aus"));
 		if (controller.getAktuelleArtikelanzeigeView() != null) {
 			registriere(controller.getAktuelleArtikelanzeigeView());
 		}
@@ -48,7 +54,7 @@ public class AuslagernView extends JFrame implements ISubjekt{
 
 		
 		JPanel buttonPanel = new JPanel();
-		JButton auslagernButton = new JButton("Auslagern");
+		auslagernButton = new JButton(bundle.getString("Aus"));
 		auslagernButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				auslagern();
@@ -60,7 +66,7 @@ public class AuslagernView extends JFrame implements ISubjekt{
 			}
 		});
 		
-		JButton hauptmenueButton = new JButton("Hauptmen�");
+		hauptmenueButton = new JButton(bundle.getString("HM"));
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				
