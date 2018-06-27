@@ -3,19 +3,36 @@ package UI;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import javafx.event.ActionEvent;
 
-public class Hauptmenue extends JFrame{
+
+public class Hauptmenue extends JFrame implements ISprachBeobachter{
 
 	private static final long serialVersionUID = -4642355566112266090L;	
 	
 	private static Hauptmenue hm;
 	private Controller controller ;
+	ResourceBundle bundle;
+	JLabel label;
+	JButton einlagern;
+	JButton auslagern;
+	JButton anzeigen;
+	JButton lagerAnzeigen;
+	JButton speichern;
+	JButton sprachauswahl;
+//	String sprache = "de";
+//	String land = "Deutschland";	
+//	Locale l = new Locale(sprache, land);
+//	ResourceBundle r = ResourceBundle.getBundle("Bundle_en_GB", l);
 	
 	private Hauptmenue() {
 
@@ -23,16 +40,20 @@ public class Hauptmenue extends JFrame{
 	
 	public void createHauptmenue(Controller controller) {
 		this.controller = controller;
-		hm.setTitle("Blumenlager");
+		hm.setTitle("Flower Floor");
 		setSize(700, 150);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);	
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel labelPanel = new JPanel();
-		JLabel label = new JLabel("Hauptmen√º");
+		String str = bundle.getString("HM");
+		label = new JLabel(str);
 		JPanel buttonPanel = new JPanel();
-;		JButton einlagern = new JButton("Einlagern");
-
+		
+		String str2 = bundle.getString("Ein");
+		einlagern = new JButton(str2);
 		einlagern.addMouseListener(new MouseAdapter(){
 		public void mouseClicked(MouseEvent evt) {
 			controller.getController().zeigeEinlagernView();
@@ -40,9 +61,8 @@ public class Hauptmenue extends JFrame{
 		});
 		buttonPanel.add(einlagern);
 
-		
-		JButton auslagern = new JButton("Auslagern");
-    
+		String str3 = bundle.getString("Aus");
+		auslagern = new JButton(str3);
 		auslagern.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				controller.getController().zeigeAuslagernView();
@@ -50,8 +70,8 @@ public class Hauptmenue extends JFrame{
 		});
 		buttonPanel.add(auslagern);
 		
-		
-		JButton anzeigen = new JButton("Artikel anzeigen");
+		String str4 = bundle.getString("show");
+		anzeigen = new JButton(str4);
 		anzeigen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				controller.getController().zeigeArtikelanzeigeView();
@@ -60,8 +80,8 @@ public class Hauptmenue extends JFrame{
 		);
 		buttonPanel.add(anzeigen);	
 		
-		
-		JButton lagerAnzeigen = new JButton("Lager anzeigen");
+		String str5 = bundle.getString("show2");
+		lagerAnzeigen = new JButton(str5);
 		lagerAnzeigen.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				controller.getController().zeigeLagerDetailsView();
@@ -70,7 +90,8 @@ public class Hauptmenue extends JFrame{
 		);
 		buttonPanel.add(lagerAnzeigen);
 		
-		JButton speichern = new JButton("Speichern");
+		String str6 = bundle.getString("save");
+		speichern = new JButton(str6);
 		speichern.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				speichern();
@@ -79,14 +100,24 @@ public class Hauptmenue extends JFrame{
 		);
 		buttonPanel.add(speichern);	
 		
+		String str7 = bundle.getString("sprache");
+		sprachauswahl = new JButton(str7);
+		sprachauswahl.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				LanguageController.getLanguageController().benachrichtige();
+			}
+		}
+		);
+		buttonPanel.add(sprachauswahl);	
+		
 		labelPanel.add(label);
 		panel.add("North", labelPanel);
 		panel.add("Center", buttonPanel);
 		add(panel);
 		setVisible(true);
+		LanguageController.getLanguageController().registriere(this);
 	}
-	
-		
+			
 	public static Hauptmenue getInstance() {
 		if (hm == null) {
 			hm = new Hauptmenue();
@@ -97,5 +128,21 @@ public class Hauptmenue extends JFrame{
 	public void speichern(){
 		controller.getController().speichern();
 	}
-	
+
+	@Override
+	public void spracheAendern() {
+		if (LanguageController.getLanguageController().getFlag() == 0) { //auf deutsch ‰ndern
+			bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		}
+		if (LanguageController.getLanguageController().getFlag() == 1) { //auf englisch ‰ndern
+			bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		}
+		label.setText(bundle.getString("HM"));
+		einlagern.setText(bundle.getString("Ein"));
+		auslagern.setText(bundle.getString("Aus"));
+		anzeigen.setText(bundle.getString("show"));
+		lagerAnzeigen.setText(bundle.getString("show2"));
+		speichern.setText(bundle.getString("save"));
+		sprachauswahl.setText(bundle.getString("sprache"));
+	}
 }

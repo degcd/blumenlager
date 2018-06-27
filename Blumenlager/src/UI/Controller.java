@@ -2,6 +2,7 @@ package UI;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ResourceBundle;
 
 import DTO.RegalDTO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
@@ -11,7 +12,7 @@ import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
 
-public class Controller {
+public class Controller{
 
 	private Artikelverwaltung artikelverwaltung;
 	private Regalverwaltung regalverwaltung;
@@ -21,6 +22,7 @@ public class Controller {
 	private LagerDetailsView ldv;
 	private EinlagernView einlagernView;
 
+	ResourceBundle bundle;
 	
 	public Controller(IArtikelverwaltung artikelverwaltung, IRegalverwaltung regalverwaltung, ILagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
@@ -30,7 +32,7 @@ public class Controller {
 
 	public void start() {
 		
-		laden();	
+		laden();
 		Hauptmenue hauptmenue = Hauptmenue.getInstance();
 		hauptmenue.createHauptmenue(this);
 		hauptmenue.addWindowListener(new WindowAdapter(){
@@ -39,7 +41,6 @@ public class Controller {
 				speichern();
 			}
 		});
-
 	}
   
 	//Anzeige Views
@@ -59,19 +60,35 @@ public class Controller {
 	}
 	
 	public void zeigeEinlagernHinweis() {
-		new HinweisView(null, "Erfolgreich eingelagert!");
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		new HinweisView(null, bundle.getString("erfolgEin"));
 	}
 	
 	public void zeigeAuslagernHinweis() {
-		new HinweisView(null, "Erfolgreich ausgelagert!");
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		new HinweisView(null, "erfolgAus");
 	}
 	
 	public void zeigeFehlerEinlagern() {
-		new HinweisView(null, "Fehler beim Einlagern!");
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		new HinweisView(null, "fehlerEin");
 	}
 	
 	public void zeigeFehlerAuslagern() {
-		new HinweisView(null, "Fehler beim Auslagern!");
+		if (LanguageController.getLanguageController().getFlag() == 0)
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		if (LanguageController.getLanguageController().getFlag() == 1)
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		new HinweisView(null, "fehlerAus");
 	}
 
 	public ArtikelanzeigeView getAktuelleArtikelanzeigeView() {
@@ -152,7 +169,7 @@ public class Controller {
 	
 	public Controller getController() {
 		return this;
-	}	
+	}
 }
 
 
