@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AuslagernView extends JFrame implements ISubjekt{
+public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter{
 
 	private static final long serialVersionUID = -4578963789180819752L;
 	private ArrayList<JTextField> textfelder;
@@ -42,6 +42,7 @@ public class AuslagernView extends JFrame implements ISubjekt{
 			registriere(controller.getAktuelleLagerDetailsView());
 		}
 		baueAuslagernView();
+		LanguageController.getLanguageController().registriere(this);
 	}
 	
 	private void baueAuslagernView()
@@ -182,6 +183,12 @@ public class AuslagernView extends JFrame implements ISubjekt{
 		for (IBeobachter b : beobachterliste) {
 			b.update();
 		}		
+	}
+
+	@Override
+	public void spracheAendern() {
+		// TODO Auto-generated method stub
+		
 	}	
 	}
 

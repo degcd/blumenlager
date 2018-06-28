@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 
-public class EinlagernView extends JFrame implements ISubjekt{
+public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter{
 	
 	private static final long serialVersionUID = 6676077927159427855L;
 	private ArrayList<JTextField> textfelder;
@@ -46,6 +46,7 @@ public class EinlagernView extends JFrame implements ISubjekt{
 			registriere(controller.getAktuelleLagerDetailsView());
 		}
 		baueEinlagernView();
+		LanguageController.getLanguageController().registriere(this);
 	}
 	
 	private void baueEinlagernView()
@@ -189,6 +190,12 @@ public class EinlagernView extends JFrame implements ISubjekt{
 		for (IBeobachter b : beobachterliste) {
 			b.update();
 		}		
+	}
+
+	@Override
+	public void spracheAendern() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	}
