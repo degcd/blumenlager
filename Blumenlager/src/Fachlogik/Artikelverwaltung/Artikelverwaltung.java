@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import DTO.ArtikelDTO;
 import Datenhaltung.ArtikelDAO;
 import Datenhaltung.IDAO;
+import Logging.Log;
 
 public class Artikelverwaltung implements IArtikelverwaltung{
 
@@ -58,6 +59,11 @@ public class Artikelverwaltung implements IArtikelverwaltung{
 			{
 				artikelListe.add(x);
 			}
+			try{
+				Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+				blumenlagerLog.logger.info("Artikelverwaltung wurde geladen.");
+			}
+			catch(Exception e){}
 		}catch(Exception e){
 			throw new Exception("Fehler beim Laden der Artikelliste.");
 		}
@@ -67,6 +73,11 @@ public class Artikelverwaltung implements IArtikelverwaltung{
 	public void speichern() throws Exception{
 		try{
 			artdao.speichern(new ArtikelDTO(artdao, artikelListe));
+			try{
+				Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+				blumenlagerLog.logger.info("Artikelverwaltung wurde gespeichert.");
+			}
+			catch(Exception e){}
 		}catch(Exception e){
 			throw new Exception("Fehler beim Speichern der Artikelliste.");
 		}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import DTO.LagerDTO;
 import Datenhaltung.IDAO;
 import Datenhaltung.LagerDAO;
+import Logging.Log;
 
 public class Lagerverwaltung implements ILagerverwaltung{
 
@@ -48,6 +49,11 @@ public class Lagerverwaltung implements ILagerverwaltung{
 			{
 				lagerListe.add(x);
 			}
+			try{
+				Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+				blumenlagerLog.logger.info("Lagerverwaltung wurde geladen.");
+			}
+			catch(Exception e){}
 		}catch(Exception e){
 			throw new Exception("Fehler beim Laden der Lagerliste: "+ e.getMessage());
 		}
@@ -57,6 +63,11 @@ public class Lagerverwaltung implements ILagerverwaltung{
 	public void speichern() throws Exception{
 		try{
 			lagerdao.speichern(new LagerDTO(lagerdao, lagerListe));
+			try{
+				Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+				blumenlagerLog.logger.info("Lagerverwaltung wurde gespeichert.");
+			}
+			catch(Exception e){}
 		}catch(Exception e){
 			throw new Exception("Fehler beim Speichern der Lagerliste: " + e.getMessage());
 		}

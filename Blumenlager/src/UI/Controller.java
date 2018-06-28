@@ -4,13 +4,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
 
-import DTO.RegalDTO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Artikelverwaltung.IArtikelverwaltung;
 import Fachlogik.Lagerverwaltung.ILagerverwaltung;
 import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
+import Logging.Log;
 
 public class Controller{
 
@@ -39,6 +39,12 @@ public class Controller{
 			public void windowClosing(WindowEvent e)
 			{
 				speichern();
+				try{
+					Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+					blumenlagerLog.logger.info("Anwendung wurde geschlossen.");
+					blumenlagerLog.logger.info("---------------------------------------");
+				}
+				catch(Exception ex){}
 			}
 		});
 	}

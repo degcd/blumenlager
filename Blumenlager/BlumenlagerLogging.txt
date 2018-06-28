@@ -1,0 +1,28 @@
+Jun 28, 2018 7:48:40 PM Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Jun 28, 2018 7:48:40 PM Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Jun 28, 2018 7:48:40 PM Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Jun 28, 2018 7:49:30 PM Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 7 Artikel in Regalnummer 1 eingelagert!
+Jun 28, 2018 7:49:30 PM Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 3 Artikel in Regalnummer 4 eingelagert!
+Jun 28, 2018 7:49:30 PM Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 4 Artikel in Regalnummer 5 eingelagert!
+Jun 28, 2018 7:50:09 PM Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 3 Artikel aus Regalnummer 1 ausgelagert!
+Jun 28, 2018 7:50:09 PM Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+WARNING: So viele Artikel können nicht aus Regalnummer 3 ausgelagert werden.
+Jun 28, 2018 7:50:09 PM Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+WARNING: Werte dürfen nicht kleiner 0 sein. (Regalnummer 5)
+Jun 28, 2018 7:51:21 PM Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Jun 28, 2018 7:51:22 PM Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Jun 28, 2018 7:51:22 PM Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Jun 28, 2018 7:51:22 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jun 28, 2018 7:51:22 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------

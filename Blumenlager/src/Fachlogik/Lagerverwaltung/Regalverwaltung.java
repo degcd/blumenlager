@@ -11,6 +11,7 @@ import Fachlogik.Artikelverwaltung.Bindegruen;
 import Fachlogik.Artikelverwaltung.Blume;
 import Fachlogik.Artikelverwaltung.IArtikelverwaltung;
 import Fachlogik.Artikelverwaltung.Typ;
+import Logging.Log;
 
 public class Regalverwaltung implements IRegalverwaltung{
 
@@ -78,6 +79,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 	
 	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception
 	{
+		Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
 		if(anzahlArtikel > 0)
 		{
 			Regal r = getRegal(regalbezeichnung);
@@ -109,37 +111,43 @@ public class Regalverwaltung implements IRegalverwaltung{
 							for(int i = 0; i < anzahlArtikel ; i++)
 							{
 								Bindegruen neu = (Bindegruen) createArtikel(kategorie, artikelverwaltung.getNextArtikelId(), musterBindegruen.getBezeichnung(), "", null);
-//								Bindegruen neu = new Bindegruen(artikelverwaltung.getNextArtikelId(), musterBindegruen.getBezeichnung());
 								if(neu != null){
 									artikelverwaltung.addeArtikel(neu);
 									r.addeArtikel(neu);
 								}
 							}	
 						}
+						blumenlagerLog.logger.info(anzahlArtikel + " Artikel in " + regalbezeichnung + " eingelagert!");
 					}
 					else
 					{
+						blumenlagerLog.logger.warning("Regal ist keinem Artikel zugeordnet.(" + regalbezeichnung + ")");
 						throw new Exception("Regal ist keinem Artikel zugeordnet.(" + regalbezeichnung + ")");
 					}
 				}
 				else
 				{
+					blumenlagerLog.logger.warning("So viele Artikel können nicht in " + regalbezeichnung + " eingelagert werden.");
 					throw new Exception("So viele Artikel können nicht in " + regalbezeichnung + " eingelagert werden.");
 				}
 			}
 			else{
+				blumenlagerLog.logger.warning("Regal nicht gefunden. "+ regalbezeichnung +"ist nicht belegt.");
 				throw new Exception("Regal nicht gefunden. "+ regalbezeichnung +"ist nicht belegt.");
 			}
 			
 		}
 		else if(anzahlArtikel < 0)
 		{
+			blumenlagerLog.logger.warning("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
 	
 	public void auslagern(String regalbezeichnung, int anzahlArtikel) throws Exception
 	{
+		Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+
 		if(anzahlArtikel > 0)
 		{
 			Regal r = getRegal(regalbezeichnung);
@@ -153,18 +161,22 @@ public class Regalverwaltung implements IRegalverwaltung{
 						r.removeArtikel();
 						//Artikel existieren trotzdem in Artikelliste weiter nur nicht in Regal
 					}
+					blumenlagerLog.logger.info(anzahlArtikel + " Artikel aus " + regalbezeichnung + " ausgelagert!");
 				}
 				else
 				{
+					blumenlagerLog.logger.warning("So viele Artikel können nicht aus " + regalbezeichnung + " ausgelagert werden.");
 					throw new Exception("So viele Artikel können nicht aus " + regalbezeichnung + " ausgelagert werden.");
 				}
 			}
 			else{
+				blumenlagerLog.logger.warning("Regal nicht gefunden. "+ regalbezeichnung +"ist nicht belegt.");
 				throw new Exception("Regal nicht gefunden. "+ regalbezeichnung +"ist nicht belegt.");
 			}
 		}
 		else if(anzahlArtikel < 0)
 		{
+			blumenlagerLog.logger.warning("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 			throw new Exception("Werte dürfen nicht kleiner 0 sein. (" + regalbezeichnung + ")");
 		}
 	}
@@ -180,6 +192,8 @@ public class Regalverwaltung implements IRegalverwaltung{
 			{
 				regalListe.add(x);
 			}
+			Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+			blumenlagerLog.logger.info("Regalverwaltung wurde geladen.");
 		}catch(Exception e){
 			throw new Exception("Fehler beim Laden der Regalliste: "+ e.getMessage());
 		}
@@ -189,6 +203,11 @@ public class Regalverwaltung implements IRegalverwaltung{
 	public void speichern() throws Exception{
 		try{
 			regaldao.speichern(new RegalDTO(regaldao, regalListe, artikelverwaltung));
+			try{
+				Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
+				blumenlagerLog.logger.info("Regalverwaltung wurde gespeichert.");
+			}
+			catch(Exception e){}
 		}catch(Exception e){
 			throw new Exception("Fehler beim Speichern der Regalliste: " + e.getMessage());
 		}
