@@ -26,3 +26,119 @@ Jun 28, 2018 7:51:22 PM UI.Controller$1 windowClosing
 INFO: Anwendung wurde geschlossen.
 Jun 28, 2018 7:51:22 PM UI.Controller$1 windowClosing
 INFO: ---------------------------------------
+Jun 28, 2018 8:00:40 PM Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Jun 28, 2018 8:00:40 PM Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Jun 28, 2018 8:00:40 PM Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Jun 28, 2018 8:04:33 PM Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Jun 28, 2018 8:04:34 PM Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Jun 28, 2018 8:04:34 PM Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Jun 28, 2018 8:04:34 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jun 28, 2018 8:04:34 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 3:47:56 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 3:47:56 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 3:50:27 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 3:50:27 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 3:57:53 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 3:57:53 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:01:47 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:01:47 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:02:27 PM Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Jul 01, 2018 4:02:27 PM Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Jul 01, 2018 4:02:27 PM Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Jul 01, 2018 4:02:40 PM Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Jul 01, 2018 4:02:41 PM Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Jul 01, 2018 4:02:41 PM Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Jul 01, 2018 4:02:41 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:02:41 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:07:52 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:07:52 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:08:29 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:08:29 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:08:55 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:08:55 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:09:36 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:09:36 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:10:17 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:10:17 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:11:53 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:11:53 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:12:26 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:12:26 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:24:00 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:24:00 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:24:25 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:24:25 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:25:17 PM Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Jul 01, 2018 4:25:17 PM Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Jul 01, 2018 4:25:17 PM Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Jul 01, 2018 4:25:35 PM Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Jul 01, 2018 4:25:36 PM Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Jul 01, 2018 4:25:36 PM Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Jul 01, 2018 4:25:36 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:25:36 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Jul 01, 2018 4:26:27 PM Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Jul 01, 2018 4:26:27 PM Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Jul 01, 2018 4:26:27 PM Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Jul 01, 2018 4:29:47 PM Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Jul 01, 2018 4:29:47 PM Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Jul 01, 2018 4:29:47 PM Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Jul 01, 2018 4:29:47 PM UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Jul 01, 2018 4:29:47 PM UI.Controller$1 windowClosing
+INFO: ---------------------------------------
