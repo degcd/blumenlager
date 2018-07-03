@@ -23,10 +23,11 @@ public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter
 	ResourceBundle bundle;
 	JButton auslagernButton;
 	JButton hauptmenueButton;
+	JLabel header;
 	
 	//ÃƒÂ¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public AuslagernView(Controller c){
-		super("Auslagern");
+		super();
 		this.controller = c;
 		setSize(1000, 300);
 		setLocationRelativeTo(null);
@@ -42,6 +43,7 @@ public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter
 			registriere(controller.getAktuelleLagerDetailsView());
 		}
 		baueAuslagernView();
+		this.setVisible(true);
 		LanguageController.getLanguageController().registriere(this);
 	}
 	
@@ -51,7 +53,7 @@ public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		regalnummern = new ArrayList<JLabel>();
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
-		JLabel header = new JLabel("Wie viele von den jeweiligen Artikeln möchten Sie auslagern?(mind. 1 Artikel muss noch im Regal bleiben)");
+		header = new JLabel(bundle.getString("ausFrage"));
 
 		
 		JPanel buttonPanel = new JPanel();
@@ -96,12 +98,12 @@ public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		textfelder.add(platz5);
 		textfelder.add(platz6);
 		
-		JLabel regalLabel1 = new JLabel("Regalnummer 1");
-		JLabel regalLabel2 = new JLabel("Regalnummer 2");
-		JLabel regalLabel3 = new JLabel("Regalnummer 3");
-		JLabel regalLabel4 = new JLabel("Regalnummer 4");
-		JLabel regalLabel5 = new JLabel("Regalnummer 5");
-		JLabel regalLabel6 = new JLabel("Regalnummer 6");
+		JLabel regalLabel1 = new JLabel(bundle.getString("regnum") + "1");
+		JLabel regalLabel2 = new JLabel(bundle.getString("regnum") + "2");
+		JLabel regalLabel3 = new JLabel(bundle.getString("regnum") + "3");
+		JLabel regalLabel4 = new JLabel(bundle.getString("regnum") + "4");
+		JLabel regalLabel5 = new JLabel(bundle.getString("regnum") + "5");
+		JLabel regalLabel6 = new JLabel(bundle.getString("regnum") + "6");
 		regalnummern.add(regalLabel1);
 		regalnummern.add(regalLabel2);
 		regalnummern.add(regalLabel3);
@@ -110,22 +112,22 @@ public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		regalnummern.add(regalLabel6);
 		
 		lagerplatzPanel.add(regalLabel1);
-		lagerplatzPanel.add(new JLabel("Bezeichnung:" + "Bindegruen"));
+		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("bin")));
 		lagerplatzPanel.add(platz1);
 		lagerplatzPanel.add(regalLabel2);
-		lagerplatzPanel.add(new JLabel("Bezeichnung:" + "Tulpe"));
+		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("tul")));
 		lagerplatzPanel.add(platz2);
 		lagerplatzPanel.add(regalLabel3);
-		lagerplatzPanel.add(new JLabel("Bezeichnung:" + "Lilie"));
+		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("lil")));
 		lagerplatzPanel.add(platz3);
 		lagerplatzPanel.add(regalLabel4);
-		lagerplatzPanel.add(new JLabel("Bezeichnung:" + "Sonnenblume"));
+		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("son")));
 		lagerplatzPanel.add(platz4);
 		lagerplatzPanel.add(regalLabel5);
-		lagerplatzPanel.add(new JLabel("Bezeichnung:" + "Rose"));
+		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("ros")));
 		lagerplatzPanel.add(platz5);
 		lagerplatzPanel.add(regalLabel6);
-		lagerplatzPanel.add(new JLabel("Bezeichnung:" + "Orchidee"));
+		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("orc")));
 		lagerplatzPanel.add(platz6);
 
 		
@@ -134,7 +136,13 @@ public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		mainPanel.add("South",buttonPanel);
 		
 		this.add(mainPanel);
-		this.setVisible(true);
+	}
+	
+	
+	@Override 
+	public void dispose() {
+		super.dispose();
+		LanguageController.getLanguageController().deregistriere(this);
 	}
 	
 	public void close() {
@@ -187,8 +195,14 @@ public class AuslagernView extends JFrame implements ISubjekt, ISprachBeobachter
 
 	@Override
 	public void spracheAendern() {
-		// TODO Auto-generated method stub
-		
+		if (LanguageController.getLanguageController().getFlag() == 0) { //auf deutsch ändern
+			bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		}
+		if (LanguageController.getLanguageController().getFlag() == 1) { //auf englisch ändern
+			bundle = ResourceBundle.getBundle("Bundle_en_GB");
+		}
+		this.setTitle(bundle.getString("Aus"));
+		baueAuslagernView();	
 	}	
 	}
 
