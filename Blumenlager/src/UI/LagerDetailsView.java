@@ -61,6 +61,7 @@ public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeob
 		
 		gridpanel = new JPanel(new GridLayout(2,3, 150, 130));
 		erstelleGrid();
+		setVisible(true);
 		LanguageController.getLanguageController().registriere(this);
 	}
 
@@ -78,14 +79,14 @@ public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeob
 			//Artikel
 			JLabel label2 = new JLabel(r.getArtikelListe().get(0).getBezeichnung());
 			neu.add(label2);
-			String id = "Artikel-ID: " + Integer.toString(r.getArtikelListe().get(0).getId());
+			String id = bundle.getString("artID") + Integer.toString(r.getArtikelListe().get(0).getId());
 			JLabel label3 = new JLabel(id);
 			neu.add(label3);
 			//belegte und freie Plätze
-			String anzahl = "Anzahl: " + Integer.toString(r.getArtikelListe().size());
+			String anzahl = bundle.getString("anz2") + Integer.toString(r.getArtikelListe().size());
 			JLabel label4 = new JLabel(anzahl);
 			neu.add(label4);
-			String verfuegbar = "verfügbare Plätze: " + Integer.toString(berechneVerfuegbarePlaetze(r));
+			String verfuegbar = bundle.getString("verplae") + Integer.toString(berechneVerfuegbarePlaetze(r));
 			JLabel label5 = new JLabel(verfuegbar);
 			neu.add(label5);
 			gridpanel.add(neu);
@@ -94,7 +95,6 @@ public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeob
 		panel.add("North", gridpanel);
 				
 		add(panel);		
-		setVisible(true);
 	}
 
 	@Override 

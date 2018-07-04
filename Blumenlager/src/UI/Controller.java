@@ -78,7 +78,7 @@ public class Controller{
 		bundle = ResourceBundle.getBundle("Bundle_de_DE");
 		if (LanguageController.getLanguageController().getFlag() == 1)
 		bundle = ResourceBundle.getBundle("Bundle_en_GB");
-		new HinweisView(null, "erfolgAus");
+		new HinweisView(null, bundle.getString("erfolgAus"));
 	}
 	
 	public void zeigeFehlerEinlagern() {
@@ -86,7 +86,7 @@ public class Controller{
 		bundle = ResourceBundle.getBundle("Bundle_de_DE");
 		if (LanguageController.getLanguageController().getFlag() == 1)
 		bundle = ResourceBundle.getBundle("Bundle_en_GB");
-		new HinweisView(null, "fehlerEin");
+		new HinweisView(null, bundle.getString("fehlerEin"));
 	}
 	
 	public void zeigeFehlerAuslagern() {
@@ -94,7 +94,7 @@ public class Controller{
 		bundle = ResourceBundle.getBundle("Bundle_de_DE");
 		if (LanguageController.getLanguageController().getFlag() == 1)
 		bundle = ResourceBundle.getBundle("Bundle_en_GB");
-		new HinweisView(null, "fehlerAus");
+		new HinweisView(null, bundle.getString("fehlerAus"));
 	}
 
 	public ArtikelanzeigeView getAktuelleArtikelanzeigeView() {
