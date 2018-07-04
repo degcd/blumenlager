@@ -28,6 +28,18 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 	JButton einlagernButton;
 	JButton hauptmenueButton;
 	JLabel header;
+	JLabel regalLabel1;
+	JLabel regalLabel2;
+	JLabel regalLabel3;
+	JLabel regalLabel4;
+	JLabel regalLabel5;
+	JLabel regalLabel6;
+	JLabel bezLabel1;
+	JLabel bezLabel2;
+	JLabel bezLabel3;
+	JLabel bezLabel4;
+	JLabel bezLabel5;
+	JLabel bezLabel6;
 	
 	//Ã¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
 	public EinlagernView(Controller c){
@@ -100,12 +112,20 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		textfelder.add(platz5);
 		textfelder.add(platz6);
 		
-		JLabel regalLabel1 = new JLabel(bundle.getString("regnum") + "1");
-		JLabel regalLabel2 = new JLabel(bundle.getString("regnum") + "2");
-		JLabel regalLabel3 = new JLabel(bundle.getString("regnum") + "3");
-		JLabel regalLabel4 = new JLabel(bundle.getString("regnum") + "4");
-		JLabel regalLabel5 = new JLabel(bundle.getString("regnum") + "5");
-		JLabel regalLabel6 = new JLabel(bundle.getString("regnum") + "6");
+		regalLabel1 = new JLabel();
+		regalLabel2 = new JLabel();
+		regalLabel3 = new JLabel();
+		regalLabel4 = new JLabel();
+		regalLabel5 = new JLabel();
+		regalLabel6 = new JLabel();
+		bezLabel1 = new JLabel();
+		bezLabel2 = new JLabel();
+		bezLabel3 = new JLabel();
+		bezLabel4 = new JLabel();
+		bezLabel5 = new JLabel();
+		bezLabel6 = new JLabel();
+		fuelleLabels();
+		
 		regalnummern.add(regalLabel1);
 		regalnummern.add(regalLabel2);
 		regalnummern.add(regalLabel3);
@@ -114,29 +134,27 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		regalnummern.add(regalLabel6);
 		
 		lagerplatzPanel.add(regalLabel1);
-		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("bin")));
+		lagerplatzPanel.add(bezLabel1);
 		lagerplatzPanel.add(platz1);
 		lagerplatzPanel.add(regalLabel2);
-		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("tul")));
+		lagerplatzPanel.add(bezLabel2);
 		lagerplatzPanel.add(platz2);
 		lagerplatzPanel.add(regalLabel3);
-		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("lil")));
+		lagerplatzPanel.add(bezLabel3);
 		lagerplatzPanel.add(platz3);
 		lagerplatzPanel.add(regalLabel4);
-		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("son")));
+		lagerplatzPanel.add(bezLabel4);
 		lagerplatzPanel.add(platz4);
 		lagerplatzPanel.add(regalLabel5);
-		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("ros")));
+		lagerplatzPanel.add(bezLabel5);
 		lagerplatzPanel.add(platz5);
 		lagerplatzPanel.add(regalLabel6);
-		lagerplatzPanel.add(new JLabel(bundle.getString("bez") + bundle.getString("orc")));
+		lagerplatzPanel.add(bezLabel6);
 		lagerplatzPanel.add(platz6);
-
 		
 		mainPanel.add("North", header);
 		mainPanel.add("Center", lagerplatzPanel);
-		mainPanel.add("South",buttonPanel);
-		
+		mainPanel.add("South",buttonPanel);		
 		this.add(mainPanel);
 	}
 	
@@ -157,15 +175,24 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 	}
 	
 	public void einlagern(){
-
 		boolean fehler = false;
 
 		for(int i = 0; i < 6; i++)
 		{
 			try{
 				int anzahlArtikel = Integer.parseInt(textfelder.get(i).getText());
-				String regalbezeichnung = regalnummern.get(i).getText();
-				controller.einlagern(regalbezeichnung, anzahlArtikel);
+				String regalbezeichnung;
+				if (LanguageController.getLanguageController().getFlag() == 1) {
+					deutscheLabel();
+					regalbezeichnung = regalnummern.get(i).getText();
+					controller.einlagern(regalbezeichnung, anzahlArtikel);
+					setzeRegalLabel();
+				}
+				else {
+					regalbezeichnung = regalnummern.get(i).getText();
+					controller.einlagern(regalbezeichnung, anzahlArtikel);
+				}
+
 			}catch(Exception e){
 				System.out.println("Probleme beim Einlagern: " + e.getMessage());
 				fehler = true;
@@ -208,8 +235,36 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		if (LanguageController.getLanguageController().getFlag() == 1) { //auf englisch �ndern
 			bundle = ResourceBundle.getBundle("Bundle_en_GB");
 		}
-		this.setTitle(bundle.getString("Aus"));
-		baueEinlagernView();			
+		this.setTitle(bundle.getString("Ein"));
+		header.setText(bundle.getString("einFrage"));
+		einlagernButton.setText(bundle.getString("Ein"));
+		hauptmenueButton.setText(bundle.getString("HM"));
+		fuelleLabels();			
+	}
+	
+	private void setzeRegalLabel() {
+		regalLabel1.setText((bundle.getString("regnum") + "1"));	
+		regalLabel2.setText((bundle.getString("regnum") + "2"));
+		regalLabel3.setText((bundle.getString("regnum") + "3"));
+		regalLabel4.setText((bundle.getString("regnum") + "4"));
+		regalLabel5.setText((bundle.getString("regnum") + "5"));
+		regalLabel6.setText((bundle.getString("regnum") + "6"));
+	}
+	
+	private void fuelleLabels() {
+		setzeRegalLabel();
+		bezLabel1.setText(bundle.getString("bez") + bundle.getString("bin"));
+		bezLabel2.setText(bundle.getString("bez") + bundle.getString("tul"));
+		bezLabel3.setText(bundle.getString("bez") + bundle.getString("lil"));
+		bezLabel4.setText(bundle.getString("bez") + bundle.getString("son"));
+		bezLabel5.setText(bundle.getString("bez") + bundle.getString("ros"));
+		bezLabel6.setText(bundle.getString("bez") + bundle.getString("orc"));
+	}
+	
+	private void deutscheLabel() {
+		bundle = ResourceBundle.getBundle("Bundle_de_DE");
+		setzeRegalLabel();
+		bundle = ResourceBundle.getBundle("Bundle_en_GB");
 	}
 	
 	}

@@ -314,3 +314,343 @@ Juli 03, 2018 9:58:36 NACHM. UI.Controller$1 windowClosing
 INFO: Anwendung wurde geschlossen.
 Juli 03, 2018 9:58:36 NACHM. UI.Controller$1 windowClosing
 INFO: ---------------------------------------
+Juli 04, 2018 6:13:55 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:13:55 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:13:55 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:15:02 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:15:03 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:15:03 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:15:03 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:15:03 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:16:54 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:16:54 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:16:54 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:17:26 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:17:27 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:17:27 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:17:27 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:17:27 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:21:02 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:21:02 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:21:02 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:21:38 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:21:40 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:21:40 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:21:40 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:21:40 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:22:01 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:22:01 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:22:01 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:22:14 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:22:15 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:22:15 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:22:15 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:22:15 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:25:05 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:25:05 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:25:05 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:32:54 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:32:55 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:32:55 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:32:55 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:32:55 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:33:02 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:33:02 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:33:02 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:33:24 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:33:25 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:33:25 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:33:25 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:33:25 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:38:06 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:38:06 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:38:06 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:38:10 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:38:12 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:38:12 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:38:12 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:38:12 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:39:37 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:39:37 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:39:37 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:40:02 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:40:03 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:40:03 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:40:03 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:40:03 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:41:36 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:41:36 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:41:36 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:41:55 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:41:56 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:41:56 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:41:56 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:41:56 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:45:00 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:45:00 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:45:00 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:45:38 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:45:39 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:45:39 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:45:39 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:45:39 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 6:50:07 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 6:50:07 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 6:50:07 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 6:51:25 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 2 Artikel in Regalnummer 1 eingelagert!
+Juli 04, 2018 6:52:03 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+WARNING: Regal nicht gefunden. rack number 1ist nicht belegt.
+Juli 04, 2018 6:52:29 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+WARNING: Regal nicht gefunden. rack number 2ist nicht belegt.
+Juli 04, 2018 6:52:41 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+WARNING: Regal nicht gefunden. rack number 6ist nicht belegt.
+Juli 04, 2018 6:54:21 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+WARNING: Regal nicht gefunden. rack number 2ist nicht belegt.
+Juli 04, 2018 6:55:29 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 6:55:30 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 6:55:30 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 6:55:30 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 6:55:30 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 7:05:29 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:05:29 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:05:29 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:05:47 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+WARNING: Regal nicht gefunden. rack number 1ist nicht belegt.
+Juli 04, 2018 7:06:21 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 7:06:22 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 7:06:22 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 7:06:22 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 7:06:22 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 7:06:31 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:06:31 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:06:31 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:06:42 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+WARNING: Regal nicht gefunden. rack number 1ist nicht belegt.
+Juli 04, 2018 7:06:57 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 1 ausgelagert!
+Juli 04, 2018 7:07:35 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 7:07:36 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 7:07:36 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 7:07:36 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 7:07:36 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 7:14:14 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:14:14 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:14:14 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:14:24 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 1 ausgelagert!
+Juli 04, 2018 7:14:38 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 1 ausgelagert!
+Juli 04, 2018 7:15:13 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 1 ausgelagert!
+Juli 04, 2018 7:16:43 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 7:16:44 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 7:16:44 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 7:16:44 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 7:16:44 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 7:19:44 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:19:44 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:19:44 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:20:02 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 1 ausgelagert!
+Juli 04, 2018 7:20:18 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 1 ausgelagert!
+Juli 04, 2018 7:21:00 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 4 ausgelagert!
+Juli 04, 2018 7:21:14 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 4 ausgelagert!
+Juli 04, 2018 7:21:27 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 7:21:27 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 7:21:28 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 7:21:28 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 7:21:28 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 7:23:47 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:23:47 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:23:47 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:24:08 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 5 ausgelagert!
+Juli 04, 2018 7:24:32 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung auslagern
+INFO: 2 Artikel aus Regalnummer 5 ausgelagert!
+Juli 04, 2018 7:24:49 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 7:24:50 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 7:24:50 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 7:24:50 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 7:24:50 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 7:29:10 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:29:10 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:29:10 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:29:40 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 2 Artikel in Regalnummer 3 eingelagert!
+Juli 04, 2018 7:29:57 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 2 Artikel in Regalnummer 3 eingelagert!
+Juli 04, 2018 7:30:17 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 2 Artikel in Regalnummer 3 eingelagert!
+Juli 04, 2018 7:30:38 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 7:30:39 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 7:30:39 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 7:30:39 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 7:30:39 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
+Juli 04, 2018 7:36:58 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:36:58 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:36:58 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:40:57 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung laden
+INFO: Artikelverwaltung wurde geladen.
+Juli 04, 2018 7:40:57 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung laden
+INFO: Regalverwaltung wurde geladen.
+Juli 04, 2018 7:40:57 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung laden
+INFO: Lagerverwaltung wurde geladen.
+Juli 04, 2018 7:41:27 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 5 Artikel in Regalnummer 1 eingelagert!
+Juli 04, 2018 7:42:18 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+WARNING: So viele Artikel können nicht in Regalnummer 2 eingelagert werden.
+Juli 04, 2018 7:42:29 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung einlagern
+INFO: 8 Artikel in Regalnummer 2 eingelagert!
+Juli 04, 2018 7:42:56 NACHM. Fachlogik.Artikelverwaltung.Artikelverwaltung speichern
+INFO: Artikelverwaltung wurde gespeichert.
+Juli 04, 2018 7:42:57 NACHM. Fachlogik.Lagerverwaltung.Regalverwaltung speichern
+INFO: Regalverwaltung wurde gespeichert.
+Juli 04, 2018 7:42:57 NACHM. Fachlogik.Lagerverwaltung.Lagerverwaltung speichern
+INFO: Lagerverwaltung wurde gespeichert.
+Juli 04, 2018 7:42:57 NACHM. UI.Controller$1 windowClosing
+INFO: Anwendung wurde geschlossen.
+Juli 04, 2018 7:42:57 NACHM. UI.Controller$1 windowClosing
+INFO: ---------------------------------------
