@@ -14,24 +14,32 @@ import Logging.Log;
 
 public class Controller{
 
+	/**
+	 * Der Controller bietet die Schnittstelle zwischen der GUI und der Fachlogik.
+	 * Er hat Zugriff auf alle Views der GUI und auf die Verwaltungsklassen (artikelverwaltung, regalverwaltung, lagerverwaltung) der Fachlogik.
+	 * Er leitet Methoden in beide Richtungen weiter.
+	 */
+	
 	private Artikelverwaltung artikelverwaltung;
 	private Regalverwaltung regalverwaltung;
 	private Lagerverwaltung lagerverwaltung;
-
 	private ArtikelanzeigeView aav;
 	private LagerDetailsView ldv;
 	private EinlagernView einlagernView;
-
 	ResourceBundle bundle;
 	
+	//Der Controller
 	public Controller(IArtikelverwaltung artikelverwaltung, IRegalverwaltung regalverwaltung, ILagerverwaltung lagerverwaltung) {
 		this.artikelverwaltung = (Artikelverwaltung) artikelverwaltung;
 		this.regalverwaltung = (Regalverwaltung) regalverwaltung;
 		this.lagerverwaltung = (Lagerverwaltung) lagerverwaltung;
 	}
 
-	public void start() {
-		
+	/*Beim Aufruf der Main-Methode, also zum Start der Anwendung, wird ein Controller initialiert und die Methode start() aufgerufen. 
+	 * Es werden die Daten aus der Datenbank geladen und das Hauptmenue instanziiert.
+	 * Wird das Hauptmenue-Fenster geschlossen, so werden die Daten in der Datenbank gespeichert.
+	 */
+	public void start() {		
 		laden();
 		Hauptmenue hauptmenue = Hauptmenue.getInstance();
 		hauptmenue.createHauptmenue(this);
@@ -49,7 +57,7 @@ public class Controller{
 		});
 	}
   
-	//Anzeige Views
+	//alle Fenster, abgesehen vom Hauptmenue, werden über den Controller angewählt/ erzeugt/ geöffnet
 	public void zeigeEinlagernView() {
 		einlagernView = new EinlagernView(this);
 	}
@@ -65,6 +73,7 @@ public class Controller{
 		ldv = new LagerDetailsView(this, regalverwaltung);
 	}
 	
+	//Es werden Erfolgs- bzw. Misserfolgshinweise abhängig von der aktuellen Sprache angezeigt, Aufruf von Ein- bzw. AuslagernView
 	public void zeigeEinlagernHinweis() {
 		if (LanguageController.getLanguageController().getFlag() == 0)
 		bundle = ResourceBundle.getBundle("Bundle_de_DE");
@@ -114,7 +123,9 @@ public class Controller{
 	}
 
 	
-	//Einlagern und Auslagern
+	/*Methoden zum ein- und auslagern werden in der EinlagernView bzw. AuslagernView aufgerufen, an den Controller weitergeleitet
+	 * und von hier aus weitergereicht an die Fachlogik
+	 */
 	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception{
 		regalverwaltung.einlagern(regalbezeichnung, anzahlArtikel);
 	}
@@ -123,7 +134,7 @@ public class Controller{
 	}
 	
 	
-	//Speichern und laden
+	//Methoden zum Speichern und Laden der Daten in bzw. aus der Datenbank
 	public void laden()
 	{
 		try{
@@ -171,7 +182,6 @@ public class Controller{
 			System.out.println("Fehler beim Speichern der Lagerverwaltung: " + e.getMessage());
 		}
 	}
-	
 	
 	public Controller getController() {
 		return this;

@@ -14,8 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import DTO.IDTO;
-import DTO.RegalDTO;
 import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
@@ -23,7 +21,9 @@ import Fachlogik.Lagerverwaltung.Regalverwaltung;
 public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeobachter{
 
 	/**
-	 * 
+	 * Dient als "Detailseite" des Lagers
+	 * Zeigt ein Fenster mit mit Gridlayout, zu jedem Regal werden folgende Informationen angezeigt:
+	 * Bezeichnung des Artikels, Artikel-ID, Anzahl eingelagerte Artikel bzw. "belegte Pl‰tze" sowie die Anzahl freier Pl‰tze
 	 */
 	private static final long serialVersionUID = -1629380597610753797L;
 	private Controller controller;
@@ -67,7 +67,6 @@ public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeob
 
 	
 	private void erstelleGrid() {
-
 		ArrayList<Regal> regalliste = new ArrayList<Regal>();
 		regalliste = regalListeKlonen(regalverwaltung.getRegalListe());		
 		for (Regal r : regalliste) {
@@ -92,11 +91,11 @@ public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeob
 			gridpanel.add(neu);
 		}
 		
-		panel.add("North", gridpanel);
-				
+		panel.add("North", gridpanel);				
 		add(panel);		
 	}
 
+	//Beim Schlieﬂen des Fensters: Deregistrierung von der Beobachterliste vom LanguageController
 	@Override 
 	public void dispose() {
 		super.dispose();
@@ -107,6 +106,7 @@ public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeob
 		this.setVisible(false);
 	}
 	
+	//Klonen der aktuellen Regalliste von der Regalverwaltung
 	public static ArrayList<Regal> regalListeKlonen(ArrayList<Regal> original)
 	{
 	    ArrayList<Regal> klon = new ArrayList<Regal>(original.size());
@@ -115,17 +115,19 @@ public class LagerDetailsView extends JFrame implements IBeobachter, ISprachBeob
 	    return klon;
 	}
 	
+	//Hilfsmethode zur Berechnung der freien Lagerplatzanzahl pro Regal
 	public int berechneVerfuegbarePlaetze(Regal r) {
 		return r.getMaxAnzahlArtikel() - r.getArtikelListe().size();
 	}
 	
+	//die Methode wird aufgerufen, sobald Artikel ein- oder ausgelagert werden, sodass die Anzeige direkt aktualisiert wird
 	@Override
 	public void update() {		
 		gridpanel.removeAll();
 		erstelleGrid();
 	}
 
-
+	//die Methode wird bei Sprach‰nderung aufgerufen um alle Textelemente zu ‰ndern
 	@Override
 	public void spracheAendern() {
 		gridpanel.removeAll();

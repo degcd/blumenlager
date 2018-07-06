@@ -5,13 +5,15 @@ import Datenhaltung.RegalDAO;
 import Fachlogik.Artikelverwaltung.Artikelverwaltung;
 import Fachlogik.Lagerverwaltung.Lagerverwaltung;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
-import Tests.MainTest;
-import UI.ArtikelanzeigeView;
-import UI.AuslagernView;
 import UI.Controller;
 
 public class Main {
 	public static void main(String[] args) {
+		
+		/**
+		 * Hier wird die Anwendung gestartet. Die erforderlichen Instanzen aller drei Schichten werden erzeugt und durch 
+		 * die Methode start() des Controllers werden die Daten aus der Datenbank geladen und das Hauptmenue angezeigt.
+		 */
 		
 		BlumenlagerDataConnector dc = new BlumenlagerDataConnector();
 		Artikelverwaltung artikelverwaltung = new Artikelverwaltung(new ArtikelDAO(dc.getConnection()));

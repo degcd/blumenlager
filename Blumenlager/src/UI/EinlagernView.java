@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
 import javax.swing.JButton;
@@ -14,10 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 
 public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter{
+	
+	/**
+	 * Ein Fenster, das zur Dokumentation der eingelagerten Mengen dient
+	 * Änderungen werden direkt an ArtikelanzeigeView und LagerDetailsView weitergeleitet
+	 */
 	
 	private static final long serialVersionUID = 6676077927159427855L;
 	private ArrayList<JTextField> textfelder;
@@ -41,7 +43,7 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 	JLabel bezLabel5;
 	JLabel bezLabel6;
 	
-	//ÃƒÂ¼ber Konstruktor Regalliste angeben --> Drei-Schichten-Architektur???
+	
 	public EinlagernView(Controller c){
 		super();
 		this.controller = c;
@@ -67,10 +69,10 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 	{
 		textfelder = new ArrayList<JTextField>();
 		regalnummern = new ArrayList<JLabel>();
-		JPanel mainPanel = new JPanel(new BorderLayout());
-		
+		JPanel mainPanel = new JPanel(new BorderLayout());	
 		header = new JLabel(bundle.getString("einFrage"));
 		
+		//Buttons
 		JPanel buttonPanel = new JPanel();
 		einlagernButton = new JButton(bundle.getString("Ein"));
 		einlagernButton.addMouseListener(new MouseAdapter() {
@@ -83,7 +85,6 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 				}
 			}
 		});
-
 		hauptmenueButton = new JButton(bundle.getString("HM"));
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -91,14 +92,13 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 				deregistriere(controller.getAktuelleLagerDetailsView());
 				close();
 			}
-		});
-		
+		});		
 		buttonPanel.add(einlagernButton);
-		buttonPanel.add(hauptmenueButton);
-		
+		buttonPanel.add(hauptmenueButton);		
 		
 		JPanel lagerplatzPanel = new JPanel(new GridLayout(6,3, 5, 5));
 		
+		//alle Label
 		JTextField platz1 = new JTextField("0");
 		JTextField platz2 = new JTextField("0");
 		JTextField platz3 = new JTextField("0");
@@ -159,6 +159,7 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 	}
 	
 	
+	//Beim Schließen des Fensters: Deregistrierung von der Beobachterliste vom LanguageController
 	@Override 
 	public void dispose() {
 		super.dispose();
@@ -169,11 +170,16 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		this.setVisible(false);
 	}
 	
+	//Hilfmethode für den JUnit-Test
 	public void setWertInTextfeld(int regalnummer, int wert)
 	{
 		textfelder.get(regalnummer -1).setText(Integer.toString(wert));
 	}
 	
+	/*zentrale Methode dieser Klasse: entsprechende Werte werden an den Controller weitergeleitet, der die 
+	 * weitere Verarbeitung (Regalverwaltung sowie Datenbank) regelt, es wird über Erfolg oder Misserfolg in
+	 * Form eines Hinweis-Fensters informiert
+	 */
 	public void einlagern(){
 		boolean fehler = false;
 
@@ -209,7 +215,9 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 			}
 		}
 
-	
+	/*Überschriebene Methoden zur Implementierung von "ISubjekt", sodass ArtikelanzeigeView und LagerDetailsView
+	 * bei Änderungen des Bestandes informiert und aktualiesiert werden
+	 */
 	@Override
 	public void registriere(IBeobachter b) {
 		beobachterliste.add(b);		
@@ -227,6 +235,7 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		}		
 	}
 
+	//die Methode wird bei Sprachänderung aufgerufen um alle Textelemente zu ändern
 	@Override
 	public void spracheAendern() {
 		if (LanguageController.getLanguageController().getFlag() == 0) { //auf deutsch ändern
@@ -242,6 +251,7 @@ public class EinlagernView extends JFrame implements ISubjekt, ISprachBeobachter
 		fuelleLabels();			
 	}
 	
+	//Hilfsmethoden zur Umsetzung bzw. Änderung der Textelemente bei Wechsel auf eine andere Sprache
 	private void setzeRegalLabel() {
 		regalLabel1.setText((bundle.getString("regnum") + "1"));	
 		regalLabel2.setText((bundle.getString("regnum") + "2"));
