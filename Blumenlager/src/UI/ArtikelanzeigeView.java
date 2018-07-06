@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import DTO.IDTO;
-import DTO.RegalDTO;
 import Fachlogik.Lagerverwaltung.IRegalverwaltung;
 import Fachlogik.Lagerverwaltung.Regal;
 import Fachlogik.Lagerverwaltung.Regalverwaltung;
@@ -22,7 +20,8 @@ import Fachlogik.Lagerverwaltung.Regalverwaltung;
 public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBeobachter{
 
 	/**
-	 * 
+	 * Dient als "Schnellübersicht" übers Lager
+	 * Zeigt ein Fenster mit einer Tabelle mit den Regalen, welche Artikel und welche Anzahl derer sich darin befinden
 	 */
 	private static final long serialVersionUID = -4445243356675954599L;
 	private DefaultTableModel tabellenModel;
@@ -55,7 +54,6 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBe
 		//Button
 		JPanel buttonPanel = new JPanel();	
 		hauptmenueButton = new JButton(bundle.getString("HM"));
-
 		hauptmenueButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				close();
@@ -71,7 +69,6 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBe
 		tabellenModel = new DefaultTableModel(spaltenNamen, 0);
 		artikelTabelle = new JTable(tabellenModel);
 		artikelTabelle.setPreferredSize(new Dimension(420, 300));		
-
 		fuelleTabelle();
 		tabellenPanel.add(artikelTabelle);		
 		panel.add("North",tabellenPanel);
@@ -81,7 +78,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBe
 	}
 	
 	
-	
+	//Methode zum Füllen der Tabelle mit den aktuellen Daten
 	private void fuelleTabelle() {
 		Object[] zeile = new Object[3];
 		//Tabellenkopf
@@ -101,6 +98,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBe
 		}
 	}
 	
+	//Beim Schließen des Fensters: Deregistrierung von der Beobachterliste vom LanguageController
 	@Override 
 	public void dispose() {
 		super.dispose();
@@ -111,6 +109,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBe
 		this.setVisible(false);
 	}
 	
+	//Klonen der aktuellen Regalliste von der Regalverwaltung
 	public static ArrayList<Regal> regalListeKlonen(ArrayList<Regal> original)
 	{
 	    ArrayList<Regal> klon = new ArrayList<Regal>(original.size());
@@ -119,7 +118,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBe
 	    return klon;
 	}
 
-
+	//die Methode wird aufgerufen, sobald Artikel ein- oder ausgelagert werden, sodass die Anzeige direkt aktualisiert wird
 	@Override
 	public void update() {
 		while (tabellenModel.getRowCount() > 0) {
@@ -128,6 +127,7 @@ public class ArtikelanzeigeView extends JFrame implements IBeobachter, ISprachBe
 		fuelleTabelle();
 	}
 
+	//die Methode wird bei Sprachänderung aufgerufen um alle Textelemente zu ändern
 	@Override
 	public void spracheAendern() {
 		if (LanguageController.getLanguageController().getFlag() == 0) { //auf deutsch ändern

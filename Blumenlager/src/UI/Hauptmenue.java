@@ -3,20 +3,23 @@ package UI;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import javafx.event.ActionEvent;
-
 
 public class Hauptmenue extends JFrame implements ISprachBeobachter{
 
+	/**
+	 * Dieses Fenster wird beim Start der Anwendung geladen. Es existiert nur eine Instanz
+	 * und bleibt stets offen, auch wenn andere Fenster geöffnet werden.
+	 * Die Navigation zu den verschiedenen Funktionen erfolgt über 6 verschiedene Button.
+	 * Beim Schließen der Anwendung über das x werden die getätigten Änderungen in der Datenbank gespeichert.
+	 */
+	
 	private static final long serialVersionUID = -4642355566112266090L;	
 	
 	private static Hauptmenue hm;
@@ -29,11 +32,8 @@ public class Hauptmenue extends JFrame implements ISprachBeobachter{
 	JButton lagerAnzeigen;
 	JButton speichern;
 	JButton sprachauswahl;
-//	String sprache = "de";
-//	String land = "Deutschland";	
-//	Locale l = new Locale(sprache, land);
-//	ResourceBundle r = ResourceBundle.getBundle("Bundle_en_GB", l);
 	
+	//privater Konstruktor zur Umsetzung des Singleton-Musters
 	private Hauptmenue() {
 
 	}
@@ -117,7 +117,8 @@ public class Hauptmenue extends JFrame implements ISprachBeobachter{
 		setVisible(true);
 		LanguageController.getLanguageController().registriere(this);
 	}
-			
+
+	//statische Methode um von den anderen Klassen aus Zugriff auf die einzige Instanz zu erhalten
 	public static Hauptmenue getInstance() {
 		if (hm == null) {
 			hm = new Hauptmenue();
@@ -125,10 +126,14 @@ public class Hauptmenue extends JFrame implements ISprachBeobachter{
 		return hm;
 	}
 	
+	/*Methode dient dazu jegliche Änderungen in der Datenbank zu Speichern, nicht erst beim Schließen
+	 * der Anwendung, es erfolgt eine Weiterleitung an den Controller
+	 */
 	public void speichern(){
 		controller.getController().speichern();
 	}
 
+	//die Methode wird bei Sprachänderung aufgerufen um alle Textelemente zu ändern
 	@Override
 	public void spracheAendern() {
 		if (LanguageController.getLanguageController().getFlag() == 0) { //auf deutsch ändern
