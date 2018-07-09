@@ -7,6 +7,7 @@ import Datenhaltung.IDAO;
 import Datenhaltung.LagerDAO;
 import Logging.Log;
 
+/*verwaltet alle Lager*/
 public class Lagerverwaltung implements ILagerverwaltung{
 
 	private ArrayList<Lager> lagerListe;
@@ -18,7 +19,7 @@ public class Lagerverwaltung implements ILagerverwaltung{
 		lagerListe = new ArrayList<Lager>();
 		this.lagerdao = (LagerDAO) lagerdao;
 	}
-	
+	/*fügt ein Lager zur Liste hinzu*/
 	public void addeLager(Lager l)
 	{
 		if(l != null)
@@ -39,7 +40,7 @@ public class Lagerverwaltung implements ILagerverwaltung{
 		}
 		return null;
 	}
-	
+	/*lädt alle Lager und speichert sie in einer Liste*/
 	public void laden()throws Exception{
 		lagerListe.clear();
 		try{
@@ -59,7 +60,7 @@ public class Lagerverwaltung implements ILagerverwaltung{
 		}
 	}
 	
-	
+	/*speichert alle Lager*/
 	public void speichern() throws Exception{
 		try{
 			lagerdao.speichern(new LagerDTO(lagerdao, lagerListe));

@@ -13,6 +13,7 @@ import Fachlogik.Artikelverwaltung.IArtikelverwaltung;
 import Fachlogik.Artikelverwaltung.Typ;
 import Logging.Log;
 
+/*verwaltet Regale*/
 public class Regalverwaltung implements IRegalverwaltung{
 
 	private ArrayList<Regal> regalListe;
@@ -69,6 +70,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 		return null;
 	}
 	
+	/*erstellt nach Kategorie einen bestimmten Artikel mit bestimmten Eigenschaften*/
 	public Artikel createArtikel(String kategorie, int id, String bezeichnung, String farbe, Typ typ ){
 		if(kategorie.equals("Blume"))
 			return new Blume(id, bezeichnung, farbe, typ);
@@ -77,6 +79,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 		return null;
 	}
 	
+	/*erstellt für bestimmtes Regal mit passender Regalbezeichnung passende Anzahl von Artikeln und fügt sie dem Regal und der Artikelverwaltung hinzu*/
 	public void einlagern(String regalbezeichnung, int anzahlArtikel) throws Exception
 	{
 		Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
@@ -144,6 +147,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 		}
 	}
 	
+	/*Lagert bestimmte Anzahl von Artikeln aus bestimmtem Regal aus; es muss immer mind. 1 Artikel in einem Regal bleiben*/
 	public void auslagern(String regalbezeichnung, int anzahlArtikel) throws Exception
 	{
 		Log blumenlagerLog = Log.getInstance("BlumenlagerLogging.txt");
@@ -181,7 +185,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 		}
 	}
 	
-	
+	/*Lädt Regal mit entsprechenden Artikeln*/
 	public void laden()throws Exception{
     
 		regalListe.clear();
@@ -199,7 +203,7 @@ public class Regalverwaltung implements IRegalverwaltung{
 		}
 	}
 	
-	
+	/*speichert alle Regale mitsamt Artikeln*/
 	public void speichern() throws Exception{
 		try{
 			regaldao.speichern(new RegalDTO(regaldao, regalListe, artikelverwaltung));

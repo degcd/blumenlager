@@ -7,6 +7,7 @@ import Datenhaltung.ArtikelDAO;
 import Datenhaltung.IDAO;
 import Logging.Log;
 
+/* verwaltet alle Artikel*/
 public class Artikelverwaltung implements IArtikelverwaltung{
 
 	private ArrayList<Artikel> artikelListe;
@@ -22,7 +23,7 @@ public class Artikelverwaltung implements IArtikelverwaltung{
 	{
 		return this.artikelListe;
 	}
-	
+	/*Fügt der Artikelliste einen Artikel hinzu*/
 	public void addeArtikel(Artikel a)
 	{
 		if(a != null)
@@ -49,7 +50,7 @@ public class Artikelverwaltung implements IArtikelverwaltung{
 	}
 	
 	
-	
+	/*lädt alle Artikel aus der Datenbank unud speichert sie in einer Liste*/
 	public void laden() throws Exception{
 		artikelListe.clear();
 		try{
@@ -69,7 +70,7 @@ public class Artikelverwaltung implements IArtikelverwaltung{
 		}
 	}
 	
-	
+	/*speichert alle Artikel in der Datenbank*/
 	public void speichern() throws Exception{
 		try{
 			artdao.speichern(new ArtikelDTO(artdao, artikelListe));

@@ -22,6 +22,7 @@ public class RegalDAO implements IDAO{
 		this.artikelverwaltung = a;
 	}
 
+	/*lädt alle Regale mitsamt zugehörigen Artikeln aus der Datenbank und gibt sie innerhalb eines DTOs als Liste zurück*/
 	@Override
 	public RegalDTO laden() throws Exception {
 		
@@ -49,7 +50,7 @@ public class RegalDAO implements IDAO{
 		return new RegalDTO(this, regalliste, artikelverwaltung);
 	}
 
-	
+	/*speichert alle Regale mit samt zugehörigen Artikeln in der Datenbank ab*/
 	public void speichern(IDTO dto) throws Exception {
 		
 		Statement statement = conn.createStatement();

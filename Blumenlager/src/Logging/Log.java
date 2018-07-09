@@ -5,6 +5,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/*Logger für das Blumenlager*/
 public class Log {
 	
 	public Logger logger;

@@ -21,6 +21,7 @@ public class ArtikelDAO implements IDAO{
 		this.conn = c;
 	}
 
+	/*lädt alle Artikel aus der Datenbank und gibt sie innerhalb eines DTOs als Liste zurück*/
 	public ArtikelDTO laden() throws Exception {
 		
 		ArrayList<Artikel> list = new ArrayList<Artikel>();
@@ -47,7 +48,7 @@ public class ArtikelDAO implements IDAO{
 		return new ArtikelDTO(this, list);
 	}
 
-
+/*speichert alle Artikel in der Datenbank ab*/
 	public void speichern(IDTO dto) throws Exception {
 
 		Statement statement = conn.createStatement();

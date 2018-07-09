@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/*stellt Verbindung zur Blumenlager Datenbank her (durch  Lesen der Daten aus einer Datei)*/
 public class BlumenlagerDataConnector implements IDataConnector {
 	
 	private Connection conn;

@@ -23,6 +23,7 @@ public class LagerDAO implements IDAO{
 	}
 	
 	
+	/*lädt alle Lager aus der Datenbank und gibt sie innerhalb eines DTOs als Liste zurück*/
 	@Override
 	public LagerDTO laden() throws Exception {
 		
@@ -51,7 +52,7 @@ public class LagerDAO implements IDAO{
 		return new LagerDTO(this, lagerliste);
 	}
 
-
+	/*speichert alle Lager in der Datenbank ab*/
 	public void speichern(IDTO dto) throws Exception {
 		
 		Statement statement = conn.createStatement();
